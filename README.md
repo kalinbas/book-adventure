@@ -4,6 +4,8 @@ Transform PDF books into playable text adventure games using AI.
 
 Book Adventure uses Claude to analyze a book's characters, locations, and plot, then generates a fully interactive text adventure game that can be played in any browser — no server required.
 
+![Book Adventure — Project Hail Mary](screenshot.png)
+
 ## Live Demos
 
 Try the generated games:
