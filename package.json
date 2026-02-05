@@ -1,0 +1,24 @@
+{
+  "name": "book-adventure",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Transform PDF books into playable text adventure games",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "generate": "npm run generate -w @book-adventure/generator --",
+    "build:runtime": "npm run build -w @book-adventure/runtime"
+  },
+  "keywords": [
+    "text-adventure",
+    "interactive-fiction",
+    "pdf",
+    "game-engine"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "terser": "^5.46.0"
+  }
+}

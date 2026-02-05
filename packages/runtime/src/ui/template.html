@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{GAME_TITLE}}</title>
+  <style>
+    {{STYLES}}
+  </style>
+</head>
+<body>
+  <div id="game-root" class="book-adventure">
+    <div class="book-adventure__frame">
+      <!-- Header -->
+      <header class="book-adventure__header">
+        <h1 class="book-adventure__title" id="game-title">{{GAME_TITLE}}</h1>
+        <div class="book-adventure__controls">
+          <button class="book-adventure__btn" id="btn-save" title="Save Game">Save</button>
+          <button class="book-adventure__btn" id="btn-load" title="Load Game">Load</button>
+          <button class="book-adventure__btn book-adventure__btn--icon" id="btn-menu" title="Menu">&#9776;</button>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <main class="book-adventure__content" id="content">
+        <!-- Chapter heading -->
+        <div class="book-adventure__chapter" id="chapter-header">
+          <div class="book-adventure__chapter-label" id="chapter-label">Chapter One</div>
+          <h2 class="book-adventure__chapter-title" id="chapter-title">The Beginning</h2>
+          <div class="book-adventure__chapter-divider">&#10087;</div>
+        </div>
+
+        <!-- Narrative text -->
+        <div class="book-adventure__narrative" id="narrative">
+          <p>Loading...</p>
+        </div>
+
+        <!-- Result text (shown after interaction) -->
+        <div class="book-adventure__result" id="result" style="display: none;"></div>
+
+        <!-- Status section (inventory, variables) -->
+        <div class="book-adventure__status" id="status">
+          <div class="book-adventure__inventory">
+            <span class="book-adventure__inventory-label">You are carrying:</span>
+            <span class="book-adventure__inventory-items" id="inventory-items">nothing of note</span>
+          </div>
+          <div class="book-adventure__variables" id="variables"></div>
+        </div>
+
+        <!-- Exits -->
+        <div class="book-adventure__exits" id="exits"></div>
+
+        <!-- Actions -->
+        <div class="book-adventure__actions" id="actions-section">
+          <div class="book-adventure__actions-grid" id="actions"></div>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="book-adventure__footer">
+        <div class="book-adventure__progress">
+          <span class="book-adventure__progress-text" id="progress-text">Chapter 1 of 12</span>
+          <div class="book-adventure__progress-bar">
+            <div class="book-adventure__progress-fill" id="progress-fill" style="width: 5%;"></div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Save/Load Modal -->
+  <div class="book-adventure__modal-overlay" id="modal-overlay">
+    <div class="book-adventure__modal" id="modal">
+      <h3 class="book-adventure__modal-title" id="modal-title">Save Game</h3>
+
+      <!-- Save form (shown when saving) -->
+      <div id="save-form" style="display: none;">
+        <input type="text" class="book-adventure__modal-input" id="save-name-input" placeholder="Enter save name...">
+        <div class="book-adventure__modal-actions">
+          <button class="book-adventure__btn" id="btn-cancel-save">Cancel</button>
+          <button class="book-adventure__btn" id="btn-confirm-save">Save</button>
+        </div>
+      </div>
+
+      <!-- Save list (shown when loading) -->
+      <div id="load-form" style="display: none;">
+        <ul class="book-adventure__save-list" id="save-list"></ul>
+        <div class="book-adventure__modal-actions">
+          <button class="book-adventure__btn" id="btn-cancel-load">Cancel</button>
+        </div>
+      </div>
+
+      <!-- Menu options -->
+      <div id="menu-form" style="display: none;">
+        <div class="book-adventure__modal-actions" style="flex-direction: column; align-items: stretch;">
+          <button class="book-adventure__btn" id="btn-menu-save">Save Game</button>
+          <button class="book-adventure__btn" id="btn-menu-load">Load Game</button>
+          <button class="book-adventure__btn" id="btn-menu-restart">Restart</button>
+          <button class="book-adventure__btn" id="btn-menu-close">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game data will be injected here -->
+  <script>
+    const GAME_DATA = {{GAME_DATA}};
+  </script>
+
+  <!-- Runtime engine will be injected here -->
+  <script>
+    {{RUNTIME_SCRIPT}}
+  </script>
+
+  <!-- Initialize game -->
+  <script>
+    (function() {
+      // Initialize the game engine and renderer
+      const engine = new BookAdventureRuntime.BookAdventureEngine(GAME_DATA);
+      const renderer = new BookAdventureRuntime.BookAdventureRenderer(engine);
+
+      // Start the game
+      engine.start();
+    })();
+  </script>
+</body>
+</html>

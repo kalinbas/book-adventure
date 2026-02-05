@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Netlify
+.netlify/
+
+# Environment
+.env
+.env.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Runtime build artifact (generated from source)
+packages/runtime/public/runtime.iife.js
+
+# Game data files (generated, large JSON files)
+packages/runtime/public/*.json
+
+# Game build scripts (generated game content)
+packages/runtime/build-game/
+
+# Generator build info
+*.tsbuildinfo
