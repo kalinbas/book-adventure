@@ -341,19 +341,36 @@ function reconnectOrphanNodes(gameData: GameData, report: ValidationReport): voi
     if (!bestPredecessor) continue;
 
     const predecessor = nodes[bestPredecessor];
-    const orphanLocation = gameData.locations[orphan.locationId];
-    const orphanName = orphanLocation?.name ?? orphan.title;
+    const sameLocation = predecessor.locationId === orphan.locationId;
+    const orphanTitle = orphan.title ?? orphanId;
 
     if (!predecessor.interactions) predecessor.interactions = [];
-    predecessor.interactions.push({
-      id: `fix_orphan_go_${orphanId}`,
-      type: 'go',
-      buttonText: `Go to ${orphanName}`,
-      resultText: `You make your way to ${orphanName.toLowerCase()}.`,
-      conditions: [],
-      effects: [{ type: 'set_location', key: orphan.locationId }],
-      targetNodeId: orphanId,
-    } as any);
+
+    if (sameLocation) {
+      // Same location: this is a story continuation, not physical navigation
+      predecessor.interactions.push({
+        id: `fix_orphan_story_${orphanId}`,
+        type: 'story',
+        buttonText: orphanTitle,
+        resultText: '',
+        conditions: [],
+        effects: [],
+        targetNodeId: orphanId,
+      } as any);
+    } else {
+      // Different location: navigate there
+      const orphanLocation = gameData.locations[orphan.locationId];
+      const orphanName = orphanLocation?.name ?? orphanTitle;
+      predecessor.interactions.push({
+        id: `fix_orphan_go_${orphanId}`,
+        type: 'go',
+        buttonText: `Travel to ${orphanName}`,
+        resultText: `You make your way to ${orphanName.toLowerCase()}.`,
+        conditions: [],
+        effects: [{ type: 'set_location', key: orphan.locationId }],
+        targetNodeId: orphanId,
+      } as any);
+    }
 
     hasIncoming.add(orphanId);
     report.fixes.push(`Orphan "${orphanId}": added link from "${bestPredecessor}"`);
