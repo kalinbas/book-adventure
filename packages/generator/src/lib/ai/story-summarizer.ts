@@ -56,6 +56,26 @@ export interface StorySummary {
 
   /** Major themes of the book */
   themes: string[];
+
+  /** Interactable objects with multi-step state progressions */
+  interactableObjects: {
+    id: string;
+    name: string;
+    description: string;
+    location: string;
+    states: string[];
+    initialState: string;
+    stateTransitions: { from: string; to: string; trigger: string }[];
+  }[];
+
+  /** Variables for tracking numeric progression */
+  trackableVariables: {
+    id: string;
+    displayName: string;
+    description: string;
+    showInUI: boolean;
+    relevantScenes: string[];
+  }[];
 }
 
 /**
@@ -65,7 +85,8 @@ export interface StorySummary {
 export async function summarizeStory(
   book: ParsedBook,
   apiKey: string,
-  onProgress: (percent: number) => void
+  onProgress: (percent: number) => void,
+  targetNodes: number = 44,
 ): Promise<StorySummary> {
   onProgress(10);
 
@@ -88,8 +109,10 @@ export async function summarizeStory(
 2. Key decision points where the story could have gone differently
 3. All important characters and their relationships
 4. All significant locations and how they connect
-5. Important objects that players might interact with
-6. The themes that should be reflected in the game
+5. Important objects that players might interact with (both carryable items and large scenery objects)
+6. Interactable objects with multi-step state progressions (e.g., a locked chest: locked→picked→open)
+7. Trackable variables that represent player skills, knowledge, or resources
+8. The themes that should be reflected in the game
 
 Be thorough - this summary will be the ONLY input for generating the entire game.`;
 
@@ -152,16 +175,41 @@ Create a comprehensive JSON summary with this structure:
       "canBeCarried": true/false
     }
   ],
+  "interactableObjects": [
+    {
+      "id": "snake_case_id",
+      "name": "Object Name",
+      "description": "A large interactive object in the world",
+      "location": "location_id where this object exists",
+      "states": ["initial_state", "second_state", "final_state"],
+      "initialState": "initial_state",
+      "stateTransitions": [
+        {"from": "initial_state", "to": "second_state", "trigger": "examine or use"},
+        {"from": "second_state", "to": "final_state", "trigger": "use with item"}
+      ]
+    }
+  ],
+  "trackableVariables": [
+    {
+      "id": "snake_case_id",
+      "displayName": "Display Name",
+      "description": "What this variable tracks",
+      "showInUI": true,
+      "relevantScenes": ["plot beat descriptions where this variable changes"]
+    }
+  ],
   "themes": ["Theme 1", "Theme 2"]
 }
 \`\`\`
 
 Requirements:
-- Include 15-25 plot beats covering the ENTIRE story arc
-- Identify 5-10 decision points where player choices would be meaningful
-- List ALL important characters (aim for 5-15)
-- List ALL significant locations (aim for 5-15)
-- List 5-10 important objects
+- Include ${Math.min(25, Math.max(15, Math.floor(targetNodes * 0.5)))} plot beats covering the ENTIRE story arc
+- Identify ${Math.min(15, Math.max(5, Math.floor(targetNodes * 0.2)))} decision points where player choices would be meaningful
+- List ALL important characters (aim for 8-12)
+- List ALL significant locations (aim for 10-18)
+- List 12-18 significant objects (mix of carryable items and scenery)
+- List 3-5 interactable objects with 2-3 states each (e.g., a door: locked→unlocked→open, a painting: covered→revealed→studied)
+- List 3-5 trackable variables (skills, knowledge, resources the player builds over time)
 - Use snake_case for all IDs
 - Make sure location connections are bidirectional
 

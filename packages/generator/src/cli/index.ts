@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * CLI Tool for Testing Book Adventure Generation
+ * CLI Tool for Book Adventure Generation
  *
  * Usage:
  *   npx tsx src/cli/index.ts --pdf ./book.pdf --api-key $ANTHROPIC_API_KEY
@@ -9,7 +9,9 @@
  *   --pdf, -p       Path to PDF file (required)
  *   --api-key, -k   Anthropic API key (or set ANTHROPIC_API_KEY env var)
  *   --output, -o    Output JSON path (default: <book>.game.json)
- *   --chunked, -c   Use chunked generation (multiple API calls, safer for large books)
+ *   --nodes, -n     Target number of nodes (default: 44)
+ *   --parallel      API call concurrency (default: 3)
+ *   --dry-run       Stop after graph generation, print structure
  *   --verbose, -v   Show detailed progress
  *   --help, -h      Show help
  */
@@ -18,7 +20,8 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { parseArgs } from 'util';
 import { parsePdf } from '../lib/pdf/parser';
-import { runAnalysisPipeline } from '../lib/ai/analysis';
+import { runPipeline, type PipelineConfig } from '../lib/ai/pipeline';
+import { validateAndFix } from '../lib/ai/validation';
 
 // Parse command line arguments
 const { values: args } = parseArgs({
@@ -26,7 +29,9 @@ const { values: args } = parseArgs({
     pdf: { type: 'string', short: 'p' },
     'api-key': { type: 'string', short: 'k' },
     output: { type: 'string', short: 'o' },
-    chunked: { type: 'boolean', short: 'c', default: false },
+    nodes: { type: 'string', short: 'n' },
+    parallel: { type: 'string' },
+    'dry-run': { type: 'boolean', default: false },
     verbose: { type: 'boolean', short: 'v', default: false },
     help: { type: 'boolean', short: 'h', default: false },
   },
@@ -43,20 +48,25 @@ Options:
   --pdf, -p       Path to PDF file (required)
   --api-key, -k   Anthropic API key (or set ANTHROPIC_API_KEY env var)
   --output, -o    Output JSON path (default: <book>.game.json)
-  --chunked, -c   Use chunked generation (multiple API calls, safer for large books)
+  --nodes, -n     Target number of nodes (default: 44)
+  --parallel      API call concurrency (default: 3)
+  --dry-run       Stop after graph generation, print structure
   --verbose, -v   Show detailed progress
   --help, -h      Show help
 
 Examples:
-  # Basic usage
+  # Basic usage (44 nodes)
   npx tsx src/cli/index.ts -p moby-dick.pdf -k sk-ant-xxx
+
+  # Larger game with 200 nodes
+  npx tsx src/cli/index.ts -p moby-dick.pdf -n 200
+
+  # Preview graph structure without generating content
+  npx tsx src/cli/index.ts -p moby-dick.pdf --dry-run
 
   # Use environment variable for API key
   export ANTHROPIC_API_KEY=sk-ant-xxx
   npx tsx src/cli/index.ts -p moby-dick.pdf
-
-  # Use chunked generation for large books
-  npx tsx src/cli/index.ts -p war-and-peace.pdf -c -v
 `);
 }
 
@@ -88,27 +98,32 @@ async function main() {
     process.exit(1);
   }
 
+  // Parse options
+  const targetNodes = args.nodes ? parseInt(args.nodes, 10) : 44;
+  const concurrency = args.parallel ? parseInt(args.parallel, 10) : 3;
+  const dryRun = args['dry-run'] ?? false;
+  const verbose = args.verbose ?? false;
+
   // Determine output path
   const baseName = path.basename(pdfPath, '.pdf');
   const outputPath = args.output || `${baseName}.game.json`;
-
-  const verbose = args.verbose;
-  const useChunked = args.chunked;
 
   console.log('='.repeat(60));
   console.log('Book Adventure CLI');
   console.log('='.repeat(60));
   console.log(`PDF: ${pdfPath}`);
   console.log(`Output: ${outputPath}`);
-  console.log(`Chunked: ${useChunked}`);
+  console.log(`Target nodes: ${targetNodes}`);
+  console.log(`Concurrency: ${concurrency}`);
+  console.log(`Dry run: ${dryRun}`);
   console.log(`Verbose: ${verbose}`);
   console.log('='.repeat(60));
 
   const startTime = Date.now();
 
   try {
-    // Step 1: Parse PDF
-    console.log('\n📖 Step 1: Parsing PDF...');
+    // Parse PDF
+    console.log('\nParsing PDF...');
     const pdfBuffer = fs.readFileSync(pdfPath);
 
     // Convert Buffer to ArrayBuffer
@@ -118,95 +133,83 @@ async function main() {
     );
 
     const book = await parsePdf(arrayBuffer, baseName);
-    console.log(`   ✓ Extracted ${book.chapters.length} chapters`);
-    console.log(`   ✓ Title: "${book.title}"`);
-    console.log(`   ✓ Author: "${book.author}"`);
+    console.log(`  Extracted ${book.chapters.length} chapters`);
+    console.log(`  Title: "${book.title}"`);
+    console.log(`  Author: "${book.author}"`);
 
     if (verbose) {
-      console.log('\n   Chapters:');
+      console.log('\n  Chapters:');
       book.chapters.slice(0, 10).forEach((ch, i) => {
-        console.log(`     ${i + 1}. ${ch.title} (${ch.content.length} chars)`);
+        console.log(`    ${i + 1}. ${ch.title} (${ch.content.length} chars)`);
       });
       if (book.chapters.length > 10) {
-        console.log(`     ... and ${book.chapters.length - 10} more`);
+        console.log(`    ... and ${book.chapters.length - 10} more`);
       }
     }
 
-    // Step 2: Run analysis pipeline
-    console.log('\n🤖 Step 2: Running AI analysis pipeline...');
-    console.log('   This may take several minutes...\n');
+    // Run pipeline
+    console.log('\nRunning 6-step generation pipeline...\n');
 
-    let lastStage = '';
-    const result = await runAnalysisPipeline(
-      book,
-      apiKey,
-      (stage, percent) => {
-        if (verbose || stage !== lastStage) {
-          const stageNames: Record<string, string> = {
-            textExtraction: '📄 Text Extraction',
-            chapterDetection: '📑 Chapter Detection',
-            storySummarization: '📝 Story Summarization',
-            characterAnalysis: '👤 Character Analysis',
-            locationMapping: '🗺️  Location Mapping',
-            plotAnalysis: '📊 Plot Analysis',
-            interactionGeneration: '🎮 Game Generation',
-          };
-          const stageName = stageNames[stage] || stage;
+    const config: PipelineConfig = {
+      targetNodes,
+      concurrency,
+      dryRun,
+      verbose,
+    };
 
-          if (stage !== lastStage) {
-            console.log(`   ${stageName}...`);
-            lastStage = stage;
-          }
+    const gameData = await runPipeline(book, apiKey, config, (stage, percent) => {
+      if (verbose) {
+        process.stdout.write(`\r  [${stage}] ${percent.toFixed(0)}%`);
+        if (percent >= 100) console.log('');
+      }
+    });
 
-          if (verbose) {
-            process.stdout.write(`\r   ${stageName}: ${percent.toFixed(0)}%`);
-            if (percent >= 100) console.log('');
-          }
-        }
-      },
-      { useChunkedGeneration: useChunked }
-    );
-
-    // Step 3: Write output
-    console.log('\n💾 Step 3: Writing output...');
-    const gameJson = JSON.stringify(result.gameData, null, 2);
+    // Write output
+    console.log('\nWriting output...');
+    const gameJson = JSON.stringify(gameData, null, 2);
     fs.writeFileSync(outputPath, gameJson);
-    console.log(`   ✓ Wrote ${(gameJson.length / 1024).toFixed(1)} KB to ${outputPath}`);
+    console.log(`  Wrote ${(gameJson.length / 1024).toFixed(1)} KB to ${outputPath}`);
 
-    // Step 4: Summary
+    // Final summary
     const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
     console.log('\n' + '='.repeat(60));
-    console.log('✅ Generation Complete!');
+    console.log('Generation Complete!');
     console.log('='.repeat(60));
-    console.log(`   Time: ${elapsed}s`);
-    console.log(`   Nodes: ${Object.keys(result.gameData.nodes).length}`);
-    console.log(`   Locations: ${Object.keys(result.gameData.locations).length}`);
-    console.log(`   Characters: ${Object.keys(result.gameData.characters).length}`);
-    console.log(`   Items: ${Object.keys(result.gameData.items).length}`);
+    console.log(`  Time: ${elapsed}s`);
+    console.log(`  Nodes: ${Object.keys(gameData.nodes).length}`);
+    console.log(`  Locations: ${Object.keys(gameData.locations).length}`);
+    console.log(`  Characters: ${Object.keys(gameData.characters).length}`);
+    console.log(`  Items: ${Object.keys(gameData.items).length}`);
+    console.log(`  Objects: ${Object.keys(gameData.objects).length}`);
+    console.log(`  Variables: ${Object.keys(gameData.variableDefinitions).length}`);
 
-    // Analyze interactivity
-    const nodes = Object.values(result.gameData.nodes);
-    const totalInteractions = nodes.reduce((sum, n) => sum + (n.interactions?.length || 0), 0);
-    const avgInteractions = totalInteractions / nodes.length;
-    const endingCount = nodes.filter((n) => n.type === 'ending').length;
-    const branchingNodes = nodes.filter((n) => {
-      const targets = new Set(n.interactions?.filter((i) => i.targetNodeId).map((i) => i.targetNodeId));
-      return targets.size > 1;
-    }).length;
+    // Run validation for final stats
+    const { report } = validateAndFix(gameData);
+    console.log(`\n  Interactions: ${report.stats.totalInteractions} (avg ${report.stats.avgInteractionsPerNode.toFixed(1)}/node)`);
+    console.log(`  Endings: ${report.stats.endingNodes}`);
+    console.log(`  Choices: ${report.stats.choiceNodes}`);
 
-    console.log('\n   Interactivity Analysis:');
-    console.log(`   - Avg interactions per node: ${avgInteractions.toFixed(1)}`);
-    console.log(`   - Ending nodes: ${endingCount}`);
-    console.log(`   - Branching nodes: ${branchingNodes}`);
-
-    if (avgInteractions < 2) {
-      console.log('\n   ⚠️  Warning: Low interactivity detected. Consider using --chunked flag.');
+    if (report.stats.missingInteractionTypes.length > 0) {
+      console.log(`  Missing interaction types: ${report.stats.missingInteractionTypes.join(', ')}`);
+    }
+    if (report.stats.missingConditionTypes.length > 0) {
+      console.log(`  Missing condition types: ${report.stats.missingConditionTypes.join(', ')}`);
+    }
+    if (report.stats.missingEffectTypes.length > 0) {
+      console.log(`  Missing effect types: ${report.stats.missingEffectTypes.join(', ')}`);
     }
 
-    console.log('\n   Output file: ' + outputPath);
+    if (report.errors.length > 0) {
+      console.log(`\n  Errors: ${report.errors.length}`);
+    }
+    if (report.warnings.length > 0) {
+      console.log(`  Warnings: ${report.warnings.length}`);
+    }
+
+    console.log('\n  Output file: ' + outputPath);
     console.log('='.repeat(60));
   } catch (error) {
-    console.error('\n❌ Error:', error);
+    console.error('\nError:', error);
     process.exit(1);
   }
 }

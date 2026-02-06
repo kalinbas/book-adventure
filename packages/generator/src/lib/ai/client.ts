@@ -190,3 +190,31 @@ export async function callWithStructuredOutput<T>(
 
   throw lastError || new Error('Max retries exceeded');
 }
+
+/**
+ * Run multiple API calls in parallel with concurrency control.
+ * Respects rate limits while dispatching up to `concurrency` calls at once.
+ */
+export async function callBatchParallel<T>(
+  calls: (() => Promise<StructuredResponse<T>>)[],
+  concurrency: number = 3,
+  onProgress?: (completed: number, total: number) => void,
+): Promise<StructuredResponse<T>[]> {
+  const results: StructuredResponse<T>[] = new Array(calls.length);
+  let nextIndex = 0;
+  let completed = 0;
+
+  async function worker(): Promise<void> {
+    while (nextIndex < calls.length) {
+      const index = nextIndex++;
+      results[index] = await calls[index]();
+      completed++;
+      onProgress?.(completed, calls.length);
+    }
+  }
+
+  const workers = Array.from({ length: Math.min(concurrency, calls.length) }, () => worker());
+  await Promise.all(workers);
+
+  return results;
+}

@@ -1,6 +1,6 @@
 import type { ParsedBook, NarrativeAnalysis, Character, Location, PlotPoint } from '../../types';
 import type { GameData } from './game-data-generator';
-import { generateGameData } from './game-data-generator';
+import { runPipeline, type PipelineConfig, DEFAULT_CONFIG } from './pipeline';
 import { summarizeStory, type StorySummary } from './story-summarizer';
 
 type ProgressCallback = (stage: string, percent: number) => void;
@@ -11,20 +11,18 @@ export interface AnalysisResult {
 }
 
 export interface PipelineOptions {
-  useChunkedGeneration?: boolean; // Use multiple API calls to avoid truncation
+  targetNodes?: number;
+  concurrency?: number;
+  dryRun?: boolean;
+  verbose?: boolean;
 }
 
 /**
- * Run the full analysis pipeline using the "summarize first" approach
+ * Run the full analysis pipeline using the new 6-step approach.
  *
  * Pipeline:
- * 1. Text extraction (already done by PDF parser)
- * 2. Story summarization - create comprehensive summary of entire book
- * 3. Game generation - use summary to generate complete game structure
- * 4. Build NarrativeAnalysis from summary for UI display
- *
- * Options:
- * - useChunkedGeneration: Use multiple smaller API calls to avoid truncation (recommended for large books)
+ * 1. Story Summary → 2. World Building → 3. Story Graph →
+ * 4. Node Content → 5. Enrichment → 6. Validation
  */
 export async function runAnalysisPipeline(
   book: ParsedBook,
@@ -36,16 +34,31 @@ export async function runAnalysisPipeline(
   onProgress('textExtraction', 100);
   onProgress('chapterDetection', 100);
 
-  // Step 1: Summarize the entire story
-  onProgress('storySummarization', 10);
-  console.log('Summarizing story...');
-  const summary = await summarizeStory(book, apiKey, (percent) => {
-    onProgress('storySummarization', 10 + percent * 0.9);
-  });
-  onProgress('storySummarization', 100);
-  console.log('Story summarized:', summary.plotProgression.length, 'plot beats');
+  // Map stage progress to the expected UI stages
+  const stageMapping: Record<string, string> = {
+    storySummary: 'storySummarization',
+    worldBuilding: 'locationMapping',
+    storyGraph: 'plotAnalysis',
+    nodeContent: 'interactionGeneration',
+    enrichment: 'interactionGeneration',
+    validation: 'interactionGeneration',
+  };
 
-  // Step 2: Extract analysis from summary (for UI display)
+  const config: PipelineConfig = {
+    targetNodes: options.targetNodes ?? DEFAULT_CONFIG.targetNodes,
+    concurrency: options.concurrency ?? DEFAULT_CONFIG.concurrency,
+    dryRun: options.dryRun ?? DEFAULT_CONFIG.dryRun,
+    verbose: options.verbose ?? DEFAULT_CONFIG.verbose,
+  };
+
+  // Run a quick summary first for the NarrativeAnalysis UI data
+  onProgress('storySummarization', 10);
+  const summary = await summarizeStory(book, apiKey, (pct) => {
+    onProgress('storySummarization', 10 + pct * 0.9);
+  }, config.targetNodes);
+  onProgress('storySummarization', 100);
+
+  // Extract UI analysis from summary
   onProgress('characterAnalysis', 50);
   const characters = extractCharactersFromSummary(summary);
   onProgress('characterAnalysis', 100);
@@ -65,22 +78,16 @@ export async function runAnalysisPipeline(
     themes,
   };
 
-  // Step 3: Generate game data from summary
+  // Run the full generation pipeline, passing pre-computed summary to avoid double API call
   onProgress('interactionGeneration', 10);
-  console.log('Generating game from summary...');
-  console.log('Using chunked generation:', options.useChunkedGeneration ?? false);
-  const gameData = await generateGameData(
-    book.title,
-    book.author,
-    summary,
-    apiKey,
-    (percent) => {
-      onProgress('interactionGeneration', 10 + percent * 0.9);
-    },
-    { useChunked: options.useChunkedGeneration }
-  );
+  const gameData = await runPipeline(book, apiKey, config, (stage, pct) => {
+    const mappedStage = stageMapping[stage] ?? stage;
+    // Map pipeline progress to the interactionGeneration stage (10-100%)
+    if (mappedStage === 'interactionGeneration') {
+      onProgress('interactionGeneration', 10 + pct * 0.9);
+    }
+  }, summary);
   onProgress('interactionGeneration', 100);
-  console.log('Game generated:', Object.keys(gameData.nodes).length, 'nodes');
 
   return { analysis, gameData };
 }
