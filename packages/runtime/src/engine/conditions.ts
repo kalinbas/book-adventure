@@ -75,6 +75,6 @@ export function evaluateCondition(condition: Condition, state: GameState): boole
  * Evaluates all conditions - all must be true for the result to be true
  */
 export function evaluateConditions(conditions: Condition[], state: GameState): boolean {
-  if (conditions.length === 0) return true;
+  if (!conditions || conditions.length === 0) return true;
   return conditions.every((condition) => evaluateCondition(condition, state));
 }

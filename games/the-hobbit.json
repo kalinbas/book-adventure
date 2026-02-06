@@ -97,20 +97,6 @@
           ]
         },
         {
-          "id": "go_to_pantry",
-          "type": "go",
-          "buttonText": "Go to the pantry",
-          "resultText": "You walk through your comfortable hobbit-hole to the well-stocked pantry, where shelves lined with preserves, cakes, and other delectable foods await.",
-          "targetNodeId": "pantry",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "bag_end"
-            }
-          ]
-        },
-        {
           "id": "fix_orphan_story_gandalf_arrives",
           "type": "story",
           "buttonText": "The Grey Wizard",
@@ -481,9 +467,9 @@
         {
           "id": "go_back_to_hall",
           "type": "go",
-          "buttonText": "Return to the main hall",
+          "buttonText": "Return to the hallway",
           "resultText": "You steel yourself and return to face whatever chaos awaits you in your formerly peaceful home. The sounds of conversation and the clattering of dishes greet you as you emerge from your pantry sanctuary.",
-          "targetNodeId": "more_dwarves_arrive",
+          "targetNodeId": "gandalf_arrives",
           "conditions": [],
           "effects": [
             {
@@ -2207,7 +2193,8 @@
               "key": "gandalf",
               "delta": 8
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "examine_contract_details",
@@ -2294,7 +2281,8 @@
               "key": "burglar_skills",
               "delta": 1
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "talk_gandalf_journey",
@@ -2308,7 +2296,8 @@
               "key": "gandalf",
               "delta": 5
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "talk_thorin_quest",
@@ -2380,7 +2369,8 @@
               "type": "set_location",
               "key": "bywater"
             }
-          ]
+          ],
+          "conditions": []
         }
       ],
       "onEnter": [
@@ -2424,7 +2414,8 @@
               "key": "courage",
               "delta": 2
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "talk_gandalf_shire",
@@ -2443,7 +2434,8 @@
               "key": "courage",
               "delta": 3
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "use_pipe_weed",
@@ -2476,7 +2468,8 @@
               "key": "respect_from_dwarves",
               "delta": 1
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "use_on_handkerchief_eyes",
@@ -2570,7 +2563,8 @@
               "key": "burglar_skills",
               "delta": 2
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "talk_thorin_map",
@@ -2641,7 +2635,8 @@
               "key": "courage",
               "delta": -1
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "go_to_troll_approach",
@@ -6251,7 +6246,8 @@
               "key": "assessed_threat",
               "value": true
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "ask_gandalf_magic",
@@ -6366,7 +6362,8 @@
               "key": "gandalf",
               "delta": 3
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "last_stand_story",
@@ -6399,7 +6396,8 @@
               "key": "noted_casualties",
               "value": true
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "use_pocket_handkerchief",
@@ -6510,7 +6508,8 @@
               "key": "thorin_oakenshield",
               "delta": 8
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "use_handkerchief_comfort",
@@ -6567,7 +6566,8 @@
               "key": "studied_guards",
               "value": true
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "go_into_tunnels",
@@ -6659,7 +6659,8 @@
               "key": "courage",
               "delta": 5
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "ask_thorin_goblin_town",
@@ -6697,7 +6698,8 @@
               "key": "goblin_town"
             }
           ],
-          "targetNodeId": "goblin_king_hall"
+          "targetNodeId": "goblin_king_hall",
+          "conditions": []
         },
         {
           "id": "use_brass_buttons",
@@ -6798,7 +6800,8 @@
               "key": "gandalf_hint_received",
               "value": true
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "examine_goblin_king",
@@ -6816,7 +6819,8 @@
               "key": "assessed_goblin_king",
               "value": true
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "ask_thorin_sword_recognition",
@@ -8861,7 +8865,8 @@
               "key": "actively_sought_companions",
               "value": true
             }
-          ]
+          ],
+          "conditions": []
         }
       ],
       "onEnter": [
@@ -10086,7 +10091,8 @@
               "key": "respect_from_dwarves",
               "delta": 2
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "take_charred_branch",
@@ -10193,7 +10199,8 @@
               "key": "burning_tree",
               "value": "critically_damaged"
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "use_water_skin_on_flames",
@@ -10272,7 +10279,8 @@
               "key": "thorin_oakenshield",
               "delta": 3
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "examine_goblin_movements",
@@ -10330,7 +10338,8 @@
               "key": "courage",
               "delta": 8
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "talk_gandalf_about_eagles",
@@ -10383,7 +10392,8 @@
               "key": "respect_from_dwarves",
               "delta": 3
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "use_brass_buttons_signal",
@@ -10469,7 +10479,8 @@
               "key": "courage",
               "delta": 5
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "talk_lord_of_eagles",
@@ -10488,7 +10499,8 @@
               "key": "respect_from_dwarves",
               "delta": 5
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "use_ring_invisibility",
@@ -10558,7 +10570,8 @@
               "key": "saw_mountain_vista",
               "value": true
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "examine_other_dwarves",
@@ -10584,7 +10597,8 @@
               "type": "set_location",
               "key": "eagles_eyrie"
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "fix_orphan_story_ch_1_6_destination_choice",
@@ -13593,7 +13607,8 @@
           "type": "examine",
           "buttonText": "Examine Gandalf's staff more closely",
           "resultText": "The wizard's staff seems to glow faintly with its own inner light, as if preparing to ward off shadows. Ancient runes spiral along its length, and you sense great power contained within the weathered wood.",
-          "targetObject": "gandalfs_staff"
+          "targetObject": "gandalfs_staff",
+          "conditions": []
         },
         {
           "id": "examine_forest_entrance",
@@ -13606,7 +13621,8 @@
               "key": "courage",
               "delta": -1
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "take_lembas",
@@ -13662,7 +13678,8 @@
               "type": "set_location",
               "key": "mirkwood_entrance"
             }
-          ]
+          ],
+          "conditions": []
         }
       ],
       "onEnter": [
@@ -13885,7 +13902,8 @@
               "key": "burglar_skills",
               "delta": 1
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "use_thorins_map",
@@ -13938,7 +13956,8 @@
               "key": "courage",
               "delta": -1
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "take_courage",
@@ -13993,7 +14012,8 @@
               "type": "set_location",
               "key": "mirkwood_entrance"
             }
-          ]
+          ],
+          "conditions": []
         }
       ],
       "onEnter": [
@@ -14085,7 +14105,8 @@
               "key": "burglar_skills",
               "delta": 1
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "use_gandalfs_wisdom",
@@ -14303,7 +14324,8 @@
               "type": "set_location",
               "key": "mirkwood_path"
             }
-          ]
+          ],
+          "conditions": []
         }
       ],
       "onEnter": [
@@ -15263,7 +15285,8 @@
               "type": "set_location",
               "key": "mirkwood_path"
             }
-          ]
+          ],
+          "conditions": []
         }
       ],
       "onEnter": [
@@ -15436,7 +15459,8 @@
               "type": "set_location",
               "key": "mirkwood_path"
             }
-          ]
+          ],
+          "conditions": []
         }
       ],
       "onEnter": [
@@ -15541,7 +15565,8 @@
               "type": "set_location",
               "key": "mirkwood_path"
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "use_orcrist_on_darkness",
@@ -15752,7 +15777,8 @@
               "key": "understands_spider_threat",
               "value": true
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "take_travel_pack",
@@ -15783,7 +15809,8 @@
               "type": "set_location",
               "key": "spider_clearing"
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "use_ring_on_stealth",
@@ -15818,7 +15845,8 @@
               "key": "spider_knowledge",
               "value": true
             }
-          ]
+          ],
+          "conditions": []
         }
       ],
       "onEnter": [
@@ -16666,7 +16694,8 @@
               "type": "set_location",
               "key": "woodland_realm_entrance"
             }
-          ]
+          ],
+          "conditions": []
         }
       ],
       "onEnter": [
@@ -16839,7 +16868,8 @@
               "type": "set_location",
               "key": "woodland_realm_entrance"
             }
-          ]
+          ],
+          "conditions": []
         }
       ],
       "onEnter": [
@@ -17342,7 +17372,8 @@
               "key": "following_spiders",
               "value": true
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "go_woodland_entrance",
@@ -17355,7 +17386,8 @@
               "type": "set_location",
               "key": "woodland_realm_entrance"
             }
-          ]
+          ],
+          "conditions": []
         }
       ],
       "onEnter": [
@@ -17549,7 +17581,8 @@
               "delta": 3
             }
           ],
-          "targetNodeId": "capture_scene"
+          "targetNodeId": "capture_scene",
+          "conditions": []
         }
       ],
       "onEnter": [
@@ -17665,7 +17698,8 @@
               "key": "secret_door",
               "value": "observed"
             }
-          ]
+          ],
+          "conditions": []
         }
       ],
       "onEnter": [
@@ -17947,7 +17981,8 @@
               "key": "burglar_skills",
               "delta": 2
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "talk_thorin_whisper",
@@ -18036,7 +18071,8 @@
               "type": "set_location",
               "key": "woodland_realm"
             }
-          ]
+          ],
+          "conditions": []
         }
       ],
       "onEnter": [
@@ -18092,7 +18128,8 @@
               "key": "burglar_skills",
               "delta": 3
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "examine_secret_door_stealth",
@@ -18195,7 +18232,8 @@
               "type": "set_location",
               "key": "woodland_realm"
             }
-          ]
+          ],
+          "conditions": []
         }
       ],
       "onEnter": [
@@ -18615,7 +18653,8 @@
               "type": "go_to_node",
               "key": "to_final_battle"
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "final_warning_story",
@@ -20070,7 +20109,8 @@
           "type": "examine",
           "buttonText": "Examine the prison cells",
           "resultText": "The cells are solidly built with thick wooden doors and iron reinforcements. Each lock appears to be of elven make, intricate and well-crafted. You notice that the keys would need to be quite specific to open these particular locks.",
-          "targetObject": "prison_cells"
+          "targetObject": "prison_cells",
+          "conditions": []
         },
         {
           "id": "talk_to_thorin",
@@ -20530,7 +20570,8 @@
               "key": "respect_from_dwarves",
               "delta": 5
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "go_to_river_launch",
@@ -20768,7 +20809,8 @@
               "key": "treasure_accumulated",
               "delta": 1
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "use_water_skin",
@@ -20818,7 +20860,8 @@
           "id": "examine_surrounding_forest",
           "type": "examine",
           "buttonText": "Examine the surrounding forest",
-          "resultText": "The forest stretches endlessly on both sides of the river, dark and deep but no longer menacing. You can see small clearings where sunlight filters through the canopy, and occasionally catch glimpses of deer or other forest creatures drinking at the water's edge."
+          "resultText": "The forest stretches endlessly on both sides of the river, dark and deep but no longer menacing. You can see small clearings where sunlight filters through the canopy, and occasionally catch glimpses of deer or other forest creatures drinking at the water's edge.",
+          "conditions": []
         },
         {
           "id": "story_navigation_choice",
@@ -20851,7 +20894,8 @@
               "type": "set_location",
               "key": "forest_river"
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "go_back_ch_2_4_imprisoned_start_from_ch_2_4_river_launch",
@@ -24491,7 +24535,8 @@
               "type": "set_location",
               "key": "lonely_mountain"
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "go_thorin_strategy",
@@ -24869,7 +24914,8 @@
               "type": "set_location",
               "key": "lonely_mountain"
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "go_weapon_preparation",
@@ -24882,7 +24928,8 @@
               "type": "set_location",
               "key": "erebor_halls"
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "fix_orphan_story_from_act_2_smaug_direct",
@@ -25019,7 +25066,8 @@
               "key": "respect_from_dwarves",
               "delta": 1
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "fix_orphan_story_from_act_2_mountain",
@@ -25188,7 +25236,8 @@
               "key": "courage",
               "delta": 1
             }
-          ]
+          ],
+          "conditions": []
         }
       ],
       "onEnter": [
@@ -25377,7 +25426,8 @@
               "key": "courage",
               "delta": 2
             }
-          ]
+          ],
+          "conditions": []
         }
       ],
       "onEnter": [
@@ -25576,7 +25626,8 @@
               "key": "courage",
               "delta": 3
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "go_weakness_discovered",
@@ -25766,7 +25817,8 @@
               "key": "courage",
               "delta": 1
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "take_small_treasure",
@@ -25988,7 +26040,8 @@
               "key": "courage",
               "value": 10
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "go_smaug_awakens",
@@ -27845,7 +27898,8 @@
               "type": "set_location",
               "key": "dale_ruins"
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "continue_mission",
@@ -28214,7 +28268,8 @@
               "key": "courage",
               "delta": -3
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "appeal_to_memory",
@@ -28559,7 +28614,8 @@
               "key": "understanding",
               "delta": 5
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "go_to_mountain",
@@ -28572,7 +28628,8 @@
               "type": "set_location",
               "key": "lonely_mountain_approach"
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "go_back_mountain_entrance_from_arkenstone_gambit",
@@ -28669,7 +28726,8 @@
               "key": "understanding",
               "delta": 10
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "examine_moon_letters_map",
@@ -28774,7 +28832,8 @@
               "type": "set_location",
               "key": "battle_field"
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "go_back_mountain_entrance_from_dragon_sickness_grows",
@@ -29090,7 +29149,8 @@
               "key": "balin_sympathy",
               "value": 30
             }
-          ]
+          ],
+          "conditions": []
         },
         {
           "id": "use_mithril_shirt_gesture",
