@@ -98,7 +98,7 @@ export async function generateNodeContent(
 /**
  * Split nodes into batches of `size`.
  */
-function createBatches(nodes: GraphNode[], size: number): GraphNode[][] {
+export function createBatches(nodes: GraphNode[], size: number): GraphNode[][] {
   const batches: GraphNode[][] = [];
   for (let i = 0; i < nodes.length; i += size) {
     batches.push(nodes.slice(i, i + size));
@@ -109,7 +109,7 @@ function createBatches(nodes: GraphNode[], size: number): GraphNode[][] {
 /**
  * Build global context string (title, themes, tone).
  */
-function buildGlobalContext(summary: StorySummary, bookTitle: string): string {
+export function buildGlobalContext(summary: StorySummary, bookTitle: string): string {
   return `Game Title: "${bookTitle}: The Adventure"
 Themes: ${summary.themes.join(', ')}
 Story: ${summary.overview.slice(0, 300)}...`;
@@ -118,7 +118,7 @@ Story: ${summary.overview.slice(0, 300)}...`;
 /**
  * Build world context (available entity IDs).
  */
-function buildWorldContext(worldData: WorldData): string {
+export function buildWorldContext(worldData: WorldData): string {
   const locIds = Object.keys(worldData.locations);
 
   const charInfo = Object.entries(worldData.characters)
@@ -144,7 +144,7 @@ Variables: ${varInfo}`;
 /**
  * Generate content for a single batch of graph nodes.
  */
-async function generateBatch(
+export async function generateBatch(
   batch: GraphNode[],
   graph: StoryGraph,
   globalContext: string,

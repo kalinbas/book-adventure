@@ -28,5 +28,8 @@ packages/runtime/dist/*.json
 # Game build scripts (generated game content)
 packages/runtime/build-game/
 
+# Pipeline cache
+.cache/
+
 # Generator build info
 *.tsbuildinfo

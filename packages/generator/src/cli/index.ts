@@ -12,6 +12,7 @@
  *   --nodes, -n     Target number of nodes (default: 44)
  *   --parallel      API call concurrency (default: 3)
  *   --dry-run       Stop after graph generation, print structure
+ *   --no-cache      Disable cache, force fresh generation
  *   --verbose, -v   Show detailed progress
  *   --help, -h      Show help
  */
@@ -22,6 +23,7 @@ import { parseArgs } from 'util';
 import { parsePdf } from '../lib/pdf/parser';
 import { runPipeline, type PipelineConfig } from '../lib/ai/pipeline';
 import { validateAndFix } from '../lib/ai/validation';
+import { PipelineCache } from '../lib/cache';
 
 // Parse command line arguments
 const { values: args } = parseArgs({
@@ -32,6 +34,7 @@ const { values: args } = parseArgs({
     nodes: { type: 'string', short: 'n' },
     parallel: { type: 'string' },
     'dry-run': { type: 'boolean', default: false },
+    'no-cache': { type: 'boolean', default: false },
     verbose: { type: 'boolean', short: 'v', default: false },
     help: { type: 'boolean', short: 'h', default: false },
   },
@@ -51,6 +54,7 @@ Options:
   --nodes, -n     Target number of nodes (default: 44)
   --parallel      API call concurrency (default: 3)
   --dry-run       Stop after graph generation, print structure
+  --no-cache      Disable cache, force fresh generation
   --verbose, -v   Show detailed progress
   --help, -h      Show help
 
@@ -102,6 +106,7 @@ async function main() {
   const targetNodes = args.nodes ? parseInt(args.nodes, 10) : 44;
   const concurrency = args.parallel ? parseInt(args.parallel, 10) : 3;
   const dryRun = args['dry-run'] ?? false;
+  const noCache = args['no-cache'] ?? false;
   const verbose = args.verbose ?? false;
 
   // Determine output path
@@ -116,6 +121,7 @@ async function main() {
   console.log(`Target nodes: ${targetNodes}`);
   console.log(`Concurrency: ${concurrency}`);
   console.log(`Dry run: ${dryRun}`);
+  console.log(`Cache: ${noCache ? 'disabled' : 'enabled'}`);
   console.log(`Verbose: ${verbose}`);
   console.log('='.repeat(60));
 
@@ -147,6 +153,12 @@ async function main() {
       }
     }
 
+    // Set up cache
+    const cache = noCache ? undefined : new PipelineCache(outputPath, book, targetNodes);
+    if (cache) {
+      console.log(`  Cache: ${cache.summarize()}`);
+    }
+
     // Run pipeline
     console.log('\nRunning 6-step generation pipeline...\n');
 
@@ -162,7 +174,7 @@ async function main() {
         process.stdout.write(`\r  [${stage}] ${percent.toFixed(0)}%`);
         if (percent >= 100) console.log('');
       }
-    });
+    }, undefined, cache);
 
     // Write output
     console.log('\nWriting output...');

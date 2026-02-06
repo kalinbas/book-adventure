@@ -217,15 +217,41 @@ Return ONLY the JSON object, no other text.`;
 
   onProgress(30);
 
-  const response = await callWithStructuredOutput<StorySummary>(
-    apiKey,
-    systemPrompt,
-    userPrompt,
-    {},
-    'sonnet'
-  );
+  const maxRetries = 2;
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    const response = await callWithStructuredOutput<StorySummary>(
+      apiKey,
+      systemPrompt,
+      userPrompt,
+      {},
+      'sonnet'
+    );
 
-  onProgress(100);
+    const data = response.data;
 
-  return response.data;
+    // Validate that JSON repair didn't destroy the structure
+    if (data.plotProgression && data.characters && data.locations) {
+      onProgress(100);
+      return data;
+    }
+
+    const missing = [
+      !data.plotProgression && 'plotProgression',
+      !data.characters && 'characters',
+      !data.locations && 'locations',
+    ].filter(Boolean).join(', ');
+
+    if (attempt < maxRetries) {
+      console.warn(`  ⚠ Story summary missing fields (${missing}), retrying (${attempt + 1}/${maxRetries})...`);
+      onProgress(30 + (attempt + 1) * 20);
+    } else {
+      throw new Error(
+        `Story summary is missing required fields after ${maxRetries + 1} attempts: ${missing}. ` +
+        `The AI response had malformed JSON that could not be properly repaired.`
+      );
+    }
+  }
+
+  // Unreachable, but TypeScript needs it
+  throw new Error('Unreachable');
 }

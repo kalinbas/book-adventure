@@ -12,6 +12,7 @@ Try the generated games:
 
 - [Moby Dick](https://book-adventure-game.netlify.app/?game=moby-dick) — Hunt the white whale across the open seas
 - [Project Hail Mary](https://book-adventure-game.netlify.app/?game=hail-mary) — Save humanity on an interstellar mission
+- [The Hobbit](https://book-adventure-game.netlify.app/?game=the-hobbit) — Journey through Middle-earth with Bilbo Baggins
 
 ## How It Works
 
@@ -74,18 +75,24 @@ npm run generate -- [options]
 | `--pdf, -p` | Path to PDF file (required) |
 | `--api-key, -k` | Anthropic API key (or set `ANTHROPIC_API_KEY` env var) |
 | `--output, -o` | Output JSON path (default: `<book>.game.json`) |
-| `--chunked, -c` | Use chunked generation for large books |
+| `--nodes, -n` | Target number of nodes (default: 44) |
+| `--parallel` | API call concurrency (default: 3) |
+| `--dry-run` | Stop after graph generation, print structure |
+| `--no-cache` | Disable cache, force fresh generation |
 | `--verbose, -v` | Show detailed progress |
 | `--help, -h` | Show help |
 
 ### Examples
 
 ```bash
-# Basic usage
+# Basic usage (44 nodes)
 npm run generate -- -p moby-dick.pdf -k sk-ant-xxx
 
-# Large book with verbose output
-npm run generate -- -p war-and-peace.pdf -c -v
+# Larger game with 200 nodes
+npm run generate -- -p war-and-peace.pdf -n 200 -v
+
+# Preview graph structure without generating content
+npm run generate -- -p moby-dick.pdf --dry-run
 
 # Custom output path
 npm run generate -- -p moby-dick.pdf -o my-game.json
