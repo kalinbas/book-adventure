@@ -49,6 +49,7 @@ export async function generateStoryGraph(
   apiKey: string,
   targetNodes: number = 44,
   onProgress?: (percent: number) => void,
+  language: string = 'English',
 ): Promise<StoryGraph> {
   onProgress?.(10);
 
@@ -62,11 +63,15 @@ export async function generateStoryGraph(
   const endingNodes = Math.max(3, Math.floor(targetNodes * 0.07));
   const checkpointNodes = Math.max(2, Math.floor(targetNodes * 0.05));
 
+  const languageInstruction = language !== 'English'
+    ? `\n\nIMPORTANT: The book is in ${language}. Write all node titles and chapter titles in ${language}. Only IDs should be in English snake_case.`
+    : '';
+
   const systemPrompt = `You are a game narrative architect designing the node graph for an interactive text adventure.
 Your job is to create the STRUCTURE of the game — node IDs, types, connections, and interaction hints.
 Do NOT write narrative content — just the skeletal structure.
 
-${ENGINE_REFERENCE}
+${ENGINE_REFERENCE}${languageInstruction}
 
 Output valid JSON only.`;
 
@@ -109,16 +114,19 @@ Each node needs:
 - mood: "neutral"|"tense"|"joyful"|"mysterious"|"action"|"romantic"|"sad"
 - canonicalPath: true if this follows the book's main plot
 - divergenceLevel: 0 for canonical, 1-3 for alternate paths
-- connections: array of node IDs this node can lead to (forward)
-- backConnections: array of node IDs players can return to from here (for navigation loops)
-- interactionHints: array of strings like "examine:scenery", "take:item_id", "talk:char_id", "use_on:item_id:object_id", "ask:char_id:topic", "give:item_id:char_id", "go:target_node_id", "story:choice_description"
+- connections: array of node IDs this node can lead to (forward). Step 4 MUST create a story/go interaction for each.
+- backConnections: array of node IDs this node has "go" backtrack interactions to (navigation loops). Step 4 MUST create a "go" interaction for each. Only link to nearby hub/checkpoint nodes within the same chapter (max 2-3 hops away).
+- interactionHints: array of strings like "examine:scenery", "take:item_id", "talk:char_id", "use_on:item_id:object_id", "combine:item_a_id:item_b_id:result_item_id", "ask:char_id:topic", "give:item_id:char_id", "go:target_node_id", "story:choice_description"
+- CRITICAL: Every connection must have a matching "go:target_node_id" or "story:description" hint in interactionHints
+- CRITICAL: Every backConnection must have a matching "go:target_node_id" hint in interactionHints
 
-### Interaction Hints (must collectively cover ALL 9 types)
+### Interaction Hints (must collectively cover ALL 10 types)
 Target quotas across all nodes:
 - examine: 15+ hints
 - take: 8+ hints (reference actual item IDs)
 - use: 6+ hints
 - use_on: 2+ hints (format: "use_on:item_id:object_id")
+- combine: 2+ hints (format: "combine:item_a_id:item_b_id:result_item_id")
 - talk: 12+ hints (reference actual character IDs)
 - ask: 3+ hints (format: "ask:char_id:topic")
 - give: 2+ hints (format: "give:item_id:char_id")
@@ -126,7 +134,8 @@ Target quotas across all nodes:
 - story: 20+ hints (major narrative choices)
 
 ### Navigation
-- At least 15 backConnections total (loops back to hub/checkpoint nodes)
+- At least 20 backConnections total — these generate actual "go" interactions for backtracking to hub/checkpoint nodes
+- backConnections should only reference nearby hub/checkpoint nodes in the same chapter (not distant locations)
 - Every choice node must have 2+ different connections
 - No dead ends — every non-ending node must connect forward
 - No orphans — every non-start node must appear in at least one other node's connections (be reachable)
@@ -174,6 +183,7 @@ export async function generateChapterSceneGraph(
   worldData: WorldData,
   apiKey: string,
   onProgress?: (percent: number) => void,
+  language: string = 'English',
 ): Promise<GraphNode[]> {
   onProgress?.(10);
 
@@ -186,10 +196,14 @@ export async function generateChapterSceneGraph(
   const objectIds = Object.keys(worldData.objects);
   const itemIds = Object.keys(worldData.items);
 
+  const languageInstruction = language !== 'English'
+    ? `\n\nIMPORTANT: The book is in ${language}. Write all node titles in ${language}. Only IDs should be in English snake_case.`
+    : '';
+
   const systemPrompt = `You are a game narrative architect generating scene nodes for a single chapter of a text adventure.
 Create the STRUCTURE only — node IDs, types, connections, interaction hints. No narrative content.
 
-${ENGINE_REFERENCE}
+${ENGINE_REFERENCE}${languageInstruction}
 
 Output valid JSON only.`;
 
@@ -219,7 +233,10 @@ Items: ${itemIds.join(', ')}
 - Last node(s) should connect to exit ports
 - Use exit port names in connections for cross-chapter links
 - Include at least 1 choice node and 1 ending node (if this is a final chapter)
-- Each non-ending node needs 3-6 interaction hints
+- Each non-ending node needs 5-8 interaction hints
+- Each non-ending node should have at least one backConnection to a hub/checkpoint node in this chapter
+- Every connection and backConnection MUST have a matching hint in interactionHints
+- No orphans — every non-start node must appear in at least one other node's connections
 
 ## OUTPUT FORMAT
 Return a JSON array of GraphNode objects:

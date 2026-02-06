@@ -15,6 +15,7 @@ export interface GameData {
     version: string;
     generatedAt: string;
     engineVersion: string;
+    language: string;
   };
   initialState: {
     startNodeId: string;
@@ -122,6 +123,8 @@ export interface Item {
   name: string;
   description: string;
   useText?: string;
+  combinable?: boolean;
+  combinesWith?: string[];
 }
 
 export interface VariableDefinition {

@@ -57,6 +57,9 @@ export interface StorySummary {
   /** Major themes of the book */
   themes: string[];
 
+  /** Detected language of the book (e.g. "English", "German", "French") */
+  language: string;
+
   /** Interactable objects with multi-step state progressions */
   interactableObjects: {
     id: string;
@@ -113,6 +116,9 @@ export async function summarizeStory(
 6. Interactable objects with multi-step state progressions (e.g., a locked chest: locked→picked→open)
 7. Trackable variables that represent player skills, knowledge, or resources
 8. The themes that should be reflected in the game
+9. The language the book is written in
+
+IMPORTANT: Detect the language of the book text. Write ALL human-readable text (overview, descriptions, names, arcs, themes, etc.) in the SAME language as the book. Only IDs should be in English snake_case.
 
 Be thorough - this summary will be the ONLY input for generating the entire game.`;
 
@@ -198,11 +204,15 @@ Create a comprehensive JSON summary with this structure:
       "relevantScenes": ["plot beat descriptions where this variable changes"]
     }
   ],
-  "themes": ["Theme 1", "Theme 2"]
+  "themes": ["Theme 1", "Theme 2"],
+  "language": "English"
 }
 \`\`\`
 
 Requirements:
+- Detect the language of the book and set the "language" field accordingly (e.g. "English", "German", "French", "Spanish", etc.)
+- Write ALL human-readable text in the same language as the book (descriptions, names, themes, arcs, etc.)
+- Only IDs (snake_case identifiers) should be in English
 - Include ${Math.min(25, Math.max(15, Math.floor(targetNodes * 0.5)))} plot beats covering the ENTIRE story arc
 - Identify ${Math.min(15, Math.max(5, Math.floor(targetNodes * 0.2)))} decision points where player choices would be meaningful
 - List ALL important characters (aim for 8-12)

@@ -28,6 +28,7 @@ export async function buildWorld(
   apiKey: string,
   targetNodes: number = 44,
   onProgress?: (percent: number) => void,
+  language: string = 'English',
 ): Promise<WorldData> {
   onProgress?.(10);
 
@@ -35,10 +36,14 @@ export async function buildWorld(
   const characterCount = Math.min(30, Math.max(8, Math.floor(targetNodes * 0.25)));
   const itemCount = Math.min(60, Math.max(14, Math.floor(targetNodes * 0.35)));
 
+  const languageInstruction = language !== 'English'
+    ? `\n\nIMPORTANT: The book is in ${language}. Write ALL human-readable text (names, descriptions, dialogue, useText) in ${language}. Only IDs should be in English snake_case.`
+    : '';
+
   const systemPrompt = `You are a game world designer creating all entities for an interactive text adventure game.
 You must create richly detailed world entities that support complex gameplay mechanics.
 
-${ENGINE_REFERENCE}
+${ENGINE_REFERENCE}${languageInstruction}
 
 Output valid JSON only. No explanations.`;
 
@@ -81,6 +86,7 @@ ${(summary.trackableVariables ?? []).map((v) => `- ${v.id}: ${v.displayName} —
 - All carryable objects from the analysis become items
 - Each must have: id, name, description, useText (optional)
 - At least 2-3 items should have combinable: true and combinesWith referencing other item IDs
+- For each combinable pair, also include the RESULT item (the item produced by combining them) in the items list
 
 ### Objects (3-5 with state machines)
 - Non-carryable interactable objects in the world

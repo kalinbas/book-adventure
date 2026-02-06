@@ -13,7 +13,7 @@ import * as path from 'path';
 import * as crypto from 'crypto';
 import type { ParsedBook } from '../types';
 
-type SingleStep = 'step1' | 'step2' | 'step3' | 'step3a' | 'step5' | 'step6';
+type SingleStep = 'step1' | 'step2' | 'step3' | 'step3a';
 type KeyedStep = 'step3b' | 'step3c' | 'step4';
 
 interface StepEntry {
@@ -37,13 +37,11 @@ interface CacheManifest {
     step3b?: Record<string, StepEntry>;
     step3c?: Record<string, StepEntry>;
     step4?: Record<string, StepEntry>;
-    step5?: StepEntry;
-    step6?: StepEntry;
   };
 }
 
 /** Ordered list of all step keys for downstream invalidation */
-const STEP_ORDER = ['step1', 'step2', 'step3a', 'step3b', 'step3c', 'step3', 'step4', 'step5', 'step6'] as const;
+const STEP_ORDER = ['step1', 'step2', 'step3a', 'step3b', 'step3c', 'step3', 'step4'] as const;
 
 export class PipelineCache {
   private dir: string;
@@ -144,8 +142,6 @@ export class PipelineCache {
     if (s.step3c) parts.push(`scenes(${Object.keys(s.step3c).length})`);
     if (s.step3) parts.push('graph');
     if (s.step4) parts.push(`batches(${Object.keys(s.step4).length})`);
-    if (s.step5) parts.push('enriched');
-    if (s.step6) parts.push('validated');
     return parts.length > 0 ? `cached: ${parts.join(', ')}` : 'empty cache';
   }
 

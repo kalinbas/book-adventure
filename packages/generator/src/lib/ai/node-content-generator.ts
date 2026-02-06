@@ -153,16 +153,25 @@ export async function generateBatch(
   batchIndex: number,
   totalBatches: number,
   apiKey: string,
+  language: string = 'English',
 ) {
   const featureReqs = getBatchFeatureRequirements(batchIndex, totalBatches);
 
   // Build predecessor context for narrative continuity
   const predecessorContext = buildPredecessorContext(batch, graph);
 
+  const languageInstruction = language !== 'English'
+    ? `\n\nIMPORTANT: The book is in ${language}. Write ALL human-readable text in ${language}:
+- Node content (narrative paragraphs)
+- Interaction buttonText and resultText
+- Node titles
+Only JSON keys and IDs should be in English.`
+    : '';
+
   const systemPrompt = `You are a narrative game writer generating interactive story nodes for a text adventure.
 Write immersive second-person narrative content and create rich, varied interactions.
 
-${ENGINE_REFERENCE}
+${ENGINE_REFERENCE}${languageInstruction}
 
 Output valid JSON only. The JSON should be an object where each key is a node ID and the value is the complete node.`;
 
@@ -192,8 +201,8 @@ Output valid JSON only. The JSON should be an object where each key is a node ID
 - Mood: ${n.mood}
 - Canonical path: ${n.canonicalPath}
 - Divergence level: ${n.divergenceLevel}
-- Connects to: ${n.connections.join(', ') || 'none (ending)'}
-- Back connections: ${n.backConnections.join(', ') || 'none'}
+- Connects to (MUST create story/go interaction for EACH): ${n.connections.join(', ') || 'none (ending)'}
+- Back connections (MUST create "go" interaction for EACH): ${n.backConnections.join(', ') || 'none'}
 - Interaction hints: ${n.interactionHints.join(', ')}
 ${n.plotBeatRef !== undefined ? `- Plot beat: #${n.plotBeatRef}` : ''}`;
     })
@@ -213,27 +222,54 @@ ${worldContext}
 ## NODES TO GENERATE
 ${nodeSpecs}
 
+## ALL VALID NODE IDS
+${graph.nodes.map((n) => n.id).join(', ')}
+
 ## BATCH-SPECIFIC FEATURE REQUIREMENTS
 This batch MUST include these engine features:
 - Condition types: ${featureReqs.requiredConditions.join(', ')}
 - Effect types: ${featureReqs.requiredEffects.join(', ')}
 - Interaction types: ${featureReqs.requiredInteractions.join(', ')}
 
+### How to create each interaction type:
+- **examine**: type="examine", targetObject=object/character ID, no targetNodeId
+- **take**: type="take", targetObject=item ID, conditions=[{type:"lacks_item", key:"item_id"}], effects=[{type:"add_item", key:"item_id"}]
+- **use**: type="use", requiresItem=item ID, conditions=[{type:"has_item", key:"item_id"}], effects=[relevant effect]
+- **use_on**: type="use_on", requiresItem=item ID, targetObject=object ID, conditions=[{type:"has_item", key:"item_id"}], effects=[{type:"set_object_state", key:"obj_id", value:"new_state"}]
+- **combine**: type="combine", requiresItem=first item ID, conditions=[{type:"has_item", key:"item_a_id"}, {type:"has_item", key:"item_b_id"}], effects=[{type:"remove_item", key:"item_a_id"}, {type:"remove_item", key:"item_b_id"}, {type:"add_item", key:"result_item_id"}]
+- **talk**: type="talk", targetObject=character ID, effects=[{type:"change_relation", key:"char_id", delta:5}]
+- **ask**: type="ask", targetObject=character ID (about a topic), no targetNodeId
+- **give**: type="give", requiresItem=item ID, targetObject=character ID, conditions=[{type:"has_item", key:"item_id"}], effects=[{type:"remove_item", key:"item_id"}, {type:"change_relation", key:"char_id", delta:10}]
+- **go**: type="go", targetNodeId=node ID, effects=[{type:"set_location", key:"location_id"}] — BOTH required
+- **story**: type="story", targetNodeId=node ID for branching choices
+
+## CONNECTION COVERAGE (MANDATORY — ZERO TOLERANCE)
+For EVERY node:
+1. Each node ID in "Connects to" → create exactly one "story" or "go" interaction with that targetNodeId
+2. Each node ID in "Back connections" → create exactly one "go" interaction with that targetNodeId + set_location effect
+3. NEVER use a targetNodeId that is not listed in "Connects to" or "Back connections" for that node
+4. NEVER use a targetNodeId that is not in the ALL VALID NODE IDS list above
+5. Count your connection interactions — they must match exactly
+
+## DATA INTEGRITY RULES (MANDATORY)
+- "conditions" field: ALWAYS an array, use [] when empty — NEVER undefined or null
+- "effects" field: ALWAYS an array, use [] when empty — NEVER undefined or null
+- "onEnter" field: ALWAYS an array, use [] when empty — NEVER undefined or null
+- Interaction IDs must be unique within each node (use pattern: node_id + "_" + type + "_" + index)
+- ALL entity references must be valid IDs from WORLD ENTITIES above — do NOT invent IDs
+- ALL targetNodeId values must exist in ALL VALID NODE IDS above
+
 ## OUTPUT REQUIREMENTS
 For each node, generate:
 1. **content**: 2-4 paragraphs of immersive second-person narrative ("You step into..." not "The player...")
-2. **interactions**: 4-8 interactions per node (ending nodes get 0)
+2. **interactions**: 5-8 interactions per non-ending node (ending nodes get 0). NEVER produce fewer than 5.
    - Follow the interaction hints provided but expand them into full interactions
-   - Each interaction needs: id, type, buttonText, resultText, conditions, effects
-   - CRITICAL: Every node ID listed in "Connects to" MUST have at least one interaction (story or go) with that targetNodeId. Do not skip any connections.
-   - "go" interactions MUST have targetNodeId AND a set_location effect
-   - "take" interactions need lacks_item condition + add_item effect
-   - "give" interactions need has_item condition + remove_item + change_relation effects
-   - "use_on" interactions need requiresItem + targetObject + has_item condition
-   - "story" interactions for major choices need targetNodeId
-   - At least 50% of interactions should have conditions
-   - At least 50% of interactions should have effects
-3. **onEnter**: effects that trigger when entering the node (e.g., set_flag for visited tracking, change_variable)
+   - Each interaction needs: id, type, buttonText, resultText, conditions (always []), effects (always [])
+   - First, create all connection interactions (story/go for "Connects to" + go for "Back connections")
+   - Then, create remaining explore interactions (examine, take, talk, use, etc.) to reach 5-8 total
+   - At least 50% of interactions should have non-empty conditions
+   - At least 50% of interactions should have non-empty effects
+3. **onEnter**: array of effects that trigger when entering the node (e.g., set_flag for visited tracking, change_variable). Use [] if none.
 
 ## OUTPUT FORMAT
 \`\`\`json
@@ -308,7 +344,28 @@ export function assembleGameData(
   graph: StoryGraph,
   worldData: WorldData,
   nodes: Record<string, GeneratedNode>,
+  language: string = 'English',
 ): GameData {
+  // Auto-number chapters sequentially based on graph node order.
+  // Walk graph nodes (ordered by act/chapter), detect chapter transitions
+  // by title, and assign contiguous numbers (1, 2, 3…).
+  const chapterTitleToNumber = new Map<string, number>();
+  let nextChapter = 1;
+
+  for (const graphNode of graph.nodes) {
+    const node = nodes[graphNode.id];
+    if (!node?.chapterTitle) continue;
+    if (!chapterTitleToNumber.has(node.chapterTitle)) {
+      chapterTitleToNumber.set(node.chapterTitle, nextChapter++);
+    }
+  }
+
+  for (const node of Object.values(nodes)) {
+    if (node?.chapterTitle && chapterTitleToNumber.has(node.chapterTitle)) {
+      node.chapterNumber = chapterTitleToNumber.get(node.chapterTitle);
+    }
+  }
+
   return {
     meta: {
       title: `${bookTitle}: The Adventure`,
@@ -319,6 +376,7 @@ export function assembleGameData(
       version: '1.0.0',
       generatedAt: new Date().toISOString(),
       engineVersion: '1.0.0',
+      language,
     },
     initialState: {
       startNodeId: graph.startNodeId,

@@ -26,8 +26,8 @@ import { generateActStructure, type ActStructure } from './graph/act-generator';
 import { generateChapterStructure, type ChapterStructure } from './graph/chapter-generator';
 import { resolveConnections } from './graph/connection-resolver';
 import { assembleGameData, createBatches, buildGlobalContext, buildWorldContext, generateBatch } from './node-content-generator';
-import { enrichGameData, printEnrichmentReport } from './enrichment';
-import { validateAndFix, printValidationReport } from './validation';
+import { analyzeGameData, printCoverageReport } from './enrichment';
+import { validate, printValidationReport } from './validation';
 import { callBatchParallel, type StructuredResponse } from './client';
 import type { PipelineCache } from '../cache';
 
@@ -104,7 +104,8 @@ export async function runPipeline(
     );
   }
 
-  console.log(`  → ${summary.plotProgression.length} plot beats, ${summary.characters.length} characters, ${summary.locations.length} locations`);
+  const language = summary.language || 'English';
+  console.log(`  → ${summary.plotProgression.length} plot beats, ${summary.characters.length} characters, ${summary.locations.length} locations, language: ${language}`);
 
   // --- Step 2: World Building ---
   let worldData: WorldData;
@@ -117,7 +118,7 @@ export async function runPipeline(
     console.log('Step 2/6: Building world...');
     worldData = await buildWorld(summary, apiKey, targetNodes, (pct) => {
       onProgress?.('worldBuilding', pct);
-    });
+    }, language);
     cache?.save('step2', worldData);
     onProgress?.('worldBuilding', 100);
   }
@@ -137,11 +138,11 @@ export async function runPipeline(
     if (useHierarchical) {
       graph = await generateHierarchicalGraph(summary, worldData, apiKey, targetNodes, concurrency, verbose, cache, (pct) => {
         onProgress?.('storyGraph', pct);
-      });
+      }, language);
     } else {
       graph = await generateStoryGraph(summary, worldData, apiKey, targetNodes, (pct) => {
         onProgress?.('storyGraph', pct);
-      });
+      }, language);
     }
 
     cache?.save('step3', graph);
@@ -170,7 +171,7 @@ export async function runPipeline(
       console.log(`  ${node.id} (${node.type}) — ${node.title} [${node.locationId}]`);
       console.log(`    → ${node.connections.join(', ') || '(end)'}`);
     }
-    return assembleGameData(book.title, book.author, graph, worldData, {});
+    return assembleGameData(book.title, book.author, graph, worldData, {}, language);
   }
 
   // --- Step 4: Node Content (batch-level caching) ---
@@ -216,7 +217,7 @@ export async function runPipeline(
 
     const calls = uncachedBatches.map(({ index, batch }) => {
       return () =>
-        generateBatch(batch, graph, globalContext, worldContext, worldData, index, totalBatches, apiKey);
+        generateBatch(batch, graph, globalContext, worldContext, worldData, index, totalBatches, apiKey, language);
     });
 
     const results = await callBatchParallel(calls, concurrency, (completed) => {
@@ -236,48 +237,36 @@ export async function runPipeline(
   console.log(`  → ${Object.keys(allNodes).length} nodes with content`);
 
   // Assemble initial GameData
-  let gameData = assembleGameData(book.title, book.author, graph, worldData, allNodes as Record<string, any>);
+  let gameData = assembleGameData(book.title, book.author, graph, worldData, allNodes as Record<string, any>, language);
 
-  // --- Step 5: Enrichment ---
-  if (cache?.has('step5')) {
-    gameData = cache.load<GameData>('step5');
-    onProgress?.('enrichment', 100);
-    console.log('Step 5/6: Loaded enriched data from cache');
+  // --- Step 5: Coverage Analysis (read-only) ---
+  onProgress?.('enrichment', 0);
+  console.log('Step 5/6: Analyzing coverage...');
+  const coverageReport = analyzeGameData(gameData);
+  onProgress?.('enrichment', 100);
+  if (verbose) {
+    printCoverageReport(coverageReport);
   } else {
-    onProgress?.('enrichment', 0);
-    console.log('Step 5/6: Enriching game data...');
-    const enrichResult = enrichGameData(gameData);
-    gameData = enrichResult.gameData;
-    cache?.save('step5', gameData);
-    onProgress?.('enrichment', 100);
-    if (verbose) {
-      printEnrichmentReport(enrichResult.report);
-    } else {
-      console.log(`  → +${enrichResult.report.loopsAdded} go links, +${enrichResult.report.patternsInjected} patterns, ${enrichResult.report.interactionsPadded} interactions padded`);
+    console.log(`  → ${coverageReport.totalInteractions} interactions (avg ${coverageReport.avgInteractionsPerNode.toFixed(1)}/node)`);
+    if (coverageReport.missingInteractionTypes.length > 0) {
+      console.log(`  → Missing: ${coverageReport.missingInteractionTypes.join(', ')}`);
+    }
+    if (coverageReport.nodesWithFewInteractions.length > 0) {
+      console.log(`  → ${coverageReport.nodesWithFewInteractions.length} nodes with <5 interactions`);
     }
   }
 
-  // --- Step 6: Validation ---
-  if (cache?.has('step6')) {
-    gameData = cache.load<GameData>('step6');
-    onProgress?.('validation', 100);
-    console.log('Step 6/6: Loaded validated data from cache');
+  // --- Step 6: Validation (read-only) ---
+  onProgress?.('validation', 0);
+  console.log('Step 6/6: Validating...');
+  const validationReport = validate(gameData, graph);
+  onProgress?.('validation', 100);
+  if (verbose) {
+    printValidationReport(validationReport);
   } else {
-    onProgress?.('validation', 0);
-    console.log('Step 6/6: Validating...');
-    const validationResult = validateAndFix(gameData, graph);
-    gameData = validationResult.gameData;
-    cache?.save('step6', gameData);
-    onProgress?.('validation', 100);
-    if (verbose) {
-      printValidationReport(validationResult.report);
-    } else {
-      const r = validationResult.report;
-      console.log(`  → ${r.stats.totalNodes} nodes, ${r.stats.totalInteractions} interactions (avg ${r.stats.avgInteractionsPerNode.toFixed(1)}/node)`);
-      if (r.errors.length > 0) console.log(`  → ${r.errors.length} errors`);
-      if (r.warnings.length > 0) console.log(`  → ${r.warnings.length} warnings`);
-      if (r.fixes.length > 0) console.log(`  → ${r.fixes.length} auto-fixes applied`);
-    }
+    console.log(`  → ${validationReport.stats.totalNodes} nodes, ${validationReport.stats.totalInteractions} interactions (avg ${validationReport.stats.avgInteractionsPerNode.toFixed(1)}/node)`);
+    if (validationReport.errors.length > 0) console.log(`  → ${validationReport.errors.length} errors`);
+    if (validationReport.warnings.length > 0) console.log(`  → ${validationReport.warnings.length} warnings`);
   }
 
   return gameData;
@@ -297,6 +286,7 @@ async function generateHierarchicalGraph(
   verbose: boolean,
   cache?: PipelineCache,
   onProgress?: (percent: number) => void,
+  language: string = 'English',
 ): Promise<StoryGraph> {
   // Step 3a: Generate act structure (1 call)
   let actStructure: ActStructure;
@@ -306,7 +296,7 @@ async function generateHierarchicalGraph(
   } else {
     console.log('  3a: Generating act structure...');
     onProgress?.(5);
-    actStructure = await generateActStructure(summary, worldData, apiKey, targetNodes);
+    actStructure = await generateActStructure(summary, worldData, apiKey, targetNodes, undefined, language);
     cache?.save('step3a', actStructure);
   }
   console.log(`    → ${actStructure.acts.length} acts`);
@@ -328,7 +318,7 @@ async function generateHierarchicalGraph(
 
   if (uncachedActs.length > 0) {
     const chapterCalls = uncachedActs.map((act) => {
-      return () => generateChapterStructure(act, summary, worldData, apiKey)
+      return () => generateChapterStructure(act, summary, worldData, apiKey, undefined, language)
         .then((data): StructuredResponse<ChapterStructure> => ({
           data,
           usage: { inputTokens: 0, outputTokens: 0 },
@@ -383,7 +373,7 @@ async function generateHierarchicalGraph(
 
   if (uncachedChapters.length > 0) {
     const sceneCalls = uncachedChapters.map((chapter) => {
-      return () => generateChapterSceneGraph(chapter, summary, worldData, apiKey)
+      return () => generateChapterSceneGraph(chapter, summary, worldData, apiKey, undefined, language)
         .then((nodes) => ({
           data: { chapterId: chapter.id, nodes },
           usage: { inputTokens: 0, outputTokens: 0 },

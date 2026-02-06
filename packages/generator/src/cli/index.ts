@@ -22,7 +22,7 @@ import * as path from 'path';
 import { parseArgs } from 'util';
 import { parsePdf } from '../lib/pdf/parser';
 import { runPipeline, type PipelineConfig } from '../lib/ai/pipeline';
-import { validateAndFix } from '../lib/ai/validation';
+import { validate } from '../lib/ai/validation';
 import { PipelineCache } from '../lib/cache';
 
 // Parse command line arguments
@@ -196,7 +196,7 @@ async function main() {
     console.log(`  Variables: ${Object.keys(gameData.variableDefinitions).length}`);
 
     // Run validation for final stats
-    const { report } = validateAndFix(gameData);
+    const report = validate(gameData);
     console.log(`\n  Interactions: ${report.stats.totalInteractions} (avg ${report.stats.avgInteractionsPerNode.toFixed(1)}/node)`);
     console.log(`  Endings: ${report.stats.endingNodes}`);
     console.log(`  Choices: ${report.stats.choiceNodes}`);

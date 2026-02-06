@@ -36,6 +36,7 @@ export async function generateChapterStructure(
   _worldData: WorldData,
   apiKey: string,
   onProgress?: (percent: number) => void,
+  language: string = 'English',
 ): Promise<ChapterStructure> {
   onProgress?.(10);
 
@@ -45,8 +46,12 @@ export async function generateChapterStructure(
 
   const chaptersTarget = Math.max(3, Math.ceil(act.targetNodeCount / 15));
 
+  const languageInstruction = language !== 'English'
+    ? ` Write all titles and summaries in ${language}. Only IDs should be in English snake_case.`
+    : '';
+
   const systemPrompt = `You are a narrative architect designing chapter structure within an act of a text adventure game.
-Each chapter is a coherent story segment that will contain multiple scene nodes.
+Each chapter is a coherent story segment that will contain multiple scene nodes.${languageInstruction}
 Output valid JSON only.`;
 
   const userPrompt = `Design ${chaptersTarget} chapters for "${act.title}" (${act.id}).

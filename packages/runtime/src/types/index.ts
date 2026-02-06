@@ -18,7 +18,7 @@ export interface GameState {
   // Character relationships (-100 to 100)
   characterRelations: Record<string, number>; // e.g., { "darcy": -50, "jane": 80 }
 
-  // Interactions already executed on the current node (reset on node change)
+  // Interactions already executed (persists across revisits, excludes "go" navigation)
   executedInteractions: string[];
 
   // History
@@ -87,6 +87,7 @@ export type InteractionType =
   | 'take'
   | 'use'
   | 'use_on'
+  | 'combine'
   | 'talk'
   | 'ask'
   | 'give'
@@ -233,6 +234,7 @@ export interface GameData {
     version: string;
     generatedAt: string;
     engineVersion: string;
+    language?: string;
   };
 
   // Initial state

@@ -1,8 +1,8 @@
 /**
  * Step 6: Game Data Validation
  *
- * Validates a complete GameData object and auto-fixes common issues.
- * Pure TypeScript — no API calls needed.
+ * Validates a complete GameData object and reports issues.
+ * Read-only — does not modify game data.
  */
 
 import type { GameData } from './game-data-generator';
@@ -12,7 +12,6 @@ import { INTERACTION_TYPES, CONDITION_TYPES, EFFECT_TYPES } from './engine-refer
 export interface ValidationReport {
   errors: string[];
   warnings: string[];
-  fixes: string[];
   stats: {
     totalNodes: number;
     totalInteractions: number;
@@ -29,14 +28,13 @@ export interface ValidationReport {
 }
 
 /**
- * Validate game data and apply fixes for common issues.
- * Returns the (possibly modified) game data and a validation report.
+ * Validate game data (read-only — no mutations).
+ * Returns a validation report with errors and warnings.
  */
-export function validateAndFix(gameData: GameData, graph?: StoryGraph): { gameData: GameData; report: ValidationReport } {
+export function validate(gameData: GameData, graph?: StoryGraph): ValidationReport {
   const report: ValidationReport = {
     errors: [],
     warnings: [],
-    fixes: [],
     stats: {
       totalNodes: 0,
       totalInteractions: 0,
@@ -60,12 +58,6 @@ export function validateAndFix(gameData: GameData, graph?: StoryGraph): { gameDa
   const objectIds = new Set(Object.keys(gameData.objects));
   const variableIds = new Set(Object.keys(gameData.variableDefinitions ?? {}));
 
-  // Find ending nodes
-  const endingNodeIds: string[] = [];
-  for (const [id, node] of Object.entries(nodes)) {
-    if (node.type === 'ending') endingNodeIds.push(id);
-  }
-
   // --- Check 1: startNodeId exists ---
   if (!nodeIds.has(gameData.initialState.startNodeId)) {
     report.errors.push(`startNodeId "${gameData.initialState.startNodeId}" does not exist`);
@@ -77,6 +69,10 @@ export function validateAndFix(gameData: GameData, graph?: StoryGraph): { gameDa
   }
 
   // --- Check 3: At least 1 ending node ---
+  const endingNodeIds: string[] = [];
+  for (const [id, node] of Object.entries(nodes)) {
+    if (node.type === 'ending') endingNodeIds.push(id);
+  }
   if (endingNodeIds.length === 0) {
     report.warnings.push('No ending nodes found');
   }
@@ -121,11 +117,9 @@ export function validateAndFix(gameData: GameData, graph?: StoryGraph): { gameDa
     for (const interaction of node.interactions ?? []) {
       totalInteractions++;
 
-      // Unique interaction ID
+      // Check for duplicate interaction IDs
       if (seenInteractionIds.has(interaction.id)) {
-        const newId = `${interaction.id}_${totalInteractions}`;
-        report.fixes.push(`Node "${nodeId}": duplicate interaction ID "${interaction.id}" → "${newId}"`);
-        interaction.id = newId;
+        report.warnings.push(`Node "${nodeId}": duplicate interaction ID "${interaction.id}"`);
       }
       seenInteractionIds.add(interaction.id);
 
@@ -134,13 +128,15 @@ export function validateAndFix(gameData: GameData, graph?: StoryGraph): { gameDa
 
       // Check targetNodeId
       if (interaction.targetNodeId && !nodeIds.has(interaction.targetNodeId)) {
-        if (endingNodeIds.length > 0) {
-          const fallback = endingNodeIds[0];
-          report.fixes.push(`Node "${nodeId}": dangling targetNodeId "${interaction.targetNodeId}" → "${fallback}"`);
-          interaction.targetNodeId = fallback;
-        } else {
-          report.warnings.push(`Node "${nodeId}": dangling targetNodeId "${interaction.targetNodeId}"`);
-        }
+        report.errors.push(`Node "${nodeId}": dangling targetNodeId "${interaction.targetNodeId}"`);
+      }
+
+      // Check undefined conditions/effects
+      if (!Array.isArray(interaction.conditions)) {
+        report.warnings.push(`Node "${nodeId}", interaction "${interaction.id}": conditions is not an array`);
+      }
+      if (!Array.isArray(interaction.effects)) {
+        report.warnings.push(`Node "${nodeId}", interaction "${interaction.id}": effects is not an array`);
       }
 
       // Check conditions
@@ -168,7 +164,6 @@ export function validateAndFix(gameData: GameData, graph?: StoryGraph): { gameDa
           report.warnings.push(`Node "${nodeId}", interaction "${interaction.id}": character "${cond.key}" in relation condition not found`);
         }
         if (cond.type.startsWith('variable_') && !variableIds.has(cond.key)) {
-          // Variables can also be flags/custom — only warn for variable_ conditions
           report.warnings.push(`Node "${nodeId}", interaction "${interaction.id}": variable "${cond.key}" in condition not defined`);
         }
       }
@@ -200,19 +195,24 @@ export function validateAndFix(gameData: GameData, graph?: StoryGraph): { gameDa
       report.warnings.push(`Node "${nodeId}" (${node.type}): has no interactions`);
     }
 
+    // Check onEnter is an array
+    if (node.onEnter && !Array.isArray(node.onEnter)) {
+      report.warnings.push(`Node "${nodeId}": onEnter is not an array`);
+    }
+
     // Check onEnter effects
     for (const effect of node.onEnter ?? []) {
       effectTypeCounts[effect.type] = (effectTypeCounts[effect.type] ?? 0) + 1;
     }
   }
 
-  // --- Check: Enforce graph connections ---
+  // --- Check: Graph connection coverage ---
   if (graph) {
-    enforceGraphConnections(gameData, graph, report);
+    checkGraphConnections(gameData, graph, report);
   }
 
   // --- Check: Orphan nodes (unreachable) ---
-  reconnectOrphanNodes(gameData, report);
+  checkOrphanNodes(gameData, report);
 
   // --- Compute stats ---
   report.stats.totalNodes = nodeIds.size;
@@ -256,15 +256,14 @@ export function validateAndFix(gameData: GameData, graph?: StoryGraph): { gameDa
     report.warnings.push(`Missing effect types: ${report.stats.missingEffectTypes.join(', ')}`);
   }
 
-  return { gameData, report };
+  return report;
 }
 
 /**
- * Ensure every graph connection from step 3 has a corresponding interaction.
- * If a node should connect to a target (per the graph) but no interaction links there,
- * add a story interaction using the target node's title.
+ * Check that every graph connection from step 3 has a corresponding interaction.
+ * Reports warnings for missing connections (does not add them).
  */
-function enforceGraphConnections(gameData: GameData, graph: StoryGraph, report: ValidationReport): void {
+function checkGraphConnections(gameData: GameData, graph: StoryGraph, report: ValidationReport): void {
   const nodes = gameData.nodes;
   for (const graphNode of graph.nodes) {
     const node = nodes[graphNode.id];
@@ -273,40 +272,28 @@ function enforceGraphConnections(gameData: GameData, graph: StoryGraph, report: 
     // Collect all targetNodeIds from existing interactions
     const existingTargets = new Set(
       (node.interactions ?? [])
-        .filter(i => i.targetNodeId)
-        .map(i => i.targetNodeId)
+        .filter((i) => i.targetNodeId)
+        .map((i) => i.targetNodeId)
     );
 
     for (const targetId of graphNode.connections) {
-      const targetNode = nodes[targetId];
-      if (!targetNode) continue; // target doesn't exist in game data
-      if (existingTargets.has(targetId)) continue; // already linked
+      if (!nodes[targetId]) continue;
+      if (existingTargets.has(targetId)) continue;
+      report.warnings.push(`Node "${graphNode.id}": missing interaction for graph connection to "${targetId}"`);
+    }
 
-      if (!node.interactions) node.interactions = [];
-      const targetTitle = targetNode.title ?? targetId;
-      node.interactions.push({
-        id: `graph_link_${targetId}`,
-        type: 'story',
-        buttonText: targetTitle,
-        resultText: '',
-        conditions: [],
-        effects: [],
-        targetNodeId: targetId,
-      } as any);
-
-      report.fixes.push(`Node "${graphNode.id}": added missing graph connection to "${targetId}"`);
+    for (const targetId of graphNode.backConnections) {
+      if (!nodes[targetId]) continue;
+      if (existingTargets.has(targetId)) continue;
+      report.warnings.push(`Node "${graphNode.id}": missing interaction for back connection to "${targetId}"`);
     }
   }
 }
 
 /**
- * Detect orphan nodes (no incoming links) and reconnect them.
- *
- * Strategy: for each orphan, find the best predecessor by matching
- * chapter number and location. Insert a "go" interaction from the
- * predecessor to the orphan so the player can actually reach it.
+ * Detect orphan nodes (no incoming links) and report them.
  */
-function reconnectOrphanNodes(gameData: GameData, report: ValidationReport): void {
+function checkOrphanNodes(gameData: GameData, report: ValidationReport): void {
   const nodes = gameData.nodes;
   const startNodeId = gameData.initialState.startNodeId;
 
@@ -326,17 +313,10 @@ function reconnectOrphanNodes(gameData: GameData, report: ValidationReport): voi
   }
 
   // Find orphans (exclude start node) and report them
-  const orphans: string[] = [];
   for (const nodeId of Object.keys(nodes)) {
     if (nodeId !== startNodeId && !hasIncoming.has(nodeId)) {
-      orphans.push(nodeId);
+      report.warnings.push(`Orphan node "${nodeId}" has no incoming links`);
     }
-  }
-
-  if (orphans.length === 0) return;
-
-  for (const orphanId of orphans) {
-    report.warnings.push(`Orphan node "${orphanId}" has no incoming links`);
   }
 }
 
@@ -367,11 +347,6 @@ export function printValidationReport(report: ValidationReport): void {
     const count = report.stats.effectTypeCounts[type] ?? 0;
     const marker = count === 0 ? ' ✗' : '';
     console.log(`  ${type}: ${count}${marker}`);
-  }
-
-  if (report.fixes.length > 0) {
-    console.log(`\nFixes applied (${report.fixes.length}):`);
-    for (const fix of report.fixes) console.log(`  - ${fix}`);
   }
 
   if (report.warnings.length > 0) {

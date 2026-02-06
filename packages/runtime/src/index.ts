@@ -13,6 +13,10 @@ export type { GameEvent, GameEventType, GameEventListener } from './engine';
 // Export renderer
 export { BookAdventureRenderer } from './ui/renderer';
 
+// Export translations
+export { getUIStrings } from './ui/translations';
+export type { UIStrings } from './ui/translations';
+
 // Export types
 export * from './types';
 

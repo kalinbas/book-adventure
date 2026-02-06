@@ -579,9 +579,9 @@ body {
       <header class="book-adventure__header">
         <h1 class="book-adventure__title" id="game-title">Moby Dick: The Adventure</h1>
         <div class="book-adventure__controls">
-          <button class="book-adventure__btn" id="btn-save" title="Save Game">Save</button>
-          <button class="book-adventure__btn" id="btn-load" title="Load Game">Load</button>
-          <button class="book-adventure__btn book-adventure__btn--icon" id="btn-menu" title="Menu">&#9776;</button>
+          <button class="book-adventure__btn" id="btn-save">&#128190;</button>
+          <button class="book-adventure__btn" id="btn-load">&#128194;</button>
+          <button class="book-adventure__btn book-adventure__btn--icon" id="btn-menu">&#9776;</button>
         </div>
       </header>
 
@@ -589,14 +589,14 @@ body {
       <main class="book-adventure__content" id="content">
         <!-- Chapter heading -->
         <div class="book-adventure__chapter" id="chapter-header">
-          <div class="book-adventure__chapter-label" id="chapter-label">Chapter One</div>
-          <h2 class="book-adventure__chapter-title" id="chapter-title">The Beginning</h2>
+          <div class="book-adventure__chapter-label" id="chapter-label"></div>
+          <h2 class="book-adventure__chapter-title" id="chapter-title"></h2>
           <div class="book-adventure__chapter-divider">&#10087;</div>
         </div>
 
         <!-- Narrative text -->
         <div class="book-adventure__narrative" id="narrative">
-          <p>Loading...</p>
+          <p>&#8230;</p>
         </div>
 
         <!-- Result text (shown after interaction) -->
@@ -605,8 +605,8 @@ body {
         <!-- Status section (inventory, variables) -->
         <div class="book-adventure__status" id="status">
           <div class="book-adventure__inventory">
-            <span class="book-adventure__inventory-label">You are carrying:</span>
-            <span class="book-adventure__inventory-items" id="inventory-items">nothing of note</span>
+            <span class="book-adventure__inventory-label"></span>
+            <span class="book-adventure__inventory-items" id="inventory-items"></span>
           </div>
           <div class="book-adventure__variables" id="variables"></div>
         </div>
@@ -620,7 +620,7 @@ body {
       <!-- Footer -->
       <footer class="book-adventure__footer">
         <div class="book-adventure__progress">
-          <span class="book-adventure__progress-text" id="progress-text">Chapter 1 of 12</span>
+          <span class="book-adventure__progress-text" id="progress-text"></span>
           <div class="book-adventure__progress-bar">
             <div class="book-adventure__progress-fill" id="progress-fill" style="width: 5%;"></div>
           </div>
@@ -632,14 +632,14 @@ body {
   <!-- Save/Load Modal -->
   <div class="book-adventure__modal-overlay" id="modal-overlay">
     <div class="book-adventure__modal" id="modal">
-      <h3 class="book-adventure__modal-title" id="modal-title">Save Game</h3>
+      <h3 class="book-adventure__modal-title" id="modal-title"></h3>
 
       <!-- Save form (shown when saving) -->
       <div id="save-form" style="display: none;">
-        <input type="text" class="book-adventure__modal-input" id="save-name-input" placeholder="Enter save name...">
+        <input type="text" class="book-adventure__modal-input" id="save-name-input">
         <div class="book-adventure__modal-actions">
-          <button class="book-adventure__btn" id="btn-cancel-save">Cancel</button>
-          <button class="book-adventure__btn" id="btn-confirm-save">Save</button>
+          <button class="book-adventure__btn" id="btn-cancel-save"></button>
+          <button class="book-adventure__btn" id="btn-confirm-save"></button>
         </div>
       </div>
 
@@ -647,17 +647,17 @@ body {
       <div id="load-form" style="display: none;">
         <ul class="book-adventure__save-list" id="save-list"></ul>
         <div class="book-adventure__modal-actions">
-          <button class="book-adventure__btn" id="btn-cancel-load">Cancel</button>
+          <button class="book-adventure__btn" id="btn-cancel-load"></button>
         </div>
       </div>
 
       <!-- Menu options -->
       <div id="menu-form" style="display: none;">
         <div class="book-adventure__modal-actions" style="flex-direction: column; align-items: stretch;">
-          <button class="book-adventure__btn" id="btn-menu-save">Save Game</button>
-          <button class="book-adventure__btn" id="btn-menu-load">Load Game</button>
-          <button class="book-adventure__btn" id="btn-menu-restart">Restart</button>
-          <button class="book-adventure__btn" id="btn-menu-close">Close</button>
+          <button class="book-adventure__btn" id="btn-menu-save"></button>
+          <button class="book-adventure__btn" id="btn-menu-load"></button>
+          <button class="book-adventure__btn" id="btn-menu-restart"></button>
+          <button class="book-adventure__btn" id="btn-menu-close"></button>
         </div>
       </div>
     </div>

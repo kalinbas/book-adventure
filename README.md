@@ -13,6 +13,7 @@ Try the generated games:
 - [Moby Dick](https://book-adventure-game.netlify.app/?game=moby-dick) — Hunt the white whale across the open seas
 - [Project Hail Mary](https://book-adventure-game.netlify.app/?game=hail-mary) — Save humanity on an interstellar mission
 - [The Hobbit](https://book-adventure-game.netlify.app/?game=the-hobbit) — Journey through Middle-earth with Bilbo Baggins
+- [Wilhelm Tell](https://book-adventure-game.netlify.app/?game=willhelm-tell) — Kampf gegen die Tyrannei in den Schweizer Alpen (German)
 
 ## How It Works
 

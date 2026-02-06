@@ -159,7 +159,7 @@ export class BookAdventureEngine {
 
     const executed = this.state.executedInteractions ?? [];
 
-    // Build a set of condition signatures for executed story interactions
+    // Build a set of condition signatures for executed non-navigating story interactions
     // to identify mutually exclusive choices (same conditions = same choice group)
     const executedStoryConditionKeys = new Set<string>();
     for (const i of node.interactions) {
@@ -169,11 +169,16 @@ export class BookAdventureEngine {
     }
 
     return node.interactions.filter((interaction) => {
-      // Hide interactions that have already been executed
+      // Navigation interactions (go + story with targetNodeId) are always reusable
+      const isNavigation = interaction.type === 'go' || (interaction.type === 'story' && interaction.targetNodeId);
+      if (isNavigation) {
+        return evaluateConditions(interaction.conditions, this.state);
+      }
+      // Hide non-navigation interactions that have already been executed
       if (executed.includes(interaction.id)) {
         return false;
       }
-      // Hide story interactions that share conditions with an already-chosen one
+      // Hide non-navigating story interactions that share conditions with an already-chosen one
       // (mutually exclusive choices have identical conditions)
       if (
         interaction.type === 'story' &&
@@ -230,9 +235,10 @@ export class BookAdventureEngine {
       targetNodeId = interaction.targetNodeId;
     }
 
-    // Track non-navigating interactions as executed before emitting result
-    // so the UI hides them immediately on re-render
-    if (!targetNodeId) {
+    // Track executed interactions so they don't re-appear on revisit.
+    // Navigation interactions are excluded — they're reusable links.
+    const isNavigation = interaction.type === 'go' || (interaction.type === 'story' && interaction.targetNodeId);
+    if (!isNavigation) {
       if (!this.state.executedInteractions) {
         this.state.executedInteractions = [];
       }
@@ -268,8 +274,11 @@ export class BookAdventureEngine {
     // Update current node
     this.state.currentNodeId = nodeId;
 
+    // Check if this is the first visit before tracking
+    const firstVisit = !this.state.visitedNodes.includes(nodeId);
+
     // Track visited nodes
-    if (!this.state.visitedNodes.includes(nodeId)) {
+    if (firstVisit) {
       this.state.visitedNodes.push(nodeId);
     }
 
@@ -281,8 +290,8 @@ export class BookAdventureEngine {
       }
     }
 
-    // Apply onEnter effects
-    if (node.onEnter.length) {
+    // Apply onEnter effects only on first visit
+    if (firstVisit && node.onEnter.length) {
       applyEffects(node.onEnter, this.state);
     }
 

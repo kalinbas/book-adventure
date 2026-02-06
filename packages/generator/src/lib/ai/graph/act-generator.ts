@@ -29,6 +29,7 @@ export async function generateActStructure(
   apiKey: string,
   targetNodes: number,
   onProgress?: (percent: number) => void,
+  language: string = 'English',
 ): Promise<ActStructure> {
   onProgress?.(10);
 
@@ -37,8 +38,12 @@ export async function generateActStructure(
 
   const numActs = targetNodes > 500 ? 5 : targetNodes > 200 ? 4 : 3;
 
+  const languageInstruction = language !== 'English'
+    ? ` Write all titles and summaries in ${language}. Only IDs should be in English snake_case.`
+    : '';
+
   const systemPrompt = `You are a story architect dividing a narrative into acts for a large text adventure game.
-Each act is a major story arc that will be further divided into chapters and scenes.
+Each act is a major story arc that will be further divided into chapters and scenes.${languageInstruction}
 Output valid JSON only.`;
 
   const userPrompt = `Divide this story into ${numActs} acts for a text adventure with ~${targetNodes} nodes total.

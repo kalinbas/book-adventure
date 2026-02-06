@@ -1,5 +1,6 @@
 import type { BookAdventureEngine, GameEvent } from '../engine';
 import type { StoryNode } from '../types';
+import { getUIStrings, type UIStrings } from './translations';
 
 /**
  * Book Adventure UI Renderer
@@ -8,6 +9,7 @@ import type { StoryNode } from '../types';
 export class BookAdventureRenderer {
   private engine: BookAdventureEngine;
   private currentResultText: string | null = null;
+  private t: UIStrings;
 
   // DOM Elements
   private elements: {
@@ -39,7 +41,9 @@ export class BookAdventureRenderer {
 
   constructor(engine: BookAdventureEngine) {
     this.engine = engine;
+    this.t = getUIStrings(engine.getMeta().language);
     this.elements = this.getElements();
+    this.translateStaticUI();
     this.bindEvents();
     this.subscribeToEngine();
   }
@@ -74,6 +78,66 @@ export class BookAdventureRenderer {
       saveNameInput: document.getElementById('save-name-input') as HTMLInputElement,
       saveList: document.getElementById('save-list'),
     };
+  }
+
+  /**
+   * Translate static UI elements that are set in HTML
+   */
+  private translateStaticUI(): void {
+    // Header buttons
+    if (this.elements.saveBtn) {
+      this.elements.saveBtn.textContent = this.t.save;
+      this.elements.saveBtn.title = this.t.saveGame;
+    }
+    if (this.elements.loadBtn) {
+      this.elements.loadBtn.textContent = this.t.load;
+      this.elements.loadBtn.title = this.t.loadGame;
+    }
+    if (this.elements.menuBtn) {
+      this.elements.menuBtn.title = this.t.menu;
+    }
+
+    // Inventory label
+    const inventoryLabel = document.querySelector('.book-adventure__inventory-label');
+    if (inventoryLabel) {
+      inventoryLabel.textContent = this.t.carrying;
+    }
+    if (this.elements.inventoryItems) {
+      this.elements.inventoryItems.textContent = this.t.nothingOfNote;
+    }
+
+    // Loading text
+    if (this.elements.narrative) {
+      this.elements.narrative.innerHTML = `<p>${this.t.loading}</p>`;
+    }
+
+    // Save form input placeholder
+    if (this.elements.saveNameInput) {
+      this.elements.saveNameInput.placeholder = this.t.enterSaveName;
+    }
+
+    // Modal buttons
+    const cancelSaveBtn = document.getElementById('btn-cancel-save');
+    if (cancelSaveBtn) cancelSaveBtn.textContent = this.t.cancel;
+
+    const confirmSaveBtn = document.getElementById('btn-confirm-save');
+    if (confirmSaveBtn) confirmSaveBtn.textContent = this.t.save;
+
+    const cancelLoadBtn = document.getElementById('btn-cancel-load');
+    if (cancelLoadBtn) cancelLoadBtn.textContent = this.t.cancel;
+
+    // Menu buttons
+    const menuSaveBtn = document.getElementById('btn-menu-save');
+    if (menuSaveBtn) menuSaveBtn.textContent = this.t.saveGame;
+
+    const menuLoadBtn = document.getElementById('btn-menu-load');
+    if (menuLoadBtn) menuLoadBtn.textContent = this.t.loadGame;
+
+    const menuRestartBtn = document.getElementById('btn-menu-restart');
+    if (menuRestartBtn) menuRestartBtn.textContent = this.t.restart;
+
+    const menuCloseBtn = document.getElementById('btn-menu-close');
+    if (menuCloseBtn) menuCloseBtn.textContent = this.t.close;
   }
 
   /**
@@ -122,6 +186,7 @@ export class BookAdventureRenderer {
         case 'node_changed':
           this.currentResultText = null;
           this.render();
+          this.scrollToTop();
           break;
 
         case 'interaction_result':
@@ -157,6 +222,13 @@ export class BookAdventureRenderer {
   }
 
   /**
+   * Scroll to top so the player sees the new text
+   */
+  private scrollToTop(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  /**
    * Render chapter header
    */
   private renderChapter(node: StoryNode): void {
@@ -165,7 +237,7 @@ export class BookAdventureRenderer {
     if (chapterInfo && this.elements.chapterHeader) {
       this.elements.chapterHeader.style.display = '';
       if (this.elements.chapterLabel) {
-        this.elements.chapterLabel.textContent = `Chapter ${chapterInfo.number}`;
+        this.elements.chapterLabel.textContent = `${this.t.chapter} ${chapterInfo.number}`;
       }
       if (this.elements.chapterTitle) {
         this.elements.chapterTitle.textContent = chapterInfo.title;
@@ -222,7 +294,7 @@ export class BookAdventureRenderer {
     if (this.elements.inventoryItems) {
       const items = this.engine.getInventoryItems();
       if (items.length === 0) {
-        this.elements.inventoryItems.textContent = 'nothing of note';
+        this.elements.inventoryItems.textContent = this.t.nothingOfNote;
         this.elements.inventoryItems.classList.add('book-adventure__inventory-empty');
       } else {
         const itemNames = items.map((item) => item.name);
@@ -286,8 +358,9 @@ export class BookAdventureRenderer {
       take: 4,
       use: 5,
       use_on: 6,
-      give: 7,
-      go: 8,
+      combine: 7,
+      give: 8,
+      go: 9,
     };
 
     const sorted = [...interactions].sort((a, b) => {
@@ -328,9 +401,12 @@ export class BookAdventureRenderer {
 
     if (this.elements.progressText) {
       if (chapterInfo) {
-        this.elements.progressText.textContent = `Chapter ${chapterInfo.number} of ${chapterInfo.total}`;
+        this.elements.progressText.textContent = this.t.chapterOf
+          .replace('{number}', String(chapterInfo.number))
+          .replace('{total}', String(chapterInfo.total));
       } else {
-        this.elements.progressText.textContent = `${progress}% explored`;
+        this.elements.progressText.textContent = this.t.explored
+          .replace('{percent}', String(progress));
       }
     }
 
@@ -347,7 +423,7 @@ export class BookAdventureRenderer {
 
     this.elements.narrative.innerHTML = `
       <div class="book-adventure__ending">
-        <div class="book-adventure__ending-label">The End</div>
+        <div class="book-adventure__ending-label">${this.escapeHtml(this.t.theEnd)}</div>
         <h2 class="book-adventure__ending-title">${this.escapeHtml(node.title)}</h2>
         <div class="book-adventure__ending-divider">&#10087;</div>
         <div class="book-adventure__narrative">
@@ -357,7 +433,7 @@ export class BookAdventureRenderer {
             .join('')}
         </div>
         <div class="book-adventure__ending-actions">
-          <button class="book-adventure__btn" id="btn-ending-restart">Play Again</button>
+          <button class="book-adventure__btn" id="btn-ending-restart">${this.escapeHtml(this.t.playAgain)}</button>
         </div>
       </div>
     `;
@@ -370,13 +446,15 @@ export class BookAdventureRenderer {
 
     // Bind restart button
     document.getElementById('btn-ending-restart')?.addEventListener('click', () => this.handleRestart());
+
+    this.scrollToTop();
   }
 
   /**
    * Handle restart
    */
   private handleRestart(): void {
-    if (confirm('Are you sure you want to restart? Your progress will be lost unless saved.')) {
+    if (confirm(this.t.confirmRestart)) {
       this.closeModal();
       this.engine.start();
     }
@@ -386,14 +464,13 @@ export class BookAdventureRenderer {
    * Open save modal
    */
   private openSaveModal(): void {
-    // Modal mode:'save';
-    if (this.elements.modalTitle) this.elements.modalTitle.textContent = 'Save Game';
+    if (this.elements.modalTitle) this.elements.modalTitle.textContent = this.t.saveGame;
     if (this.elements.saveForm) this.elements.saveForm.style.display = '';
     if (this.elements.loadForm) this.elements.loadForm.style.display = 'none';
     if (this.elements.menuForm) this.elements.menuForm.style.display = 'none';
     if (this.elements.saveNameInput) {
       this.elements.saveNameInput.value = '';
-      this.elements.saveNameInput.placeholder = `Save ${new Date().toLocaleDateString()}`;
+      this.elements.saveNameInput.placeholder = `${this.t.save} ${new Date().toLocaleDateString()}`;
     }
     this.elements.modalOverlay?.classList.add('book-adventure__modal-overlay--open');
     this.elements.saveNameInput?.focus();
@@ -403,8 +480,7 @@ export class BookAdventureRenderer {
    * Open load modal
    */
   private openLoadModal(): void {
-    // Modal mode:'load';
-    if (this.elements.modalTitle) this.elements.modalTitle.textContent = 'Load Game';
+    if (this.elements.modalTitle) this.elements.modalTitle.textContent = this.t.loadGame;
     if (this.elements.saveForm) this.elements.saveForm.style.display = 'none';
     if (this.elements.loadForm) this.elements.loadForm.style.display = '';
     if (this.elements.menuForm) this.elements.menuForm.style.display = 'none';
@@ -416,8 +492,7 @@ export class BookAdventureRenderer {
    * Open menu modal
    */
   private openMenuModal(): void {
-    // Modal mode:'menu';
-    if (this.elements.modalTitle) this.elements.modalTitle.textContent = 'Menu';
+    if (this.elements.modalTitle) this.elements.modalTitle.textContent = this.t.menu;
     if (this.elements.saveForm) this.elements.saveForm.style.display = 'none';
     if (this.elements.loadForm) this.elements.loadForm.style.display = 'none';
     if (this.elements.menuForm) this.elements.menuForm.style.display = '';
@@ -428,7 +503,6 @@ export class BookAdventureRenderer {
    * Close modal
    */
   private closeModal(): void {
-    // Modal mode:null;
     this.elements.modalOverlay?.classList.remove('book-adventure__modal-overlay--open');
   }
 
@@ -436,7 +510,7 @@ export class BookAdventureRenderer {
    * Handle save
    */
   private handleSave(): void {
-    const saveName = this.elements.saveNameInput?.value.trim() || `Save ${new Date().toLocaleDateString()}`;
+    const saveName = this.elements.saveNameInput?.value.trim() || `${this.t.save} ${new Date().toLocaleDateString()}`;
     this.engine.save(saveName);
     this.closeModal();
   }
@@ -450,7 +524,7 @@ export class BookAdventureRenderer {
     const saves = this.engine.getSaves();
 
     if (saves.length === 0) {
-      this.elements.saveList.innerHTML = '<li style="text-align: center; padding: 20px; color: var(--color-text-muted);">No saved games found</li>';
+      this.elements.saveList.innerHTML = `<li style="text-align: center; padding: 20px; color: var(--color-text-muted);">${this.escapeHtml(this.t.noSavedGames)}</li>`;
       return;
     }
 
@@ -487,7 +561,7 @@ export class BookAdventureRenderer {
       btn.addEventListener('click', (e) => {
         e.stopPropagation();
         const saveId = (btn as HTMLElement).dataset.saveId;
-        if (saveId && confirm('Delete this save?')) {
+        if (saveId && confirm(this.t.confirmDelete)) {
           this.engine.deleteSave(saveId);
           this.renderSaveList();
         }
@@ -501,8 +575,8 @@ export class BookAdventureRenderer {
   private formatList(items: string[]): string {
     if (items.length === 0) return '';
     if (items.length === 1) return items[0];
-    if (items.length === 2) return `${items[0]} and ${items[1]}`;
-    return `${items.slice(0, -1).join(', ')}, and ${items[items.length - 1]}`;
+    if (items.length === 2) return `${items[0]} ${this.t.and} ${items[1]}`;
+    return `${items.slice(0, -1).join(', ')}, ${this.t.and} ${items[items.length - 1]}`;
   }
 
   /**

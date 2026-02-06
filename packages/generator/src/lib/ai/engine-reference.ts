@@ -4,7 +4,7 @@
  */
 
 export const INTERACTION_TYPES = [
-  'examine', 'take', 'use', 'use_on', 'talk', 'ask', 'give', 'go', 'story',
+  'examine', 'take', 'use', 'use_on', 'combine', 'talk', 'ask', 'give', 'go', 'story',
 ] as const;
 
 export const CONDITION_TYPES = [
@@ -31,6 +31,7 @@ export const INTERACTION_QUOTAS: Record<string, number> = {
   take: 8,
   use: 6,
   use_on: 2,
+  combine: 2,
   talk: 12,
   ask: 3,
   give: 2,
@@ -52,11 +53,12 @@ export const ENGINE_REFERENCE = `
 - ending: Game over node (good, bad, or neutral). Has 0 interactions.
 - checkpoint: Act transition / save point
 
-### Interaction Types (ALL 9 must appear in the game)
+### Interaction Types (ALL 10 must appear in the game)
 - examine: Look at/investigate something. No navigation. Shows descriptive text.
 - take: Pick up an item. Use lacks_item condition + add_item effect.
 - use: Use an item from inventory. Use has_item condition.
 - use_on: Use an item ON an object or character. Set requiresItem field + has_item condition + targetObject field.
+- combine: Combine two inventory items into a new item. Use requiresItem for one item + has_item conditions for BOTH items + remove_item effects for BOTH + add_item for the result.
 - talk: Talk to a character. Often includes change_relation effect.
 - ask: Ask a character about a specific topic. More targeted than talk.
 - give: Give an item to a character. Set requiresItem field + has_item condition + remove_item + change_relation effects.
@@ -98,7 +100,7 @@ export const ENGINE_REFERENCE = `
 \`\`\`json
 {
   "id": "unique_interaction_id",
-  "type": "examine|take|use|use_on|talk|ask|give|go|story",
+  "type": "examine|take|use|use_on|combine|talk|ask|give|go|story",
   "buttonText": "What the player sees on the button",
   "resultText": "What happens when clicked (2nd person, 1-3 sentences)",
   "targetObject": "object_or_character_id (for use_on, give, talk, ask, examine)",
@@ -114,10 +116,13 @@ export const ENGINE_REFERENCE = `
 2. "take" interactions should use lacks_item condition (prevent duplicates) + add_item effect
 3. "give" interactions should use has_item condition + remove_item effect + change_relation effect
 4. "use_on" interactions need both requiresItem and targetObject fields
-5. At least 50% of interactions should have conditions
-6. At least 50% of interactions should have effects
-7. Ending nodes have 0 interactions
-8. Non-ending nodes should have 4-8 interactions
+5. "combine" interactions need requiresItem for one item, has_item conditions for both items, remove_item effects for both, and add_item for the result item
+6. At least 50% of interactions should have conditions
+7. At least 50% of interactions should have effects
+8. Ending nodes have 0 interactions
+9. Non-ending nodes MUST have at least 5 interactions (target 6-8)
+10. "conditions", "effects", and "onEnter" fields MUST ALWAYS be arrays, even when empty — use [], NEVER omit or set to undefined/null
+11. All entity references (item IDs, object IDs, character IDs, location IDs, variable names, node IDs) must be valid IDs provided in the world data — do NOT invent IDs
 `.trim();
 
 /**
@@ -150,7 +155,7 @@ export function getBatchFeatureRequirements(
     return {
       requiredConditions: ['variable_gte', 'variable_lte', 'relation_gte'],
       requiredEffects: ['change_relation', 'remove_item'],
-      requiredInteractions: ['talk', 'ask', 'give', 'story'],
+      requiredInteractions: ['talk', 'ask', 'give', 'combine', 'story'],
     };
   } else if (phase < 0.8) {
     // Late game
