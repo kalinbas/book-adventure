@@ -265,7 +265,7 @@ export async function runPipeline(
   } else {
     onProgress?.('validation', 0);
     console.log('Step 6/6: Validating...');
-    const validationResult = validateAndFix(gameData);
+    const validationResult = validateAndFix(gameData, graph);
     gameData = validationResult.gameData;
     cache?.save('step6', gameData);
     onProgress?.('validation', 100);

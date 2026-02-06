@@ -6,7 +6,7 @@
     "bookAuthor": "THERE AND BACK AGAIN",
     "description": "An interactive text adventure based on \"THE HOBBIT\"",
     "version": "1.0.0",
-    "generatedAt": "2026-02-06T19:13:35.041Z",
+    "generatedAt": "2026-02-06T19:31:31.096Z",
     "engineVersion": "1.0.0"
   },
   "initialState": {
@@ -97,7 +97,7 @@
           ]
         },
         {
-          "id": "fix_orphan_story_gandalf_arrives",
+          "id": "graph_link_gandalf_arrives",
           "type": "story",
           "buttonText": "The Grey Wizard",
           "resultText": "",
@@ -3061,15 +3061,6 @@
             }
           ],
           "targetNodeId": "ch_1_2_departure"
-        },
-        {
-          "id": "fix_orphan_story_ch_1_2_burglar_failure",
-          "type": "story",
-          "buttonText": "The Burglar's End",
-          "resultText": "",
-          "conditions": [],
-          "effects": [],
-          "targetNodeId": "ch_1_2_burglar_failure"
         }
       ],
       "onEnter": [
@@ -4978,7 +4969,17 @@
         "thorin_oakenshield"
       ],
       "availableObjects": [],
-      "interactions": [],
+      "interactions": [
+        {
+          "id": "graph_link_misty_pass_entry",
+          "type": "story",
+          "buttonText": "Into the Misty Mountains",
+          "resultText": "",
+          "conditions": [],
+          "effects": [],
+          "targetNodeId": "misty_pass_entry"
+        }
+      ],
       "onEnter": [
         {
           "type": "set_flag",
@@ -8282,33 +8283,6 @@
               "delta": 5
             }
           ]
-        },
-        {
-          "id": "fix_orphan_story_ch_1_5_shaken_escape",
-          "type": "story",
-          "buttonText": "Haunted by Darkness",
-          "resultText": "",
-          "conditions": [],
-          "effects": [],
-          "targetNodeId": "ch_1_5_shaken_escape"
-        },
-        {
-          "id": "fix_orphan_story_ch_1_6_tree_burning",
-          "type": "story",
-          "buttonText": "Into the Frying Pan",
-          "resultText": "",
-          "conditions": [],
-          "effects": [],
-          "targetNodeId": "ch_1_6_tree_burning"
-        },
-        {
-          "id": "fix_orphan_story_ch_1_6_eagle_call",
-          "type": "story",
-          "buttonText": "The Call of the Wind",
-          "resultText": "",
-          "conditions": [],
-          "effects": [],
-          "targetNodeId": "ch_1_6_eagle_call"
         }
       ],
       "onEnter": [
@@ -10155,6 +10129,15 @@
             }
           ],
           "targetNodeId": "ch_1_6_reunion"
+        },
+        {
+          "id": "graph_link_ch_1_6_tree_burning",
+          "type": "story",
+          "buttonText": "Into the Frying Pan",
+          "resultText": "",
+          "conditions": [],
+          "effects": [],
+          "targetNodeId": "ch_1_6_tree_burning"
         }
       ],
       "onEnter": [
@@ -10294,6 +10277,15 @@
               "value": "stable"
             }
           ]
+        },
+        {
+          "id": "graph_link_ch_1_6_eagle_call",
+          "type": "story",
+          "buttonText": "The Call of the Wind",
+          "resultText": "",
+          "conditions": [],
+          "effects": [],
+          "targetNodeId": "ch_1_6_eagle_call"
         }
       ],
       "onEnter": [
@@ -10434,6 +10426,15 @@
               "value": true
             }
           ]
+        },
+        {
+          "id": "graph_link_ch_1_6_eagle_rescue",
+          "type": "story",
+          "buttonText": "The Great Eagles",
+          "resultText": "",
+          "conditions": [],
+          "effects": [],
+          "targetNodeId": "ch_1_6_eagle_rescue"
         }
       ],
       "onEnter": [
@@ -10599,15 +10600,6 @@
             }
           ],
           "conditions": []
-        },
-        {
-          "id": "fix_orphan_story_ch_1_6_destination_choice",
-          "type": "story",
-          "buttonText": "Where to Land",
-          "resultText": "",
-          "conditions": [],
-          "effects": [],
-          "targetNodeId": "ch_1_6_destination_choice"
         }
       ],
       "onEnter": [
@@ -10750,13 +10742,13 @@
           ]
         },
         {
-          "id": "fix_orphan_story_ch_1_6_eagle_rescue",
+          "id": "graph_link_ch_1_6_destination_choice",
           "type": "story",
-          "buttonText": "The Great Eagles",
+          "buttonText": "Where to Land",
           "resultText": "",
           "conditions": [],
           "effects": [],
-          "targetNodeId": "ch_1_6_eagle_rescue"
+          "targetNodeId": "ch_1_6_destination_choice"
         }
       ],
       "onEnter": [
@@ -11929,15 +11921,6 @@
               "key": "beorns_hall"
             }
           ]
-        },
-        {
-          "id": "fix_orphan_story_ch_2_1_start",
-          "type": "story",
-          "buttonText": "Approaching Beorn's Lands",
-          "resultText": "",
-          "conditions": [],
-          "effects": [],
-          "targetNodeId": "ch_2_1_start"
         }
       ],
       "onEnter": [
@@ -12094,15 +12077,6 @@
               "key": "beorns_hall"
             }
           ]
-        },
-        {
-          "id": "fix_orphan_story_ch_2_1_mirkwood_counsel",
-          "type": "story",
-          "buttonText": "Counsel for the Road",
-          "resultText": "",
-          "conditions": [],
-          "effects": [],
-          "targetNodeId": "ch_2_1_mirkwood_counsel"
         }
       ],
       "onEnter": [
@@ -13048,6 +13022,15 @@
               "delta": 8
             }
           ]
+        },
+        {
+          "id": "graph_link_ch_2_1_mirkwood_counsel",
+          "type": "story",
+          "buttonText": "Counsel for the Road",
+          "resultText": "",
+          "conditions": [],
+          "effects": [],
+          "targetNodeId": "ch_2_1_mirkwood_counsel"
         }
       ],
       "onEnter": [
@@ -16113,6 +16096,15 @@
               "delta": 8
             }
           ]
+        },
+        {
+          "id": "graph_link_strange_sounds",
+          "type": "story",
+          "buttonText": "Mysterious Forest Noises",
+          "resultText": "",
+          "conditions": [],
+          "effects": [],
+          "targetNodeId": "strange_sounds"
         }
       ],
       "onEnter": [
@@ -16531,15 +16523,6 @@
             }
           ],
           "targetNodeId": "final_refusal"
-        },
-        {
-          "id": "fix_orphan_story_strange_sounds",
-          "type": "story",
-          "buttonText": "Mysterious Forest Noises",
-          "resultText": "",
-          "conditions": [],
-          "effects": [],
-          "targetNodeId": "strange_sounds"
         }
       ],
       "onEnter": [
@@ -16696,6 +16679,15 @@
             }
           ],
           "conditions": []
+        },
+        {
+          "id": "graph_link_spider_webs_found",
+          "type": "story",
+          "buttonText": "Discovering the Web",
+          "resultText": "",
+          "conditions": [],
+          "effects": [],
+          "targetNodeId": "spider_webs_found"
         }
       ],
       "onEnter": [
@@ -17203,6 +17195,15 @@
               "delta": 15
             }
           ]
+        },
+        {
+          "id": "graph_link_elves_arrive",
+          "type": "story",
+          "buttonText": "Elven Warriors",
+          "resultText": "",
+          "conditions": [],
+          "effects": [],
+          "targetNodeId": "elves_arrive"
         }
       ],
       "onEnter": [
@@ -17896,15 +17897,6 @@
             }
           ],
           "targetNodeId": "negotiations_fail"
-        },
-        {
-          "id": "fix_orphan_story_elves_arrive",
-          "type": "story",
-          "buttonText": "Elven Warriors",
-          "resultText": "",
-          "conditions": [],
-          "effects": [],
-          "targetNodeId": "elves_arrive"
         }
       ],
       "onEnter": [
@@ -18542,6 +18534,15 @@
             }
           ],
           "targetNodeId": "ch_2_4_stealth_start"
+        },
+        {
+          "id": "graph_link_ch_2_4_imprisoned_start",
+          "type": "story",
+          "buttonText": "The Dungeon Depths",
+          "resultText": "",
+          "conditions": [],
+          "effects": [],
+          "targetNodeId": "ch_2_4_imprisoned_start"
         }
       ],
       "onEnter": [
@@ -18714,6 +18715,15 @@
             }
           ],
           "targetNodeId": "mountain_entrance"
+        },
+        {
+          "id": "graph_link_to_final_battle",
+          "type": "story",
+          "buttonText": "The Storm of Battle",
+          "resultText": "",
+          "conditions": [],
+          "effects": [],
+          "targetNodeId": "to_final_battle"
         }
       ],
       "onEnter": [
@@ -22018,15 +22028,6 @@
             }
           ],
           "targetNodeId": "ch_2_4_imprisoned_start"
-        },
-        {
-          "id": "fix_orphan_story_to_ch_2_5_weakened",
-          "type": "story",
-          "buttonText": "Weakened Arrival",
-          "resultText": "",
-          "conditions": [],
-          "effects": [],
-          "targetNodeId": "to_ch_2_5_weakened"
         }
       ],
       "onEnter": [
@@ -24389,15 +24390,6 @@
               "key": "dragon_scale"
             }
           ]
-        },
-        {
-          "id": "fix_orphan_story_dragon_escape",
-          "type": "story",
-          "buttonText": "The Dragon's Wrath",
-          "resultText": "",
-          "conditions": [],
-          "effects": [],
-          "targetNodeId": "dragon_escape"
         }
       ],
       "onEnter": [
@@ -24930,15 +24922,6 @@
             }
           ],
           "conditions": []
-        },
-        {
-          "id": "fix_orphan_story_from_act_2_smaug_direct",
-          "type": "story",
-          "buttonText": "Direct Confrontation Path",
-          "resultText": "",
-          "conditions": [],
-          "effects": [],
-          "targetNodeId": "from_act_2_smaug_direct"
         }
       ],
       "onEnter": [
@@ -25068,15 +25051,6 @@
             }
           ],
           "conditions": []
-        },
-        {
-          "id": "fix_orphan_story_from_act_2_mountain",
-          "type": "story",
-          "buttonText": "Approach to the Lair",
-          "resultText": "",
-          "conditions": [],
-          "effects": [],
-          "targetNodeId": "from_act_2_mountain"
         }
       ],
       "onEnter": [
@@ -26831,6 +26805,15 @@
             }
           ],
           "targetNodeId": "smaug_chamber"
+        },
+        {
+          "id": "graph_link_to_battle_preparations",
+          "type": "story",
+          "buttonText": "The Mountain's Shadow",
+          "resultText": "",
+          "conditions": [],
+          "effects": [],
+          "targetNodeId": "to_battle_preparations"
         }
       ],
       "onEnter": [
@@ -27400,6 +27383,15 @@
             }
           ],
           "targetNodeId": "mountain_entrance"
+        },
+        {
+          "id": "graph_link_spy_mission",
+          "type": "story",
+          "buttonText": "Shadows and Whispers",
+          "resultText": "",
+          "conditions": [],
+          "effects": [],
+          "targetNodeId": "spy_mission"
         }
       ],
       "onEnter": [
@@ -28106,6 +28098,15 @@
             }
           ],
           "targetNodeId": "mountain_entrance"
+        },
+        {
+          "id": "graph_link_arkenstone_choice",
+          "type": "story",
+          "buttonText": "The Heart of the Mountain",
+          "resultText": "",
+          "conditions": [],
+          "effects": [],
+          "targetNodeId": "arkenstone_choice"
         }
       ],
       "onEnter": [
@@ -28848,6 +28849,15 @@
             }
           ],
           "targetNodeId": "mountain_entrance"
+        },
+        {
+          "id": "graph_link_thorins_rage",
+          "type": "story",
+          "buttonText": "The King's Fury",
+          "resultText": "",
+          "conditions": [],
+          "effects": [],
+          "targetNodeId": "thorins_rage"
         }
       ],
       "onEnter": [
@@ -29053,24 +29063,6 @@
             }
           ],
           "targetNodeId": "mountain_entrance"
-        },
-        {
-          "id": "fix_orphan_story_ring_stealth_path",
-          "type": "story",
-          "buttonText": "Invisible Savior",
-          "resultText": "",
-          "conditions": [],
-          "effects": [],
-          "targetNodeId": "ring_stealth_path"
-        },
-        {
-          "id": "fix_orphan_story_bilbos_departure",
-          "type": "story",
-          "buttonText": "The Road Home",
-          "resultText": "",
-          "conditions": [],
-          "effects": [],
-          "targetNodeId": "bilbos_departure"
         }
       ],
       "onEnter": [
@@ -29484,6 +29476,15 @@
             }
           ],
           "targetNodeId": "mountain_entrance"
+        },
+        {
+          "id": "graph_link_ring_stealth_path",
+          "type": "story",
+          "buttonText": "Invisible Savior",
+          "resultText": "",
+          "conditions": [],
+          "effects": [],
+          "targetNodeId": "ring_stealth_path"
         }
       ],
       "onEnter": [
@@ -29674,6 +29675,15 @@
             }
           ],
           "targetNodeId": "mountain_entrance"
+        },
+        {
+          "id": "graph_link_aerial_combat",
+          "type": "story",
+          "buttonText": "Battle in the Clouds",
+          "resultText": "",
+          "conditions": [],
+          "effects": [],
+          "targetNodeId": "aerial_combat"
         }
       ],
       "onEnter": [
@@ -30220,15 +30230,6 @@
             }
           ],
           "targetNodeId": "mountain_entrance"
-        },
-        {
-          "id": "fix_orphan_story_spy_mission",
-          "type": "story",
-          "buttonText": "Shadows and Whispers",
-          "resultText": "",
-          "conditions": [],
-          "effects": [],
-          "targetNodeId": "spy_mission"
         }
       ],
       "onEnter": [
@@ -31356,6 +31357,15 @@
             }
           ],
           "targetNodeId": "mountain_entrance"
+        },
+        {
+          "id": "graph_link_bilbos_departure",
+          "type": "story",
+          "buttonText": "The Road Home",
+          "resultText": "",
+          "conditions": [],
+          "effects": [],
+          "targetNodeId": "bilbos_departure"
         }
       ],
       "onEnter": [
