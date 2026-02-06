@@ -8,7 +8,9 @@
   ],
   "scripts": {
     "generate": "npm run generate -w @book-adventure/generator --",
-    "build:runtime": "npm run build -w @book-adventure/runtime"
+    "build:runtime": "npm run build -w @book-adventure/runtime",
+    "dev": "npm run build:runtime && cp games/*.json packages/runtime/dist/ && python3 -m http.server 8080 -d packages/runtime/dist",
+    "deploy": "./scripts/deploy.sh"
   },
   "keywords": [
     "text-adventure",

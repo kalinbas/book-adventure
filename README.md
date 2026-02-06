@@ -6,12 +6,12 @@ Book Adventure uses Claude to analyze a book's characters, locations, and plot, 
 
 ![Book Adventure — Project Hail Mary](screenshot.png)
 
-## Live Demos
+## Live Demo
 
 Try the generated games:
 
-- [Moby Dick](https://book-adventure-moby-dick.netlify.app) — Hunt the white whale across the open seas
-- [Project Hail Mary](https://book-adventure-hail-mary.netlify.app) — Save humanity on an interstellar mission
+- [Moby Dick](https://book-adventure-game.netlify.app/?game=moby-dick) — Hunt the white whale across the open seas
+- [Project Hail Mary](https://book-adventure-game.netlify.app/?game=hail-mary) — Save humanity on an interstellar mission
 
 ## How It Works
 

@@ -22,8 +22,8 @@ Thumbs.db
 # Runtime build artifact (generated from source)
 packages/runtime/public/runtime.iife.js
 
-# Game data files (generated, large JSON files)
-packages/runtime/public/*.json
+# Copied game files in dist (build artifacts)
+packages/runtime/dist/*.json
 
 # Game build scripts (generated game content)
 packages/runtime/build-game/

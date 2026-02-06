@@ -669,7 +669,9 @@ body {
   <!-- Initialize game -->
   <script>
     // Load game data and start
-    fetch('/game.json')
+    const params = new URLSearchParams(window.location.search);
+    const gameName = params.get('game') || 'game';
+    fetch(`/${gameName}.json`)
       .then(res => res.json())
       .then(gameData => {
         // Update title
