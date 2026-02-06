@@ -130,28 +130,74 @@ function analyzeCoverage(gameData: GameData, report: CoverageReport): void {
 }
 
 /**
- * 5b: Inject navigation loops — add "go back" interactions to hub nodes
+ * 5b: Inject navigation loops — add "go back" interactions to hub nodes.
+ *
+ * Only adds backtrack links to nodes that are reachable from a hub,
+ * so the player doesn't get nonsensical "Return to X" options for
+ * places they haven't been or that are far away in the story.
  */
 function injectNavigationLoops(gameData: GameData, report: CoverageReport): void {
   const nodes = gameData.nodes;
   const nodeIds = Object.keys(nodes);
 
-  // Find hub nodes (targeted by 3+ other nodes, or checkpoints, or first narrative node)
-  const incomingCounts: Record<string, number> = {};
-  for (const node of Object.values(nodes)) {
+  // Build adjacency map: nodeId → set of directly connected node IDs (forward links)
+  const forwardLinks: Record<string, Set<string>> = {};
+  for (const [nodeId, node] of Object.entries(nodes)) {
+    forwardLinks[nodeId] = new Set();
     for (const interaction of node.interactions ?? []) {
       if (interaction.targetNodeId) {
-        incomingCounts[interaction.targetNodeId] = (incomingCounts[interaction.targetNodeId] ?? 0) + 1;
+        forwardLinks[nodeId].add(interaction.targetNodeId);
       }
     }
   }
 
+  // Build reverse adjacency: nodeId → set of nodes that link TO this node
+  const reverseLinks: Record<string, Set<string>> = {};
+  for (const [nodeId, node] of Object.entries(nodes)) {
+    for (const interaction of node.interactions ?? []) {
+      if (interaction.targetNodeId) {
+        if (!reverseLinks[interaction.targetNodeId]) reverseLinks[interaction.targetNodeId] = new Set();
+        reverseLinks[interaction.targetNodeId].add(nodeId);
+      }
+    }
+  }
+
+  // Find hub nodes (targeted by 3+ other nodes, or checkpoints) — exclude endings
+  const incomingCounts: Record<string, number> = {};
+  for (const [nodeId, sources] of Object.entries(reverseLinks)) {
+    incomingCounts[nodeId] = sources.size;
+  }
+
   const hubNodes = nodeIds.filter(
-    (id) => (incomingCounts[id] ?? 0) >= 3 || nodes[id].type === 'checkpoint'
+    (id) => nodes[id].type !== 'ending' && ((incomingCounts[id] ?? 0) >= 3 || nodes[id].type === 'checkpoint')
   );
   if (hubNodes.length === 0 && nodeIds.length > 0) {
-    // Fallback: use start node as hub
     hubNodes.push(gameData.initialState.startNodeId);
+  }
+
+  // For each hub, compute reachable set (BFS forward, max 15 hops) to limit backtrack scope
+  const hubReachable: Record<string, Set<string>> = {};
+  for (const hub of hubNodes) {
+    const reachable = new Set<string>();
+    const queue = [hub];
+    const visited = new Set<string>([hub]);
+    const depths = new Map<string, number>([[hub, 0]]);
+
+    while (queue.length > 0) {
+      const current = queue.shift()!;
+      const depth = depths.get(current) ?? 0;
+      if (depth >= 15) continue;
+
+      reachable.add(current);
+      for (const next of forwardLinks[current] ?? []) {
+        if (!visited.has(next)) {
+          visited.add(next);
+          depths.set(next, depth + 1);
+          queue.push(next);
+        }
+      }
+    }
+    hubReachable[hub] = reachable;
   }
 
   let loopsAdded = 0;
@@ -159,18 +205,19 @@ function injectNavigationLoops(gameData: GameData, report: CoverageReport): void
   for (const [nodeId, node] of Object.entries(nodes)) {
     if (node.type === 'ending') continue;
 
-    // Check if this node already has a backward "go" interaction
+    // Check if this node already has a backward "go" interaction to a hub
     const hasBacktrack = (node.interactions ?? []).some(
       (i) => i.type === 'go' && i.targetNodeId && hubNodes.includes(i.targetNodeId)
     );
     if (hasBacktrack) continue;
 
-    // Find the nearest hub node (prefer same location, then any checkpoint)
-    const nearestHub = hubNodes.find((h) => nodes[h]?.locationId === node.locationId)
-      ?? hubNodes.find((h) => nodes[h]?.type === 'checkpoint')
-      ?? hubNodes[0];
+    // Find hubs that can reach this node (meaning player could have come from there)
+    const reachableHubs = hubNodes.filter((h) => h !== nodeId && hubReachable[h]?.has(nodeId));
+    if (reachableHubs.length === 0) continue;
 
-    if (!nearestHub || nearestHub === nodeId) continue;
+    // Prefer same location, then any reachable hub
+    const nearestHub = reachableHubs.find((h) => nodes[h]?.locationId === node.locationId)
+      ?? reachableHubs[0];
 
     const hubNode = nodes[nearestHub];
     const hubLocation = gameData.locations[hubNode.locationId];

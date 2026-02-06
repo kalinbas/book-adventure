@@ -6,7 +6,7 @@
     "bookAuthor": "THERE AND BACK AGAIN",
     "description": "An interactive text adventure based on \"THE HOBBIT\"",
     "version": "1.0.0",
-    "generatedAt": "2026-02-06T18:38:10.373Z",
+    "generatedAt": "2026-02-06T18:48:08.768Z",
     "engineVersion": "1.0.0"
   },
   "initialState": {
@@ -109,20 +109,6 @@
               "key": "bag_end"
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_bilbos_door",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -261,20 +247,6 @@
               "delta": 5
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_gandalf_arrives",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -403,20 +375,6 @@
               "value": true
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_first_dwarf_arrives",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -524,20 +482,6 @@
               "key": "bag_end"
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_pantry",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -694,20 +638,6 @@
               "delta": 10
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_more_dwarves_arrive",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -862,20 +792,6 @@
             }
           ],
           "targetNodeId": "map_revealed"
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_thorin_arrives",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -1045,20 +961,6 @@
             }
           ],
           "targetNodeId": "contract_offered"
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_map_revealed",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -1201,20 +1103,6 @@
               "delta": 10
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_contract_offered",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -1373,20 +1261,6 @@
             }
           ],
           "targetNodeId": "ch_1_2_departure"
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_bilbo_accepts",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -1553,20 +1427,6 @@
             }
           ],
           "targetNodeId": "gandalf_persuades"
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_bilbo_hesitates",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -1695,20 +1555,6 @@
               "key": "pocket_handkerchief"
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_bilbo_refuses_firmly",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -1837,20 +1683,6 @@
             }
           ],
           "targetNodeId": "bilbo_convinced"
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_gandalf_persuades",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -1979,20 +1811,6 @@
               "key": "silver_spoons"
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_thorin_angry",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -2253,20 +2071,6 @@
               "delta": 10
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_last_chance",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -2415,20 +2219,6 @@
               "delta": -3
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_reluctant_acceptance",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -2720,18 +2510,18 @@
           ]
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_1_2_bywater",
+          "id": "go_back_ch_1_2_departure_from_ch_1_2_bywater",
           "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
+          "buttonText": "Return to Hobbiton",
+          "resultText": "You make your way back to hobbiton.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "carrock"
+              "key": "hobbiton"
             }
           ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
+          "targetNodeId": "ch_1_2_departure"
         }
       ],
       "onEnter": [
@@ -2864,18 +2654,18 @@
           ]
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_1_2_wild_lands",
+          "id": "go_back_ch_1_2_departure_from_ch_1_2_wild_lands",
           "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
+          "buttonText": "Return to Hobbiton",
+          "resultText": "You make your way back to hobbiton.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "carrock"
+              "key": "hobbiton"
             }
           ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
+          "targetNodeId": "ch_1_2_departure"
         }
       ],
       "onEnter": [
@@ -3011,18 +2801,18 @@
           "targetNodeId": "ch_1_2_troll_choice"
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_1_2_troll_approach",
+          "id": "go_back_ch_1_2_departure_from_ch_1_2_troll_approach",
           "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
+          "buttonText": "Return to Hobbiton",
+          "resultText": "You make your way back to hobbiton.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "carrock"
+              "key": "hobbiton"
             }
           ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
+          "targetNodeId": "ch_1_2_departure"
         }
       ],
       "onEnter": [
@@ -3097,18 +2887,18 @@
           "targetNodeId": "ch_1_2_avoid_trolls"
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_1_2_troll_choice",
+          "id": "go_back_ch_1_2_departure_from_ch_1_2_troll_choice",
           "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
+          "buttonText": "Return to Hobbiton",
+          "resultText": "You make your way back to hobbiton.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "carrock"
+              "key": "hobbiton"
             }
           ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
+          "targetNodeId": "ch_1_2_departure"
         },
         {
           "id": "pad_examine_ch_1_2_troll_choice",
@@ -3255,18 +3045,18 @@
           "targetNodeId": "ch_1_2_burglary_attempt"
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_1_2_troll_encounter",
+          "id": "go_back_ch_1_2_departure_from_ch_1_2_troll_encounter",
           "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
+          "buttonText": "Return to Hobbiton",
+          "resultText": "You make your way back to hobbiton.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "carrock"
+              "key": "hobbiton"
             }
           ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
+          "targetNodeId": "ch_1_2_departure"
         }
       ],
       "onEnter": [
@@ -3418,18 +3208,18 @@
           "targetNodeId": "ch_1_2_dawn_rescue"
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_1_2_burglary_attempt",
+          "id": "go_back_ch_1_2_departure_from_ch_1_2_burglary_attempt",
           "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
+          "buttonText": "Return to Hobbiton",
+          "resultText": "You make your way back to hobbiton.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "carrock"
+              "key": "hobbiton"
             }
           ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
+          "targetNodeId": "ch_1_2_departure"
         }
       ],
       "onEnter": [
@@ -3561,18 +3351,18 @@
           "targetNodeId": "ch_1_2_troll_cave"
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_1_2_dawn_rescue",
+          "id": "go_back_ch_1_2_departure_from_ch_1_2_dawn_rescue",
           "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
+          "buttonText": "Return to Hobbiton",
+          "resultText": "You make your way back to hobbiton.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "carrock"
+              "key": "hobbiton"
             }
           ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
+          "targetNodeId": "ch_1_2_departure"
         }
       ],
       "onEnter": [
@@ -3742,18 +3532,18 @@
           ]
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_1_2_troll_cave",
+          "id": "go_back_ch_1_2_departure_from_ch_1_2_troll_cave",
           "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
+          "buttonText": "Return to Hobbiton",
+          "resultText": "You make your way back to hobbiton.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "carrock"
+              "key": "hobbiton"
             }
           ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
+          "targetNodeId": "ch_1_2_departure"
         }
       ],
       "onEnter": [
@@ -3894,18 +3684,18 @@
           ]
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_1_2_avoid_trolls",
+          "id": "go_back_ch_1_2_departure_from_ch_1_2_avoid_trolls",
           "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
+          "buttonText": "Return to Hobbiton",
+          "resultText": "You make your way back to hobbiton.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "carrock"
+              "key": "hobbiton"
             }
           ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
+          "targetNodeId": "ch_1_2_departure"
         }
       ],
       "onEnter": [
@@ -4078,18 +3868,18 @@
           ]
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_1_2_delayed_journey",
+          "id": "go_back_ch_1_2_departure_from_ch_1_2_delayed_journey",
           "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
+          "buttonText": "Return to Hobbiton",
+          "resultText": "You make your way back to hobbiton.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "carrock"
+              "key": "hobbiton"
             }
           ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
+          "targetNodeId": "ch_1_2_departure"
         }
       ],
       "onEnter": [
@@ -4263,18 +4053,18 @@
           ]
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_1_3_rivendell_arrival",
+          "id": "go_back_ch_1_2_departure_from_ch_1_3_rivendell_arrival",
           "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
+          "buttonText": "Return to Hobbiton",
+          "resultText": "You make your way back to hobbiton.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "carrock"
+              "key": "hobbiton"
             }
           ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
+          "targetNodeId": "ch_1_2_departure"
         }
       ],
       "onEnter": [
@@ -4410,18 +4200,18 @@
           ]
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_1_3_rivendell_gates",
+          "id": "go_back_ch_1_2_departure_from_ch_1_3_rivendell_gates",
           "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
+          "buttonText": "Return to Hobbiton",
+          "resultText": "You make your way back to hobbiton.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "carrock"
+              "key": "hobbiton"
             }
           ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
+          "targetNodeId": "ch_1_2_departure"
         }
       ],
       "onEnter": [
@@ -4579,18 +4369,18 @@
           "targetNodeId": "ch_1_3_map_chamber"
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_1_3_feast_hall",
+          "id": "go_back_ch_1_2_departure_from_ch_1_3_feast_hall",
           "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
+          "buttonText": "Return to Hobbiton",
+          "resultText": "You make your way back to hobbiton.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "carrock"
+              "key": "hobbiton"
             }
           ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
+          "targetNodeId": "ch_1_2_departure"
         }
       ],
       "onEnter": [
@@ -4732,18 +4522,18 @@
           ]
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_1_3_dwarf_suspicion",
+          "id": "go_back_ch_1_2_departure_from_ch_1_3_dwarf_suspicion",
           "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
+          "buttonText": "Return to Hobbiton",
+          "resultText": "You make your way back to hobbiton.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "carrock"
+              "key": "hobbiton"
             }
           ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
+          "targetNodeId": "ch_1_2_departure"
         }
       ],
       "onEnter": [
@@ -4926,18 +4716,18 @@
           "targetNodeId": "ch_1_3_preparation_choice"
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_1_3_map_chamber",
+          "id": "go_back_ch_1_2_departure_from_ch_1_3_map_chamber",
           "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
+          "buttonText": "Return to Hobbiton",
+          "resultText": "You make your way back to hobbiton.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "carrock"
+              "key": "hobbiton"
             }
           ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
+          "targetNodeId": "ch_1_2_departure"
         }
       ],
       "onEnter": [
@@ -5138,18 +4928,18 @@
           "targetNodeId": "ch_1_3_preparation_choice"
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_1_3_grudging_stay",
+          "id": "go_back_ch_1_2_departure_from_ch_1_3_grudging_stay",
           "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
+          "buttonText": "Return to Hobbiton",
+          "resultText": "You make your way back to hobbiton.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "carrock"
+              "key": "hobbiton"
             }
           ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
+          "targetNodeId": "ch_1_2_departure"
         }
       ],
       "onEnter": [
@@ -5265,18 +5055,18 @@
           "effects": []
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_1_3_preparation_choice",
+          "id": "go_back_ch_1_2_departure_from_ch_1_3_preparation_choice",
           "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
+          "buttonText": "Return to Hobbiton",
+          "resultText": "You make your way back to hobbiton.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "carrock"
+              "key": "hobbiton"
             }
           ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
+          "targetNodeId": "ch_1_2_departure"
         }
       ],
       "onEnter": [
@@ -5411,18 +5201,18 @@
           ]
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_1_3_full_preparation",
+          "id": "go_back_ch_1_2_departure_from_ch_1_3_full_preparation",
           "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
+          "buttonText": "Return to Hobbiton",
+          "resultText": "You make your way back to hobbiton.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "carrock"
+              "key": "hobbiton"
             }
           ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
+          "targetNodeId": "ch_1_2_departure"
         }
       ],
       "onEnter": [
@@ -5517,18 +5307,18 @@
           ]
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_1_3_eager_departure",
+          "id": "go_back_ch_1_2_departure_from_ch_1_3_eager_departure",
           "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
+          "buttonText": "Return to Hobbiton",
+          "resultText": "You make your way back to hobbiton.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "carrock"
+              "key": "hobbiton"
             }
           ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
+          "targetNodeId": "ch_1_2_departure"
         }
       ],
       "onEnter": [
@@ -5627,18 +5417,18 @@
           ]
         },
         {
-          "id": "go_back_goblin_ambush_from_misty_pass_entry",
+          "id": "go_back_ch_1_2_departure_from_misty_pass_entry",
           "type": "go",
-          "buttonText": "Return to Misty Mountains Pass",
-          "resultText": "You make your way back to misty mountains pass.",
+          "buttonText": "Return to Hobbiton",
+          "resultText": "You make your way back to hobbiton.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "misty_mountains_pass"
+              "key": "hobbiton"
             }
           ],
-          "targetNodeId": "goblin_ambush"
+          "targetNodeId": "ch_1_2_departure"
         }
       ],
       "onEnter": [
@@ -5760,18 +5550,18 @@
           "effects": []
         },
         {
-          "id": "go_back_goblin_ambush_from_storm_shelter",
+          "id": "go_back_ch_1_2_departure_from_storm_shelter",
           "type": "go",
-          "buttonText": "Return to Misty Mountains Pass",
-          "resultText": "You make your way back to misty mountains pass.",
+          "buttonText": "Return to Hobbiton",
+          "resultText": "You make your way back to hobbiton.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "misty_mountains_pass"
+              "key": "hobbiton"
             }
           ],
-          "targetNodeId": "goblin_ambush"
+          "targetNodeId": "ch_1_2_departure"
         }
       ],
       "onEnter": [
@@ -5874,20 +5664,6 @@
           "resultText": "The wizard's eyes gleam mysteriously in the lightning. 'Both paths lead forward, Master Baggins, though by different routes. Sometimes the choice itself matters more than the destination.'",
           "conditions": [],
           "effects": []
-        },
-        {
-          "id": "go_back_goblin_ambush_from_route_choice",
-          "type": "go",
-          "buttonText": "Return to Misty Mountains Pass",
-          "resultText": "You make your way back to misty mountains pass.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "misty_mountains_pass"
-            }
-          ],
-          "targetNodeId": "goblin_ambush"
         }
       ],
       "onEnter": [
@@ -6478,20 +6254,6 @@
               "value": true
             }
           ]
-        },
-        {
-          "id": "go_back_goblin_ambush_from_capture_struggle",
-          "type": "go",
-          "buttonText": "Return to Misty Mountains Pass",
-          "resultText": "You make your way back to misty mountains pass.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "misty_mountains_pass"
-            }
-          ],
-          "targetNodeId": "goblin_ambush"
         }
       ],
       "onEnter": [
@@ -6639,20 +6401,6 @@
               "delta": 5
             }
           ]
-        },
-        {
-          "id": "go_back_goblin_ambush_from_fighting_retreat",
-          "type": "go",
-          "buttonText": "Return to Misty Mountains Pass",
-          "resultText": "You make your way back to misty mountains pass.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "misty_mountains_pass"
-            }
-          ],
-          "targetNodeId": "goblin_ambush"
         }
       ],
       "onEnter": [
@@ -6822,20 +6570,6 @@
             }
           ],
           "targetNodeId": "goblin_town_descent"
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_captured",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -6990,20 +6724,6 @@
             }
           ],
           "targetNodeId": "goblin_king_hall"
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_goblin_town_descent",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -7169,20 +6889,6 @@
             }
           ],
           "targetNodeId": "ch_1_5_cave_fall"
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_goblin_king_hall",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -7332,20 +7038,6 @@
               "key": "gollums_cave"
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_1_5_cave_fall",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -7498,20 +7190,6 @@
               "delta": 1
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_1_5_ring_discovery",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -7645,20 +7323,6 @@
           "resultText": "The small boat is crude but seaworthy, carved from a single piece of dark wood. It might be your only way off this rocky ledge, if you could somehow get past its owner.",
           "conditions": [],
           "effects": []
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_1_5_gollum_arrives",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -7792,20 +7456,6 @@
               "delta": 2
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_1_5_riddle_challenge",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -7950,20 +7600,6 @@
               "key": "gollums_cave"
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_1_5_riddle_contest",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -8135,20 +7771,6 @@
               "delta": 2
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_1_5_final_riddle",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -8312,20 +7934,6 @@
               "delta": 3
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_1_5_gollum_rage",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -8498,20 +8106,6 @@
               "delta": -5
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_1_5_merciful_choice",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -8841,20 +8435,6 @@
             }
           ],
           "targetNodeId": "ch_1_5_aggressive_failure"
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_1_5_aggressive_path",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -9071,20 +8651,6 @@
               "value": true
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_1_5_merciful_path",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -10675,20 +10241,6 @@
               "value": "stable"
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_reunion_from_ch_1_6_tree_burning",
-          "type": "go",
-          "buttonText": "Return to Mountain Exit",
-          "resultText": "You make your way back to mountain exit.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "mountain_exit"
-            }
-          ],
-          "targetNodeId": "ch_1_6_reunion"
         }
       ],
       "onEnter": [
@@ -10827,20 +10379,6 @@
               "value": true
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_reunion_from_ch_1_6_eagle_call",
-          "type": "go",
-          "buttonText": "Return to Mountain Exit",
-          "resultText": "You make your way back to mountain exit.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "mountain_exit"
-            }
-          ],
-          "targetNodeId": "ch_1_6_reunion"
         }
       ],
       "onEnter": [
@@ -11002,20 +10540,6 @@
               "key": "eagles_eyrie"
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_1_6_eagle_rescue",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -11156,20 +10680,6 @@
               "delta": 3
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_1_6_flight_high",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -11312,20 +10822,6 @@
               "delta": 2
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_1_6_destination_choice",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -11478,20 +10974,6 @@
             }
           ],
           "targetNodeId": "ch_1_6_eagle_departure"
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_1_6_carrock_landing",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -12089,20 +11571,6 @@
               "key": "beorns_lands"
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_1_6_planning_ahead",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -12245,20 +11713,6 @@
               "key": "beorns_lands"
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_2_1_start",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -12398,20 +11852,6 @@
               "key": "beorns_hall"
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_2_1_gandalf_plan",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -12568,20 +12008,6 @@
               "key": "beorns_hall"
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_2_1_beorns_hall_approach",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -12689,20 +12115,6 @@
           "conditions": [],
           "effects": [],
           "targetNodeId": "ch_2_1_beorn_questions"
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_2_1_meet_beorn",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -12772,24 +12184,19 @@
           "targetNodeId": "ch_2_1_careful"
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_2_1_beorn_questions",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
-        },
-        {
           "id": "pad_examine_ch_2_1_beorn_questions",
           "type": "examine",
           "buttonText": "Look around Beorn's Hall",
           "resultText": "You take in your surroundings, noting every detail of beorn's hall.",
+          "conditions": [],
+          "effects": []
+        },
+        {
+          "id": "pad_talk_bilbo_baggins_ch_2_1_beorn_questions",
+          "type": "talk",
+          "buttonText": "Speak with Bilbo Baggins",
+          "resultText": "Bilbo Baggins acknowledges you with a nod. \"What brings you here?\" they ask.",
+          "targetObject": "bilbo_baggins",
           "conditions": [],
           "effects": []
         }
@@ -12939,20 +12346,6 @@
             }
           ],
           "targetNodeId": "ch_2_1_beorn_tests"
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_2_1_truthful",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -13062,20 +12455,6 @@
             }
           ],
           "targetNodeId": "ch_2_1_alt_trust"
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_2_1_careful",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -13258,20 +12637,6 @@
             }
           ],
           "targetNodeId": "ch_2_1_feast"
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_2_1_beorn_tests",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -13429,20 +12794,6 @@
             }
           ],
           "targetNodeId": "ch_2_1_generous_feast"
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_2_1_alt_trust",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -13602,20 +12953,6 @@
               "delta": 8
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_2_1_feast",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -13778,20 +13115,6 @@
             }
           ],
           "targetNodeId": "ch_2_1_prepared_departure"
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_2_1_generous_feast",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -13949,20 +13272,6 @@
             }
           ],
           "targetNodeId": "to_ch_2_2_main"
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_2_1_mirkwood_counsel",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -14118,20 +13427,6 @@
             }
           ],
           "targetNodeId": "to_ch_2_2_prepared"
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_2_1_prepared_departure",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -14287,20 +13582,6 @@
               "key": "mirkwood_entrance"
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_to_ch_2_2_main",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -14479,20 +13760,6 @@
               "delta": 1
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_to_ch_2_2_prepared",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -14646,20 +13913,6 @@
               "key": "mirkwood_entrance"
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_mirkwood_threshold",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -14775,20 +14028,6 @@
               "delta": 2
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_path_choice",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -14984,20 +14223,6 @@
               "key": "mirkwood_path"
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_careful_path",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -15132,20 +14357,6 @@
             }
           ],
           "targetNodeId": "early_danger"
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_impatient_path",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -15336,20 +14547,6 @@
             }
           ],
           "targetNodeId": "night_wandering"
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_first_rest",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -15507,20 +14704,6 @@
             }
           ],
           "targetNodeId": "lost_in_woods"
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_early_danger",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -15674,20 +14857,6 @@
             }
           ],
           "targetNodeId": "enchanted_stretch"
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_morning_path",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -15848,20 +15017,6 @@
             }
           ],
           "targetNodeId": "path_struggle"
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_night_wandering",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -16028,20 +15183,6 @@
               "key": "mirkwood_path"
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_enchanted_stretch",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -16215,20 +15356,6 @@
               "key": "mirkwood_path"
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_path_struggle",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -16376,20 +15503,6 @@
               "delta": 2
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_lost_in_woods",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -16501,20 +15614,6 @@
               "delta": 1
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_path_decision",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -16639,20 +15738,6 @@
               "value": true
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_spider_approach",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -16775,20 +15860,6 @@
             }
           ],
           "effects": []
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_to_ch_2_3_spiders",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -16933,20 +16004,6 @@
               "delta": 8
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_to_ch_2_3_lost",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -17060,20 +16117,6 @@
               "delta": 5
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_spider_battle",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -17222,20 +16265,6 @@
             }
           ],
           "targetNodeId": "dwarves_taken"
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_bilbo_hides",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -17393,20 +16422,6 @@
             }
           ],
           "targetNodeId": "final_refusal"
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_spider_webs_found",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -17562,20 +16577,6 @@
               "key": "woodland_realm_entrance"
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_strange_sounds",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -17749,20 +16750,6 @@
               "key": "woodland_realm_entrance"
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_spiders_defeated",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -17925,20 +16912,6 @@
               "value": true
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_company_captured",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -18110,20 +17083,6 @@
               "delta": 15
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_invisible_rescue",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -18307,20 +17266,6 @@
               "key": "woodland_realm_entrance"
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_dwarves_taken",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -18515,20 +17460,6 @@
             }
           ],
           "targetNodeId": "capture_scene"
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_elven_patrol",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -18645,20 +17576,6 @@
               "value": "observed"
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_elves_arrive",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -18855,20 +17772,6 @@
             }
           ],
           "targetNodeId": "negotiations_fail"
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_diplomatic_attempt",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -19502,20 +18405,6 @@
             }
           ],
           "targetNodeId": "ch_2_4_stealth_start"
-        },
-        {
-          "id": "go_back_ch_2_4_imprisoned_start_from_prison_scout",
-          "type": "go",
-          "buttonText": "Return to Woodland Realm",
-          "resultText": "You make your way back to woodland realm.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "woodland_realm"
-            }
-          ],
-          "targetNodeId": "ch_2_4_imprisoned_start"
         }
       ],
       "onEnter": [
@@ -19675,18 +18564,18 @@
           ]
         },
         {
-          "id": "go_back_arkenstone_gambit_from_negotiations_fail",
+          "id": "go_back_mountain_entrance_from_negotiations_fail",
           "type": "go",
-          "buttonText": "Return to Dale Ruins",
-          "resultText": "You make your way back to dale ruins.",
+          "buttonText": "Return to The Lonely Mountain Interior",
+          "resultText": "You make your way back to the lonely mountain interior.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "dale_ruins"
+              "key": "lonely_mountain"
             }
           ],
-          "targetNodeId": "arkenstone_gambit"
+          "targetNodeId": "mountain_entrance"
         }
       ],
       "onEnter": [
@@ -21866,18 +20755,18 @@
           ]
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_2_4_river_launch",
+          "id": "go_back_ch_2_4_imprisoned_start_from_ch_2_4_river_launch",
           "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
+          "buttonText": "Return to Woodland Realm",
+          "resultText": "You make your way back to woodland realm.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "carrock"
+              "key": "woodland_realm"
             }
           ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
+          "targetNodeId": "ch_2_4_imprisoned_start"
         }
       ],
       "onEnter": [
@@ -22062,18 +20951,18 @@
           ]
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_2_4_river_launch_dangerous",
+          "id": "go_back_ch_2_4_imprisoned_start_from_ch_2_4_river_launch_dangerous",
           "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
+          "buttonText": "Return to Woodland Realm",
+          "resultText": "You make your way back to woodland realm.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "carrock"
+              "key": "woodland_realm"
             }
           ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
+          "targetNodeId": "ch_2_4_imprisoned_start"
         }
       ],
       "onEnter": [
@@ -22253,18 +21142,18 @@
           ]
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_2_4_downstream_journey",
+          "id": "go_back_ch_2_4_imprisoned_start_from_ch_2_4_downstream_journey",
           "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
+          "buttonText": "Return to Woodland Realm",
+          "resultText": "You make your way back to woodland realm.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "carrock"
+              "key": "woodland_realm"
             }
           ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
+          "targetNodeId": "ch_2_4_imprisoned_start"
         }
       ],
       "onEnter": [
@@ -22439,18 +21328,18 @@
           ]
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_2_4_dangerous_rapids",
+          "id": "go_back_ch_2_4_imprisoned_start_from_ch_2_4_dangerous_rapids",
           "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
+          "buttonText": "Return to Woodland Realm",
+          "resultText": "You make your way back to woodland realm.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "carrock"
+              "key": "woodland_realm"
             }
           ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
+          "targetNodeId": "ch_2_4_imprisoned_start"
         }
       ],
       "onEnter": [
@@ -22658,18 +21547,18 @@
           ]
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_2_4_heroic_save",
+          "id": "go_back_ch_2_4_imprisoned_start_from_ch_2_4_heroic_save",
           "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
+          "buttonText": "Return to Woodland Realm",
+          "resultText": "You make your way back to woodland realm.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "carrock"
+              "key": "woodland_realm"
             }
           ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
+          "targetNodeId": "ch_2_4_imprisoned_start"
         }
       ],
       "onEnter": [
@@ -22798,18 +21687,18 @@
           ]
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ch_2_4_successful_escape",
+          "id": "go_back_ch_2_4_imprisoned_start_from_ch_2_4_successful_escape",
           "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
+          "buttonText": "Return to Woodland Realm",
+          "resultText": "You make your way back to woodland realm.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "carrock"
+              "key": "woodland_realm"
             }
           ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
+          "targetNodeId": "ch_2_4_imprisoned_start"
         }
       ],
       "onEnter": [
@@ -22974,18 +21863,18 @@
           ]
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_to_ch_2_5_lake_town",
+          "id": "go_back_ch_2_4_imprisoned_start_from_to_ch_2_5_lake_town",
           "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
+          "buttonText": "Return to Woodland Realm",
+          "resultText": "You make your way back to woodland realm.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "carrock"
+              "key": "woodland_realm"
             }
           ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
+          "targetNodeId": "ch_2_4_imprisoned_start"
         }
       ],
       "onEnter": [
@@ -23191,20 +22080,6 @@
               "delta": 3
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_to_ch_2_5_weakened",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -23399,18 +22274,18 @@
           ]
         },
         {
-          "id": "go_back_preparations_for_mountain_from_lake_town_welcome",
+          "id": "go_back_ch_2_4_imprisoned_start_from_lake_town_welcome",
           "type": "go",
-          "buttonText": "Return to Lake-town",
-          "resultText": "You make your way back to lake-town.",
+          "buttonText": "Return to Woodland Realm",
+          "resultText": "You make your way back to woodland realm.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "lake_town"
+              "key": "woodland_realm"
             }
           ],
-          "targetNodeId": "preparations_for_mountain"
+          "targetNodeId": "ch_2_4_imprisoned_start"
         }
       ],
       "onEnter": [
@@ -23591,18 +22466,18 @@
           ]
         },
         {
-          "id": "go_back_preparations_for_mountain_from_lake_town_suspicious",
+          "id": "go_back_ch_2_4_imprisoned_start_from_lake_town_suspicious",
           "type": "go",
-          "buttonText": "Return to Lake-town",
-          "resultText": "You make your way back to lake-town.",
+          "buttonText": "Return to Woodland Realm",
+          "resultText": "You make your way back to woodland realm.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "lake_town"
+              "key": "woodland_realm"
             }
           ],
-          "targetNodeId": "preparations_for_mountain"
+          "targetNodeId": "ch_2_4_imprisoned_start"
         }
       ],
       "onEnter": [
@@ -23750,20 +22625,6 @@
               "delta": 1
             }
           ]
-        },
-        {
-          "id": "go_back_preparations_for_mountain_from_lake_town_imprisonment",
-          "type": "go",
-          "buttonText": "Return to Lake-town",
-          "resultText": "You make your way back to lake-town.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "lake_town"
-            }
-          ],
-          "targetNodeId": "preparations_for_mountain"
         }
       ],
       "onEnter": [
@@ -23941,20 +22802,6 @@
             }
           ],
           "targetNodeId": "preparations_for_mountain"
-        },
-        {
-          "id": "go_back_preparations_for_mountain_from_lake_town_recovery",
-          "type": "go",
-          "buttonText": "Return to Lake-town",
-          "resultText": "You make your way back to lake-town.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "lake_town"
-            }
-          ],
-          "targetNodeId": "preparations_for_mountain"
         }
       ],
       "onEnter": [
@@ -24126,18 +22973,18 @@
           "targetNodeId": "preparations_for_mountain"
         },
         {
-          "id": "go_back_preparations_for_mountain_from_lake_town_feast",
+          "id": "go_back_ch_2_4_imprisoned_start_from_lake_town_feast",
           "type": "go",
-          "buttonText": "Return to Lake-town",
-          "resultText": "You make your way back to lake-town.",
+          "buttonText": "Return to Woodland Realm",
+          "resultText": "You make your way back to woodland realm.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "lake_town"
+              "key": "woodland_realm"
             }
           ],
-          "targetNodeId": "preparations_for_mountain"
+          "targetNodeId": "ch_2_4_imprisoned_start"
         }
       ],
       "onEnter": [
@@ -24326,18 +23173,18 @@
           "targetNodeId": "preparations_for_mountain"
         },
         {
-          "id": "go_back_preparations_for_mountain_from_bard_alliance",
+          "id": "go_back_ch_2_4_imprisoned_start_from_bard_alliance",
           "type": "go",
-          "buttonText": "Return to Lake-town",
-          "resultText": "You make your way back to lake-town.",
+          "buttonText": "Return to Woodland Realm",
+          "resultText": "You make your way back to woodland realm.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "lake_town"
+              "key": "woodland_realm"
             }
           ],
-          "targetNodeId": "preparations_for_mountain"
+          "targetNodeId": "ch_2_4_imprisoned_start"
         }
       ],
       "onEnter": [
@@ -24491,6 +23338,20 @@
               "delta": 1
             }
           ]
+        },
+        {
+          "id": "go_back_ch_2_4_imprisoned_start_from_preparations_for_mountain",
+          "type": "go",
+          "buttonText": "Return to Woodland Realm",
+          "resultText": "You make your way back to woodland realm.",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "set_location",
+              "key": "woodland_realm"
+            }
+          ],
+          "targetNodeId": "ch_2_4_imprisoned_start"
         }
       ],
       "onEnter": [
@@ -24648,18 +23509,18 @@
           ]
         },
         {
-          "id": "go_back_arkenstone_gambit_from_visit_dale_ruins",
+          "id": "go_back_ch_2_4_imprisoned_start_from_visit_dale_ruins",
           "type": "go",
-          "buttonText": "Return to Dale Ruins",
-          "resultText": "You make your way back to dale ruins.",
+          "buttonText": "Return to Woodland Realm",
+          "resultText": "You make your way back to woodland realm.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "dale_ruins"
+              "key": "woodland_realm"
             }
           ],
-          "targetNodeId": "arkenstone_gambit"
+          "targetNodeId": "ch_2_4_imprisoned_start"
         }
       ],
       "onEnter": [
@@ -24821,18 +23682,18 @@
           ]
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_approach_mountain",
+          "id": "go_back_ch_2_4_imprisoned_start_from_approach_mountain",
           "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
+          "buttonText": "Return to Woodland Realm",
+          "resultText": "You make your way back to woodland realm.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "carrock"
+              "key": "woodland_realm"
             }
           ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
+          "targetNodeId": "ch_2_4_imprisoned_start"
         }
       ],
       "onEnter": [
@@ -24995,18 +23856,18 @@
           ]
         },
         {
-          "id": "go_back_mountain_entrance_from_search_for_door",
+          "id": "go_back_ch_2_4_imprisoned_start_from_search_for_door",
           "type": "go",
-          "buttonText": "Return to The Lonely Mountain Interior",
-          "resultText": "You make your way back to the lonely mountain interior.",
+          "buttonText": "Return to Woodland Realm",
+          "resultText": "You make your way back to woodland realm.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "lonely_mountain"
+              "key": "woodland_realm"
             }
           ],
-          "targetNodeId": "mountain_entrance"
+          "targetNodeId": "ch_2_4_imprisoned_start"
         }
       ],
       "onEnter": [
@@ -25168,18 +24029,18 @@
           ]
         },
         {
-          "id": "go_back_mountain_entrance_from_door_discovery",
+          "id": "go_back_preparations_for_mountain_from_door_discovery",
           "type": "go",
-          "buttonText": "Return to The Lonely Mountain Interior",
-          "resultText": "You make your way back to the lonely mountain interior.",
+          "buttonText": "Return to Lake-town",
+          "resultText": "You make your way back to lake-town.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "lonely_mountain"
+              "key": "lake_town"
             }
           ],
-          "targetNodeId": "mountain_entrance"
+          "targetNodeId": "preparations_for_mountain"
         }
       ],
       "onEnter": [
@@ -27019,18 +25880,18 @@
           ]
         },
         {
-          "id": "go_back_smaug_chamber_from_bold_approach",
+          "id": "go_back_mountain_entrance_from_bold_approach",
           "type": "go",
-          "buttonText": "Return to Smaug's Lair",
-          "resultText": "You make your way back to smaug's lair.",
+          "buttonText": "Return to The Lonely Mountain Interior",
+          "resultText": "You make your way back to the lonely mountain interior.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "smaugs_lair"
+              "key": "lonely_mountain"
             }
           ],
-          "targetNodeId": "smaug_chamber"
+          "targetNodeId": "mountain_entrance"
         }
       ],
       "onEnter": [
@@ -27966,18 +26827,18 @@
           "targetNodeId": "treasure_chamber_visit"
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_to_battle_preparations",
+          "id": "go_back_mountain_entrance_from_to_battle_preparations",
           "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
+          "buttonText": "Return to The Lonely Mountain Interior",
+          "resultText": "You make your way back to the lonely mountain interior.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "carrock"
+              "key": "lonely_mountain"
             }
           ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
+          "targetNodeId": "mountain_entrance"
         }
       ],
       "onEnter": [
@@ -28139,18 +27000,18 @@
           "targetNodeId": "thorin_confrontation"
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_to_treasure_chamber",
+          "id": "go_back_mountain_entrance_from_to_treasure_chamber",
           "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
+          "buttonText": "Return to The Lonely Mountain Interior",
+          "resultText": "You make your way back to the lonely mountain interior.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "carrock"
+              "key": "lonely_mountain"
             }
           ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
+          "targetNodeId": "mountain_entrance"
         }
       ],
       "onEnter": [
@@ -28339,18 +27200,18 @@
           ]
         },
         {
-          "id": "go_back_arkenstone_gambit_from_armies_gather",
+          "id": "go_back_mountain_entrance_from_armies_gather",
           "type": "go",
-          "buttonText": "Return to Dale Ruins",
-          "resultText": "You make your way back to dale ruins.",
+          "buttonText": "Return to The Lonely Mountain Interior",
+          "resultText": "You make your way back to the lonely mountain interior.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "dale_ruins"
+              "key": "lonely_mountain"
             }
           ],
-          "targetNodeId": "arkenstone_gambit"
+          "targetNodeId": "mountain_entrance"
         }
       ],
       "onEnter": [
@@ -28530,18 +27391,18 @@
           "targetNodeId": "dragon_sickness_grows"
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_treasure_chamber_visit",
+          "id": "go_back_mountain_entrance_from_treasure_chamber_visit",
           "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
+          "buttonText": "Return to The Lonely Mountain Interior",
+          "resultText": "You make your way back to the lonely mountain interior.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "carrock"
+              "key": "lonely_mountain"
             }
           ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
+          "targetNodeId": "mountain_entrance"
         }
       ],
       "onEnter": [
@@ -28731,18 +27592,18 @@
           ]
         },
         {
-          "id": "go_back_arkenstone_gambit_from_diplomatic_meeting",
+          "id": "go_back_mountain_entrance_from_diplomatic_meeting",
           "type": "go",
-          "buttonText": "Return to Dale Ruins",
-          "resultText": "You make your way back to dale ruins.",
+          "buttonText": "Return to The Lonely Mountain Interior",
+          "resultText": "You make your way back to the lonely mountain interior.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "dale_ruins"
+              "key": "lonely_mountain"
             }
           ],
-          "targetNodeId": "arkenstone_gambit"
+          "targetNodeId": "mountain_entrance"
         }
       ],
       "onEnter": [
@@ -28889,20 +27750,6 @@
               "delta": 2
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_spy_mission",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -29058,18 +27905,18 @@
           ]
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_arkenstone_discovery",
+          "id": "go_back_mountain_entrance_from_arkenstone_discovery",
           "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
+          "buttonText": "Return to The Lonely Mountain Interior",
+          "resultText": "You make your way back to the lonely mountain interior.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "carrock"
+              "key": "lonely_mountain"
             }
           ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
+          "targetNodeId": "mountain_entrance"
         }
       ],
       "onEnter": [
@@ -29255,18 +28102,18 @@
           ]
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_thorin_confrontation",
+          "id": "go_back_mountain_entrance_from_thorin_confrontation",
           "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
+          "buttonText": "Return to The Lonely Mountain Interior",
+          "resultText": "You make your way back to the lonely mountain interior.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "carrock"
+              "key": "lonely_mountain"
             }
           ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
+          "targetNodeId": "mountain_entrance"
         }
       ],
       "onEnter": [
@@ -29390,18 +28237,18 @@
           ]
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_arkenstone_choice",
+          "id": "go_back_mountain_entrance_from_arkenstone_choice",
           "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
+          "buttonText": "Return to The Lonely Mountain Interior",
+          "resultText": "You make your way back to the lonely mountain interior.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "carrock"
+              "key": "lonely_mountain"
             }
           ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
+          "targetNodeId": "mountain_entrance"
         }
       ],
       "onEnter": [
@@ -29591,6 +28438,20 @@
               "key": "lonely_mountain_approach"
             }
           ]
+        },
+        {
+          "id": "go_back_mountain_entrance_from_arkenstone_gambit",
+          "type": "go",
+          "buttonText": "Return to The Lonely Mountain Interior",
+          "resultText": "You make your way back to the lonely mountain interior.",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "set_location",
+              "key": "lonely_mountain"
+            }
+          ],
+          "targetNodeId": "mountain_entrance"
         }
       ],
       "onEnter": [
@@ -29781,18 +28642,18 @@
           ]
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_dragon_sickness_grows",
+          "id": "go_back_mountain_entrance_from_dragon_sickness_grows",
           "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
+          "buttonText": "Return to The Lonely Mountain Interior",
+          "resultText": "You make your way back to the lonely mountain interior.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "carrock"
+              "key": "lonely_mountain"
             }
           ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
+          "targetNodeId": "mountain_entrance"
         }
       ],
       "onEnter": [
@@ -29986,18 +28847,18 @@
           "targetNodeId": "final_refusal"
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_war_preparations",
+          "id": "go_back_mountain_entrance_from_war_preparations",
           "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
+          "buttonText": "Return to The Lonely Mountain Interior",
+          "resultText": "You make your way back to the lonely mountain interior.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "carrock"
+              "key": "lonely_mountain"
             }
           ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
+          "targetNodeId": "mountain_entrance"
         }
       ],
       "onEnter": [
@@ -30192,18 +29053,18 @@
           ]
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_thorins_rage",
+          "id": "go_back_mountain_entrance_from_thorins_rage",
           "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
+          "buttonText": "Return to The Lonely Mountain Interior",
+          "resultText": "You make your way back to the lonely mountain interior.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "carrock"
+              "key": "lonely_mountain"
             }
           ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
+          "targetNodeId": "mountain_entrance"
         }
       ],
       "onEnter": [
@@ -30398,18 +29259,18 @@
           "effects": []
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_to_final_battle",
+          "id": "go_back_mountain_entrance_from_to_final_battle",
           "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
+          "buttonText": "Return to The Lonely Mountain Interior",
+          "resultText": "You make your way back to the lonely mountain interior.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "carrock"
+              "key": "lonely_mountain"
             }
           ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
+          "targetNodeId": "mountain_entrance"
         }
       ],
       "onEnter": [
@@ -30588,18 +29449,18 @@
           ]
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_to_eagles_arrival",
+          "id": "go_back_mountain_entrance_from_to_eagles_arrival",
           "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
+          "buttonText": "Return to The Lonely Mountain Interior",
+          "resultText": "You make your way back to the lonely mountain interior.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "carrock"
+              "key": "lonely_mountain"
             }
           ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
+          "targetNodeId": "mountain_entrance"
         }
       ],
       "onEnter": [
@@ -30801,18 +29662,18 @@
           ]
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_battle_chaos",
+          "id": "go_back_mountain_entrance_from_battle_chaos",
           "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
+          "buttonText": "Return to The Lonely Mountain Interior",
+          "resultText": "You make your way back to the lonely mountain interior.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "carrock"
+              "key": "lonely_mountain"
             }
           ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
+          "targetNodeId": "mountain_entrance"
         }
       ],
       "onEnter": [
@@ -31002,20 +29863,6 @@
               "value": true
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_ring_stealth_path",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -31148,18 +29995,18 @@
           ]
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_eagle_alliance",
+          "id": "go_back_mountain_entrance_from_eagle_alliance",
           "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
+          "buttonText": "Return to The Lonely Mountain Interior",
+          "resultText": "You make your way back to the lonely mountain interior.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "carrock"
+              "key": "lonely_mountain"
             }
           ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
+          "targetNodeId": "mountain_entrance"
         }
       ],
       "onEnter": [
@@ -31312,18 +30159,18 @@
           "targetNodeId": "final_refusal"
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_aerial_combat",
+          "id": "go_back_mountain_entrance_from_aerial_combat",
           "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
+          "buttonText": "Return to The Lonely Mountain Interior",
+          "resultText": "You make your way back to the lonely mountain interior.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "carrock"
+              "key": "lonely_mountain"
             }
           ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
+          "targetNodeId": "mountain_entrance"
         }
       ],
       "onEnter": [
@@ -31509,18 +30356,18 @@
           "targetNodeId": "final_refusal"
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_thorins_charge",
+          "id": "go_back_mountain_entrance_from_thorins_charge",
           "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
+          "buttonText": "Return to The Lonely Mountain Interior",
+          "resultText": "You make your way back to the lonely mountain interior.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "carrock"
+              "key": "lonely_mountain"
             }
           ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
+          "targetNodeId": "mountain_entrance"
         }
       ],
       "onEnter": [
@@ -31739,20 +30586,6 @@
             }
           ],
           "targetNodeId": "final_refusal"
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_rescue_wounded",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -31924,18 +30757,18 @@
           "targetNodeId": "final_refusal"
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_thorins_fall",
+          "id": "go_back_mountain_entrance_from_thorins_fall",
           "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
+          "buttonText": "Return to The Lonely Mountain Interior",
+          "resultText": "You make your way back to the lonely mountain interior.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "carrock"
+              "key": "lonely_mountain"
             }
           ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
+          "targetNodeId": "mountain_entrance"
         }
       ],
       "onEnter": [
@@ -32083,18 +30916,18 @@
           "targetNodeId": "final_refusal"
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_eagles_victory",
+          "id": "go_back_mountain_entrance_from_eagles_victory",
           "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
+          "buttonText": "Return to The Lonely Mountain Interior",
+          "resultText": "You make your way back to the lonely mountain interior.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "carrock"
+              "key": "lonely_mountain"
             }
           ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
+          "targetNodeId": "mountain_entrance"
         }
       ],
       "onEnter": [
@@ -32289,18 +31122,18 @@
           ]
         },
         {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_final_words",
+          "id": "go_back_mountain_entrance_from_final_words",
           "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
+          "buttonText": "Return to The Lonely Mountain Interior",
+          "resultText": "You make your way back to the lonely mountain interior.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "carrock"
+              "key": "lonely_mountain"
             }
           ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
+          "targetNodeId": "mountain_entrance"
         }
       ],
       "onEnter": [
@@ -32473,20 +31306,6 @@
             }
           ],
           "targetNodeId": "final_refusal"
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_hidden_heroics",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -32675,20 +31494,6 @@
               "delta": 10
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_bilbos_departure",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
@@ -32879,20 +31684,6 @@
               "delta": 5
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_mirkwood_edge_from_journey_home",
-          "type": "go",
-          "buttonText": "Return to The Carrock",
-          "resultText": "You make your way back to the carrock.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "carrock"
-            }
-          ],
-          "targetNodeId": "ch_1_6_mirkwood_edge"
         }
       ],
       "onEnter": [
