@@ -175,7 +175,7 @@ function injectNavigationLoops(gameData: GameData, report: CoverageReport): void
     hubNodes.push(gameData.initialState.startNodeId);
   }
 
-  // For each hub, compute reachable set (BFS forward, max 15 hops) to limit backtrack scope
+  // For each hub, compute reachable set (BFS forward, max 5 hops) to limit backtrack scope
   const hubReachable: Record<string, Set<string>> = {};
   for (const hub of hubNodes) {
     const reachable = new Set<string>();
@@ -186,7 +186,7 @@ function injectNavigationLoops(gameData: GameData, report: CoverageReport): void
     while (queue.length > 0) {
       const current = queue.shift()!;
       const depth = depths.get(current) ?? 0;
-      if (depth >= 15) continue;
+      if (depth >= 5) continue;
 
       reachable.add(current);
       for (const next of forwardLinks[current] ?? []) {
@@ -211,11 +211,15 @@ function injectNavigationLoops(gameData: GameData, report: CoverageReport): void
     );
     if (hasBacktrack) continue;
 
-    // Find hubs that can reach this node (meaning player could have come from there)
-    const reachableHubs = hubNodes.filter((h) => h !== nodeId && hubReachable[h]?.has(nodeId));
+    // Find hubs that can reach this node AND are in the same chapter
+    const reachableHubs = hubNodes.filter((h) =>
+      h !== nodeId &&
+      hubReachable[h]?.has(nodeId) &&
+      nodes[h]?.chapterNumber === node.chapterNumber
+    );
     if (reachableHubs.length === 0) continue;
 
-    // Prefer same location, then any reachable hub
+    // Prefer same location, then any reachable hub in same chapter
     const nearestHub = reachableHubs.find((h) => nodes[h]?.locationId === node.locationId)
       ?? reachableHubs[0];
 

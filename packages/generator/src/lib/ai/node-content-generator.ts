@@ -225,6 +225,7 @@ For each node, generate:
 2. **interactions**: 4-8 interactions per node (ending nodes get 0)
    - Follow the interaction hints provided but expand them into full interactions
    - Each interaction needs: id, type, buttonText, resultText, conditions, effects
+   - CRITICAL: Every node ID listed in "Connects to" MUST have at least one interaction (story or go) with that targetNodeId. Do not skip any connections.
    - "go" interactions MUST have targetNodeId AND a set_location effect
    - "take" interactions need lacks_item condition + add_item effect
    - "give" interactions need has_item condition + remove_item + change_relation effects

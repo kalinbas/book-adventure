@@ -129,6 +129,7 @@ Target quotas across all nodes:
 - At least 15 backConnections total (loops back to hub/checkpoint nodes)
 - Every choice node must have 2+ different connections
 - No dead ends — every non-ending node must connect forward
+- No orphans — every non-start node must appear in at least one other node's connections (be reachable)
 - Act structure: 3 acts with clear transitions
 
 ### Branching

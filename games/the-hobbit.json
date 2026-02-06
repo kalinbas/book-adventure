@@ -6,7 +6,7 @@
     "bookAuthor": "THERE AND BACK AGAIN",
     "description": "An interactive text adventure based on \"THE HOBBIT\"",
     "version": "1.0.0",
-    "generatedAt": "2026-02-06T19:31:31.096Z",
+    "generatedAt": "2026-02-06T19:47:49.714Z",
     "engineVersion": "1.0.0"
   },
   "initialState": {
@@ -3047,20 +3047,6 @@
             }
           ],
           "targetNodeId": "ch_1_2_burglary_attempt"
-        },
-        {
-          "id": "go_back_ch_1_2_departure_from_ch_1_2_troll_encounter",
-          "type": "go",
-          "buttonText": "Return to Hobbiton",
-          "resultText": "You make your way back to hobbiton.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "hobbiton"
-            }
-          ],
-          "targetNodeId": "ch_1_2_departure"
         }
       ],
       "onEnter": [
@@ -3210,20 +3196,6 @@
             }
           ],
           "targetNodeId": "ch_1_2_dawn_rescue"
-        },
-        {
-          "id": "go_back_ch_1_2_departure_from_ch_1_2_burglary_attempt",
-          "type": "go",
-          "buttonText": "Return to Hobbiton",
-          "resultText": "You make your way back to hobbiton.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "hobbiton"
-            }
-          ],
-          "targetNodeId": "ch_1_2_departure"
         }
       ],
       "onEnter": [
@@ -3353,20 +3325,6 @@
             }
           ],
           "targetNodeId": "ch_1_2_troll_cave"
-        },
-        {
-          "id": "go_back_ch_1_2_departure_from_ch_1_2_dawn_rescue",
-          "type": "go",
-          "buttonText": "Return to Hobbiton",
-          "resultText": "You make your way back to hobbiton.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "hobbiton"
-            }
-          ],
-          "targetNodeId": "ch_1_2_departure"
         }
       ],
       "onEnter": [
@@ -3534,20 +3492,6 @@
               "key": "rivendell_approach"
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_2_departure_from_ch_1_2_troll_cave",
-          "type": "go",
-          "buttonText": "Return to Hobbiton",
-          "resultText": "You make your way back to hobbiton.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "hobbiton"
-            }
-          ],
-          "targetNodeId": "ch_1_2_departure"
         }
       ],
       "onEnter": [
@@ -3686,20 +3630,6 @@
               "key": "lone_lands"
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_2_departure_from_ch_1_2_avoid_trolls",
-          "type": "go",
-          "buttonText": "Return to Hobbiton",
-          "resultText": "You make your way back to hobbiton.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "hobbiton"
-            }
-          ],
-          "targetNodeId": "ch_1_2_departure"
         }
       ],
       "onEnter": [
@@ -3870,20 +3800,6 @@
               "key": "rivendell_approach"
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_2_departure_from_ch_1_2_delayed_journey",
-          "type": "go",
-          "buttonText": "Return to Hobbiton",
-          "resultText": "You make your way back to hobbiton.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "hobbiton"
-            }
-          ],
-          "targetNodeId": "ch_1_2_departure"
         }
       ],
       "onEnter": [
@@ -4055,20 +3971,6 @@
               "key": "rivendell"
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_2_departure_from_ch_1_3_rivendell_arrival",
-          "type": "go",
-          "buttonText": "Return to Hobbiton",
-          "resultText": "You make your way back to hobbiton.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "hobbiton"
-            }
-          ],
-          "targetNodeId": "ch_1_2_departure"
         }
       ],
       "onEnter": [
@@ -4202,20 +4104,6 @@
               "delta": 3
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_2_departure_from_ch_1_3_rivendell_gates",
-          "type": "go",
-          "buttonText": "Return to Hobbiton",
-          "resultText": "You make your way back to hobbiton.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "hobbiton"
-            }
-          ],
-          "targetNodeId": "ch_1_2_departure"
         }
       ],
       "onEnter": [
@@ -4371,20 +4259,6 @@
             }
           ],
           "targetNodeId": "ch_1_3_map_chamber"
-        },
-        {
-          "id": "go_back_ch_1_2_departure_from_ch_1_3_feast_hall",
-          "type": "go",
-          "buttonText": "Return to Hobbiton",
-          "resultText": "You make your way back to hobbiton.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "hobbiton"
-            }
-          ],
-          "targetNodeId": "ch_1_2_departure"
         }
       ],
       "onEnter": [
@@ -4524,20 +4398,6 @@
               "delta": 3
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_2_departure_from_ch_1_3_dwarf_suspicion",
-          "type": "go",
-          "buttonText": "Return to Hobbiton",
-          "resultText": "You make your way back to hobbiton.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "hobbiton"
-            }
-          ],
-          "targetNodeId": "ch_1_2_departure"
         }
       ],
       "onEnter": [
@@ -4718,20 +4578,6 @@
             }
           ],
           "targetNodeId": "ch_1_3_preparation_choice"
-        },
-        {
-          "id": "go_back_ch_1_2_departure_from_ch_1_3_map_chamber",
-          "type": "go",
-          "buttonText": "Return to Hobbiton",
-          "resultText": "You make your way back to hobbiton.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "hobbiton"
-            }
-          ],
-          "targetNodeId": "ch_1_2_departure"
         }
       ],
       "onEnter": [
@@ -4930,20 +4776,6 @@
             }
           ],
           "targetNodeId": "ch_1_3_preparation_choice"
-        },
-        {
-          "id": "go_back_ch_1_2_departure_from_ch_1_3_grudging_stay",
-          "type": "go",
-          "buttonText": "Return to Hobbiton",
-          "resultText": "You make your way back to hobbiton.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "hobbiton"
-            }
-          ],
-          "targetNodeId": "ch_1_2_departure"
         }
       ],
       "onEnter": [
@@ -5067,20 +4899,6 @@
           "resultText": "The elves have laid out an impressive array of supplies: sturdy traveling cloaks, preserved foods that won't spoil, and other gear suited for mountain travel.",
           "conditions": [],
           "effects": []
-        },
-        {
-          "id": "go_back_ch_1_2_departure_from_ch_1_3_preparation_choice",
-          "type": "go",
-          "buttonText": "Return to Hobbiton",
-          "resultText": "You make your way back to hobbiton.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "hobbiton"
-            }
-          ],
-          "targetNodeId": "ch_1_2_departure"
         }
       ],
       "onEnter": [
@@ -5213,20 +5031,6 @@
               "value": true
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_2_departure_from_ch_1_3_full_preparation",
-          "type": "go",
-          "buttonText": "Return to Hobbiton",
-          "resultText": "You make your way back to hobbiton.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "hobbiton"
-            }
-          ],
-          "targetNodeId": "ch_1_2_departure"
         }
       ],
       "onEnter": [
@@ -5319,20 +5123,6 @@
               "delta": 5
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_2_departure_from_ch_1_3_eager_departure",
-          "type": "go",
-          "buttonText": "Return to Hobbiton",
-          "resultText": "You make your way back to hobbiton.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "hobbiton"
-            }
-          ],
-          "targetNodeId": "ch_1_2_departure"
         }
       ],
       "onEnter": [
@@ -5429,20 +5219,6 @@
               "value": true
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_2_departure_from_misty_pass_entry",
-          "type": "go",
-          "buttonText": "Return to Hobbiton",
-          "resultText": "You make your way back to hobbiton.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "hobbiton"
-            }
-          ],
-          "targetNodeId": "ch_1_2_departure"
         }
       ],
       "onEnter": [
@@ -5562,20 +5338,6 @@
           "resultText": "Thorin's eyes are hard as granite. 'We cannot turn back now, Master Baggins. The mountain tests all who would pass, but we are stronger than this storm.' His determination is both inspiring and concerning.",
           "conditions": [],
           "effects": []
-        },
-        {
-          "id": "go_back_ch_1_2_departure_from_storm_shelter",
-          "type": "go",
-          "buttonText": "Return to Hobbiton",
-          "resultText": "You make your way back to hobbiton.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "hobbiton"
-            }
-          ],
-          "targetNodeId": "ch_1_2_departure"
         }
       ],
       "onEnter": [
@@ -10115,20 +9877,6 @@
               "key": "rivendell"
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_reunion_from_ch_1_6_fire_pinecones",
-          "type": "go",
-          "buttonText": "Return to Mountain Exit",
-          "resultText": "You make your way back to mountain exit.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "mountain_exit"
-            }
-          ],
-          "targetNodeId": "ch_1_6_reunion"
         },
         {
           "id": "graph_link_ch_1_6_tree_burning",
@@ -18703,20 +18451,6 @@
           ]
         },
         {
-          "id": "go_back_mountain_entrance_from_negotiations_fail",
-          "type": "go",
-          "buttonText": "Return to The Lonely Mountain Interior",
-          "resultText": "You make your way back to the lonely mountain interior.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "lonely_mountain"
-            }
-          ],
-          "targetNodeId": "mountain_entrance"
-        },
-        {
           "id": "graph_link_to_final_battle",
           "type": "story",
           "buttonText": "The Storm of Battle",
@@ -20234,20 +19968,6 @@
               "key": "woodland_realm"
             }
           ]
-        },
-        {
-          "id": "go_back_ch_2_4_imprisoned_start_from_ch_2_4_dwarf_liberation",
-          "type": "go",
-          "buttonText": "Return to Woodland Realm",
-          "resultText": "You make your way back to woodland realm.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "woodland_realm"
-            }
-          ],
-          "targetNodeId": "ch_2_4_imprisoned_start"
         }
       ],
       "onEnter": [
@@ -20437,20 +20157,6 @@
               "key": "woodland_realm"
             }
           ]
-        },
-        {
-          "id": "go_back_ch_2_4_imprisoned_start_from_ch_2_4_dwarf_liberation_risky",
-          "type": "go",
-          "buttonText": "Return to Woodland Realm",
-          "resultText": "You make your way back to woodland realm.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "woodland_realm"
-            }
-          ],
-          "targetNodeId": "ch_2_4_imprisoned_start"
         }
       ],
       "onEnter": [
@@ -20601,20 +20307,6 @@
               "key": "forest_river"
             }
           ]
-        },
-        {
-          "id": "go_back_ch_2_4_imprisoned_start_from_ch_2_4_barrel_loading",
-          "type": "go",
-          "buttonText": "Return to Woodland Realm",
-          "resultText": "You make your way back to woodland realm.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "woodland_realm"
-            }
-          ],
-          "targetNodeId": "ch_2_4_imprisoned_start"
         }
       ],
       "onEnter": [
@@ -20762,20 +20454,6 @@
               "key": "forest_river"
             }
           ]
-        },
-        {
-          "id": "go_back_ch_2_4_imprisoned_start_from_ch_2_4_barrel_loading_rushed",
-          "type": "go",
-          "buttonText": "Return to Woodland Realm",
-          "resultText": "You make your way back to woodland realm.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "woodland_realm"
-            }
-          ],
-          "targetNodeId": "ch_2_4_imprisoned_start"
         }
       ],
       "onEnter": [
@@ -20906,20 +20584,6 @@
             }
           ],
           "conditions": []
-        },
-        {
-          "id": "go_back_ch_2_4_imprisoned_start_from_ch_2_4_river_launch",
-          "type": "go",
-          "buttonText": "Return to Woodland Realm",
-          "resultText": "You make your way back to woodland realm.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "woodland_realm"
-            }
-          ],
-          "targetNodeId": "ch_2_4_imprisoned_start"
         }
       ],
       "onEnter": [
@@ -21102,20 +20766,6 @@
               "key": "forest_river"
             }
           ]
-        },
-        {
-          "id": "go_back_ch_2_4_imprisoned_start_from_ch_2_4_river_launch_dangerous",
-          "type": "go",
-          "buttonText": "Return to Woodland Realm",
-          "resultText": "You make your way back to woodland realm.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "woodland_realm"
-            }
-          ],
-          "targetNodeId": "ch_2_4_imprisoned_start"
         }
       ],
       "onEnter": [
@@ -21293,20 +20943,6 @@
               "key": "forest_river"
             }
           ]
-        },
-        {
-          "id": "go_back_ch_2_4_imprisoned_start_from_ch_2_4_downstream_journey",
-          "type": "go",
-          "buttonText": "Return to Woodland Realm",
-          "resultText": "You make your way back to woodland realm.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "woodland_realm"
-            }
-          ],
-          "targetNodeId": "ch_2_4_imprisoned_start"
         }
       ],
       "onEnter": [
@@ -21479,20 +21115,6 @@
               "key": "invisible_rescue_attempt"
             }
           ]
-        },
-        {
-          "id": "go_back_ch_2_4_imprisoned_start_from_ch_2_4_dangerous_rapids",
-          "type": "go",
-          "buttonText": "Return to Woodland Realm",
-          "resultText": "You make your way back to woodland realm.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "woodland_realm"
-            }
-          ],
-          "targetNodeId": "ch_2_4_imprisoned_start"
         }
       ],
       "onEnter": [
@@ -21698,20 +21320,6 @@
               "key": "lake_town_docks"
             }
           ]
-        },
-        {
-          "id": "go_back_ch_2_4_imprisoned_start_from_ch_2_4_heroic_save",
-          "type": "go",
-          "buttonText": "Return to Woodland Realm",
-          "resultText": "You make your way back to woodland realm.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "woodland_realm"
-            }
-          ],
-          "targetNodeId": "ch_2_4_imprisoned_start"
         }
       ],
       "onEnter": [
@@ -21838,20 +21446,6 @@
               "key": "lake_town_docks"
             }
           ]
-        },
-        {
-          "id": "go_back_ch_2_4_imprisoned_start_from_ch_2_4_successful_escape",
-          "type": "go",
-          "buttonText": "Return to Woodland Realm",
-          "resultText": "You make your way back to woodland realm.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "woodland_realm"
-            }
-          ],
-          "targetNodeId": "ch_2_4_imprisoned_start"
         }
       ],
       "onEnter": [
@@ -22014,20 +21608,6 @@
               "value": true
             }
           ]
-        },
-        {
-          "id": "go_back_ch_2_4_imprisoned_start_from_to_ch_2_5_lake_town",
-          "type": "go",
-          "buttonText": "Return to Woodland Realm",
-          "resultText": "You make your way back to woodland realm.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "woodland_realm"
-            }
-          ],
-          "targetNodeId": "ch_2_4_imprisoned_start"
         }
       ],
       "onEnter": [
@@ -22425,20 +22005,6 @@
               "delta": 5
             }
           ]
-        },
-        {
-          "id": "go_back_ch_2_4_imprisoned_start_from_lake_town_welcome",
-          "type": "go",
-          "buttonText": "Return to Woodland Realm",
-          "resultText": "You make your way back to woodland realm.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "woodland_realm"
-            }
-          ],
-          "targetNodeId": "ch_2_4_imprisoned_start"
         }
       ],
       "onEnter": [
@@ -22617,20 +22183,6 @@
               "delta": 8
             }
           ]
-        },
-        {
-          "id": "go_back_ch_2_4_imprisoned_start_from_lake_town_suspicious",
-          "type": "go",
-          "buttonText": "Return to Woodland Realm",
-          "resultText": "You make your way back to woodland realm.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "woodland_realm"
-            }
-          ],
-          "targetNodeId": "ch_2_4_imprisoned_start"
         }
       ],
       "onEnter": [
@@ -23124,20 +22676,6 @@
             }
           ],
           "targetNodeId": "preparations_for_mountain"
-        },
-        {
-          "id": "go_back_ch_2_4_imprisoned_start_from_lake_town_feast",
-          "type": "go",
-          "buttonText": "Return to Woodland Realm",
-          "resultText": "You make your way back to woodland realm.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "woodland_realm"
-            }
-          ],
-          "targetNodeId": "ch_2_4_imprisoned_start"
         }
       ],
       "onEnter": [
@@ -23324,20 +22862,6 @@
             }
           ],
           "targetNodeId": "preparations_for_mountain"
-        },
-        {
-          "id": "go_back_ch_2_4_imprisoned_start_from_bard_alliance",
-          "type": "go",
-          "buttonText": "Return to Woodland Realm",
-          "resultText": "You make your way back to woodland realm.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "woodland_realm"
-            }
-          ],
-          "targetNodeId": "ch_2_4_imprisoned_start"
         }
       ],
       "onEnter": [
@@ -23491,20 +23015,6 @@
               "delta": 1
             }
           ]
-        },
-        {
-          "id": "go_back_ch_2_4_imprisoned_start_from_preparations_for_mountain",
-          "type": "go",
-          "buttonText": "Return to Woodland Realm",
-          "resultText": "You make your way back to woodland realm.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "woodland_realm"
-            }
-          ],
-          "targetNodeId": "ch_2_4_imprisoned_start"
         }
       ],
       "onEnter": [
@@ -23662,18 +23172,18 @@
           ]
         },
         {
-          "id": "go_back_ch_2_4_imprisoned_start_from_visit_dale_ruins",
+          "id": "go_back_preparations_for_mountain_from_visit_dale_ruins",
           "type": "go",
-          "buttonText": "Return to Woodland Realm",
-          "resultText": "You make your way back to woodland realm.",
+          "buttonText": "Return to Lake-town",
+          "resultText": "You make your way back to lake-town.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "woodland_realm"
+              "key": "lake_town"
             }
           ],
-          "targetNodeId": "ch_2_4_imprisoned_start"
+          "targetNodeId": "preparations_for_mountain"
         }
       ],
       "onEnter": [
@@ -23835,18 +23345,18 @@
           ]
         },
         {
-          "id": "go_back_ch_2_4_imprisoned_start_from_approach_mountain",
+          "id": "go_back_preparations_for_mountain_from_approach_mountain",
           "type": "go",
-          "buttonText": "Return to Woodland Realm",
-          "resultText": "You make your way back to woodland realm.",
+          "buttonText": "Return to Lake-town",
+          "resultText": "You make your way back to lake-town.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "woodland_realm"
+              "key": "lake_town"
             }
           ],
-          "targetNodeId": "ch_2_4_imprisoned_start"
+          "targetNodeId": "preparations_for_mountain"
         }
       ],
       "onEnter": [
@@ -24009,18 +23519,18 @@
           ]
         },
         {
-          "id": "go_back_ch_2_4_imprisoned_start_from_search_for_door",
+          "id": "go_back_preparations_for_mountain_from_search_for_door",
           "type": "go",
-          "buttonText": "Return to Woodland Realm",
-          "resultText": "You make your way back to woodland realm.",
+          "buttonText": "Return to Lake-town",
+          "resultText": "You make your way back to lake-town.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "woodland_realm"
+              "key": "lake_town"
             }
           ],
-          "targetNodeId": "ch_2_4_imprisoned_start"
+          "targetNodeId": "preparations_for_mountain"
         }
       ],
       "onEnter": [
@@ -26998,18 +26508,18 @@
           "targetNodeId": "treasure_chamber_visit"
         },
         {
-          "id": "go_back_mountain_entrance_from_to_battle_preparations",
+          "id": "go_back_weakness_discovered_from_to_battle_preparations",
           "type": "go",
-          "buttonText": "Return to The Lonely Mountain Interior",
-          "resultText": "You make your way back to the lonely mountain interior.",
+          "buttonText": "Return to Smaug's Lair",
+          "resultText": "You make your way back to smaug's lair.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "lonely_mountain"
+              "key": "smaugs_lair"
             }
           ],
-          "targetNodeId": "mountain_entrance"
+          "targetNodeId": "weakness_discovered"
         }
       ],
       "onEnter": [
@@ -27171,18 +26681,18 @@
           "targetNodeId": "thorin_confrontation"
         },
         {
-          "id": "go_back_mountain_entrance_from_to_treasure_chamber",
+          "id": "go_back_smaug_chamber_from_to_treasure_chamber",
           "type": "go",
-          "buttonText": "Return to The Lonely Mountain Interior",
-          "resultText": "You make your way back to the lonely mountain interior.",
+          "buttonText": "Return to Smaug's Lair",
+          "resultText": "You make your way back to smaug's lair.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "lonely_mountain"
+              "key": "smaugs_lair"
             }
           ],
-          "targetNodeId": "mountain_entrance"
+          "targetNodeId": "smaug_chamber"
         }
       ],
       "onEnter": [
@@ -27371,20 +26881,6 @@
           ]
         },
         {
-          "id": "go_back_mountain_entrance_from_armies_gather",
-          "type": "go",
-          "buttonText": "Return to The Lonely Mountain Interior",
-          "resultText": "You make your way back to the lonely mountain interior.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "lonely_mountain"
-            }
-          ],
-          "targetNodeId": "mountain_entrance"
-        },
-        {
           "id": "graph_link_spy_mission",
           "type": "story",
           "buttonText": "Shadows and Whispers",
@@ -27569,20 +27065,6 @@
             }
           ],
           "targetNodeId": "dragon_sickness_grows"
-        },
-        {
-          "id": "go_back_mountain_entrance_from_treasure_chamber_visit",
-          "type": "go",
-          "buttonText": "Return to The Lonely Mountain Interior",
-          "resultText": "You make your way back to the lonely mountain interior.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "lonely_mountain"
-            }
-          ],
-          "targetNodeId": "mountain_entrance"
         }
       ],
       "onEnter": [
@@ -27770,20 +27252,6 @@
               "value": true
             }
           ]
-        },
-        {
-          "id": "go_back_mountain_entrance_from_diplomatic_meeting",
-          "type": "go",
-          "buttonText": "Return to The Lonely Mountain Interior",
-          "resultText": "You make your way back to the lonely mountain interior.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "lonely_mountain"
-            }
-          ],
-          "targetNodeId": "mountain_entrance"
         }
       ],
       "onEnter": [
@@ -28086,18 +27554,18 @@
           ]
         },
         {
-          "id": "go_back_mountain_entrance_from_arkenstone_discovery",
+          "id": "go_back_weakness_discovered_from_arkenstone_discovery",
           "type": "go",
-          "buttonText": "Return to The Lonely Mountain Interior",
-          "resultText": "You make your way back to the lonely mountain interior.",
+          "buttonText": "Return to Smaug's Lair",
+          "resultText": "You make your way back to smaug's lair.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "lonely_mountain"
+              "key": "smaugs_lair"
             }
           ],
-          "targetNodeId": "mountain_entrance"
+          "targetNodeId": "weakness_discovered"
         },
         {
           "id": "graph_link_arkenstone_choice",
@@ -28293,18 +27761,18 @@
           ]
         },
         {
-          "id": "go_back_mountain_entrance_from_thorin_confrontation",
+          "id": "go_back_weakness_discovered_from_thorin_confrontation",
           "type": "go",
-          "buttonText": "Return to The Lonely Mountain Interior",
-          "resultText": "You make your way back to the lonely mountain interior.",
+          "buttonText": "Return to Smaug's Lair",
+          "resultText": "You make your way back to smaug's lair.",
           "conditions": [],
           "effects": [
             {
               "type": "set_location",
-              "key": "lonely_mountain"
+              "key": "smaugs_lair"
             }
           ],
-          "targetNodeId": "mountain_entrance"
+          "targetNodeId": "weakness_discovered"
         }
       ],
       "onEnter": [
@@ -28426,20 +27894,6 @@
               "value": 50
             }
           ]
-        },
-        {
-          "id": "go_back_mountain_entrance_from_arkenstone_choice",
-          "type": "go",
-          "buttonText": "Return to The Lonely Mountain Interior",
-          "resultText": "You make your way back to the lonely mountain interior.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "lonely_mountain"
-            }
-          ],
-          "targetNodeId": "mountain_entrance"
         }
       ],
       "onEnter": [
@@ -28631,20 +28085,6 @@
             }
           ],
           "conditions": []
-        },
-        {
-          "id": "go_back_mountain_entrance_from_arkenstone_gambit",
-          "type": "go",
-          "buttonText": "Return to The Lonely Mountain Interior",
-          "resultText": "You make your way back to the lonely mountain interior.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "lonely_mountain"
-            }
-          ],
-          "targetNodeId": "mountain_entrance"
         }
       ],
       "onEnter": [
@@ -28835,20 +28275,6 @@
             }
           ],
           "conditions": []
-        },
-        {
-          "id": "go_back_mountain_entrance_from_dragon_sickness_grows",
-          "type": "go",
-          "buttonText": "Return to The Lonely Mountain Interior",
-          "resultText": "You make your way back to the lonely mountain interior.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "lonely_mountain"
-            }
-          ],
-          "targetNodeId": "mountain_entrance"
         },
         {
           "id": "graph_link_thorins_rage",
@@ -29049,20 +28475,6 @@
             }
           ],
           "targetNodeId": "final_refusal"
-        },
-        {
-          "id": "go_back_mountain_entrance_from_war_preparations",
-          "type": "go",
-          "buttonText": "Return to The Lonely Mountain Interior",
-          "resultText": "You make your way back to the lonely mountain interior.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "lonely_mountain"
-            }
-          ],
-          "targetNodeId": "mountain_entrance"
         }
       ],
       "onEnter": [
@@ -29256,20 +28668,6 @@
               "key": "banishment"
             }
           ]
-        },
-        {
-          "id": "go_back_mountain_entrance_from_thorins_rage",
-          "type": "go",
-          "buttonText": "Return to The Lonely Mountain Interior",
-          "resultText": "You make your way back to the lonely mountain interior.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "lonely_mountain"
-            }
-          ],
-          "targetNodeId": "mountain_entrance"
         }
       ],
       "onEnter": [
@@ -29464,20 +28862,6 @@
           "effects": []
         },
         {
-          "id": "go_back_mountain_entrance_from_to_final_battle",
-          "type": "go",
-          "buttonText": "Return to The Lonely Mountain Interior",
-          "resultText": "You make your way back to the lonely mountain interior.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "lonely_mountain"
-            }
-          ],
-          "targetNodeId": "mountain_entrance"
-        },
-        {
           "id": "graph_link_ring_stealth_path",
           "type": "story",
           "buttonText": "Invisible Savior",
@@ -29661,20 +29045,6 @@
               "delta": 5
             }
           ]
-        },
-        {
-          "id": "go_back_mountain_entrance_from_to_eagles_arrival",
-          "type": "go",
-          "buttonText": "Return to The Lonely Mountain Interior",
-          "resultText": "You make your way back to the lonely mountain interior.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "lonely_mountain"
-            }
-          ],
-          "targetNodeId": "mountain_entrance"
         },
         {
           "id": "graph_link_aerial_combat",
@@ -29883,20 +29253,6 @@
               "delta": 20
             }
           ]
-        },
-        {
-          "id": "go_back_mountain_entrance_from_battle_chaos",
-          "type": "go",
-          "buttonText": "Return to The Lonely Mountain Interior",
-          "resultText": "You make your way back to the lonely mountain interior.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "lonely_mountain"
-            }
-          ],
-          "targetNodeId": "mountain_entrance"
         }
       ],
       "onEnter": [
@@ -30216,20 +29572,6 @@
               "delta": 25
             }
           ]
-        },
-        {
-          "id": "go_back_mountain_entrance_from_eagle_alliance",
-          "type": "go",
-          "buttonText": "Return to The Lonely Mountain Interior",
-          "resultText": "You make your way back to the lonely mountain interior.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "lonely_mountain"
-            }
-          ],
-          "targetNodeId": "mountain_entrance"
         }
       ],
       "onEnter": [
@@ -30380,20 +29722,6 @@
             }
           ],
           "targetNodeId": "final_refusal"
-        },
-        {
-          "id": "go_back_mountain_entrance_from_aerial_combat",
-          "type": "go",
-          "buttonText": "Return to The Lonely Mountain Interior",
-          "resultText": "You make your way back to the lonely mountain interior.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "lonely_mountain"
-            }
-          ],
-          "targetNodeId": "mountain_entrance"
         }
       ],
       "onEnter": [
@@ -30577,20 +29905,6 @@
             }
           ],
           "targetNodeId": "final_refusal"
-        },
-        {
-          "id": "go_back_mountain_entrance_from_thorins_charge",
-          "type": "go",
-          "buttonText": "Return to The Lonely Mountain Interior",
-          "resultText": "You make your way back to the lonely mountain interior.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "lonely_mountain"
-            }
-          ],
-          "targetNodeId": "mountain_entrance"
         }
       ],
       "onEnter": [
@@ -30978,20 +30292,6 @@
             }
           ],
           "targetNodeId": "final_refusal"
-        },
-        {
-          "id": "go_back_mountain_entrance_from_thorins_fall",
-          "type": "go",
-          "buttonText": "Return to The Lonely Mountain Interior",
-          "resultText": "You make your way back to the lonely mountain interior.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "lonely_mountain"
-            }
-          ],
-          "targetNodeId": "mountain_entrance"
         }
       ],
       "onEnter": [
@@ -31137,20 +30437,6 @@
             }
           ],
           "targetNodeId": "final_refusal"
-        },
-        {
-          "id": "go_back_mountain_entrance_from_eagles_victory",
-          "type": "go",
-          "buttonText": "Return to The Lonely Mountain Interior",
-          "resultText": "You make your way back to the lonely mountain interior.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "lonely_mountain"
-            }
-          ],
-          "targetNodeId": "mountain_entrance"
         }
       ],
       "onEnter": [
@@ -31343,20 +30629,6 @@
               "delta": 5
             }
           ]
-        },
-        {
-          "id": "go_back_mountain_entrance_from_final_words",
-          "type": "go",
-          "buttonText": "Return to The Lonely Mountain Interior",
-          "resultText": "You make your way back to the lonely mountain interior.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "lonely_mountain"
-            }
-          ],
-          "targetNodeId": "mountain_entrance"
         },
         {
           "id": "graph_link_bilbos_departure",

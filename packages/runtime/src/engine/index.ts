@@ -230,6 +230,15 @@ export class BookAdventureEngine {
       targetNodeId = interaction.targetNodeId;
     }
 
+    // Track non-navigating interactions as executed before emitting result
+    // so the UI hides them immediately on re-render
+    if (!targetNodeId) {
+      if (!this.state.executedInteractions) {
+        this.state.executedInteractions = [];
+      }
+      this.state.executedInteractions.push(interactionId);
+    }
+
     // Emit interaction result
     this.emit({
       type: 'interaction_result',
@@ -241,13 +250,6 @@ export class BookAdventureEngine {
     // Navigate to target node if specified
     if (targetNodeId) {
       this.goToNode(targetNodeId);
-    } else {
-      // Track this interaction as executed on the current node
-      if (!this.state.executedInteractions) {
-        this.state.executedInteractions = [];
-      }
-      this.state.executedInteractions.push(interactionId);
-      this.emit({ type: 'state_changed', state: this.state });
     }
 
     return interaction.resultText;
