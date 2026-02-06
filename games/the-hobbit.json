@@ -6,7 +6,7 @@
     "bookAuthor": "THERE AND BACK AGAIN",
     "description": "An interactive text adventure based on \"THE HOBBIT\"",
     "version": "1.0.0",
-    "generatedAt": "2026-02-06T18:48:08.768Z",
+    "generatedAt": "2026-02-06T18:59:27.333Z",
     "engineVersion": "1.0.0"
   },
   "initialState": {
@@ -109,6 +109,20 @@
               "key": "bag_end"
             }
           ]
+        },
+        {
+          "id": "fix_orphan_go_gandalf_arrives",
+          "type": "go",
+          "buttonText": "Go to Bag End",
+          "resultText": "You make your way to bag end.",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "set_location",
+              "key": "bag_end"
+            }
+          ],
+          "targetNodeId": "gandalf_arrives"
         }
       ],
       "onEnter": [
@@ -3057,6 +3071,20 @@
             }
           ],
           "targetNodeId": "ch_1_2_departure"
+        },
+        {
+          "id": "fix_orphan_go_ch_1_2_burglar_failure",
+          "type": "go",
+          "buttonText": "Go to Troll Camp",
+          "resultText": "You make your way to troll camp.",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "set_location",
+              "key": "troll_camp"
+            }
+          ],
+          "targetNodeId": "ch_1_2_burglar_failure"
         }
       ],
       "onEnter": [
@@ -8260,6 +8288,48 @@
               "delta": 5
             }
           ]
+        },
+        {
+          "id": "fix_orphan_go_ch_1_5_shaken_escape",
+          "type": "go",
+          "buttonText": "Go to Mountain Exit",
+          "resultText": "You make your way to mountain exit.",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "set_location",
+              "key": "mountain_exit"
+            }
+          ],
+          "targetNodeId": "ch_1_5_shaken_escape"
+        },
+        {
+          "id": "fix_orphan_go_ch_1_6_tree_burning",
+          "type": "go",
+          "buttonText": "Go to Mountain Exit",
+          "resultText": "You make your way to mountain exit.",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "set_location",
+              "key": "mountain_exit"
+            }
+          ],
+          "targetNodeId": "ch_1_6_tree_burning"
+        },
+        {
+          "id": "fix_orphan_go_ch_1_6_eagle_call",
+          "type": "go",
+          "buttonText": "Go to Mountain Exit",
+          "resultText": "You make your way to mountain exit.",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "set_location",
+              "key": "mountain_exit"
+            }
+          ],
+          "targetNodeId": "ch_1_6_eagle_call"
         }
       ],
       "onEnter": [
@@ -10540,6 +10610,20 @@
               "key": "eagles_eyrie"
             }
           ]
+        },
+        {
+          "id": "fix_orphan_go_ch_1_6_destination_choice",
+          "type": "go",
+          "buttonText": "Go to Eagles' Eyrie",
+          "resultText": "You make your way to eagles' eyrie.",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "set_location",
+              "key": "eagles_eyrie"
+            }
+          ],
+          "targetNodeId": "ch_1_6_destination_choice"
         }
       ],
       "onEnter": [
@@ -10680,6 +10764,20 @@
               "delta": 3
             }
           ]
+        },
+        {
+          "id": "fix_orphan_go_ch_1_6_eagle_rescue",
+          "type": "go",
+          "buttonText": "Go to Eagles' Eyrie",
+          "resultText": "You make your way to eagles' eyrie.",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "set_location",
+              "key": "eagles_eyrie"
+            }
+          ],
+          "targetNodeId": "ch_1_6_eagle_rescue"
         }
       ],
       "onEnter": [
@@ -11852,6 +11950,20 @@
               "key": "beorns_hall"
             }
           ]
+        },
+        {
+          "id": "fix_orphan_go_ch_2_1_start",
+          "type": "go",
+          "buttonText": "Go to Beorn's Lands",
+          "resultText": "You make your way to beorn's lands.",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "set_location",
+              "key": "beorns_lands"
+            }
+          ],
+          "targetNodeId": "ch_2_1_start"
         }
       ],
       "onEnter": [
@@ -12008,6 +12120,20 @@
               "key": "beorns_hall"
             }
           ]
+        },
+        {
+          "id": "fix_orphan_go_ch_2_1_mirkwood_counsel",
+          "type": "go",
+          "buttonText": "Go to Beorn's Hall",
+          "resultText": "You make your way to beorn's hall.",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "set_location",
+              "key": "beorns_hall"
+            }
+          ],
+          "targetNodeId": "ch_2_1_mirkwood_counsel"
         }
       ],
       "onEnter": [
@@ -16422,6 +16548,20 @@
             }
           ],
           "targetNodeId": "final_refusal"
+        },
+        {
+          "id": "fix_orphan_go_strange_sounds",
+          "type": "go",
+          "buttonText": "Go to Spider Clearing",
+          "resultText": "You make your way to spider clearing.",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "set_location",
+              "key": "spider_clearing"
+            }
+          ],
+          "targetNodeId": "strange_sounds"
         }
       ],
       "onEnter": [
@@ -17772,6 +17912,20 @@
             }
           ],
           "targetNodeId": "negotiations_fail"
+        },
+        {
+          "id": "fix_orphan_go_elves_arrive",
+          "type": "go",
+          "buttonText": "Go to Woodland Realm Gates",
+          "resultText": "You make your way to woodland realm gates.",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "set_location",
+              "key": "woodland_realm_entrance"
+            }
+          ],
+          "targetNodeId": "elves_arrive"
         }
       ],
       "onEnter": [
@@ -21875,6 +22029,20 @@
             }
           ],
           "targetNodeId": "ch_2_4_imprisoned_start"
+        },
+        {
+          "id": "fix_orphan_go_to_ch_2_5_weakened",
+          "type": "go",
+          "buttonText": "Go to Lake-town Docks",
+          "resultText": "You make your way to lake-town docks.",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "set_location",
+              "key": "lake_town_docks"
+            }
+          ],
+          "targetNodeId": "to_ch_2_5_weakened"
         }
       ],
       "onEnter": [
@@ -24237,6 +24405,20 @@
               "key": "dragon_scale"
             }
           ]
+        },
+        {
+          "id": "fix_orphan_go_dragon_escape",
+          "type": "go",
+          "buttonText": "Go to The Lonely Mountain Interior",
+          "resultText": "You make your way to the lonely mountain interior.",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "set_location",
+              "key": "lonely_mountain"
+            }
+          ],
+          "targetNodeId": "dragon_escape"
         }
       ],
       "onEnter": [
@@ -24766,6 +24948,20 @@
               "key": "erebor_halls"
             }
           ]
+        },
+        {
+          "id": "fix_orphan_go_from_act_2_smaug_direct",
+          "type": "go",
+          "buttonText": "Go to Great Halls of Erebor",
+          "resultText": "You make your way to great halls of erebor.",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "set_location",
+              "key": "erebor_halls"
+            }
+          ],
+          "targetNodeId": "from_act_2_smaug_direct"
         }
       ],
       "onEnter": [
@@ -24894,6 +25090,20 @@
               "delta": 1
             }
           ]
+        },
+        {
+          "id": "fix_orphan_go_from_act_2_mountain",
+          "type": "go",
+          "buttonText": "Go to The Lonely Mountain Interior",
+          "resultText": "You make your way to the lonely mountain interior.",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "set_location",
+              "key": "lonely_mountain"
+            }
+          ],
+          "targetNodeId": "from_act_2_mountain"
         }
       ],
       "onEnter": [
@@ -28859,6 +29069,34 @@
             }
           ],
           "targetNodeId": "mountain_entrance"
+        },
+        {
+          "id": "fix_orphan_go_ring_stealth_path",
+          "type": "go",
+          "buttonText": "Go to Battle Field",
+          "resultText": "You make your way to battle field.",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "set_location",
+              "key": "battle_field"
+            }
+          ],
+          "targetNodeId": "ring_stealth_path"
+        },
+        {
+          "id": "fix_orphan_go_bilbos_departure",
+          "type": "go",
+          "buttonText": "Go to Battle Field",
+          "resultText": "You make your way to battle field.",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "set_location",
+              "key": "battle_field"
+            }
+          ],
+          "targetNodeId": "bilbos_departure"
         }
       ],
       "onEnter": [
@@ -30007,6 +30245,20 @@
             }
           ],
           "targetNodeId": "mountain_entrance"
+        },
+        {
+          "id": "fix_orphan_go_spy_mission",
+          "type": "go",
+          "buttonText": "Go to Ravenhill",
+          "resultText": "You make your way to ravenhill.",
+          "conditions": [],
+          "effects": [
+            {
+              "type": "set_location",
+              "key": "ravens_hill"
+            }
+          ],
+          "targetNodeId": "spy_mission"
         }
       ],
       "onEnter": [

@@ -205,6 +205,9 @@ export function validateAndFix(gameData: GameData): { gameData: GameData; report
     }
   }
 
+  // --- Check: Orphan nodes (unreachable) ---
+  reconnectOrphanNodes(gameData, report);
+
   // --- Compute stats ---
   report.stats.totalNodes = nodeIds.size;
   report.stats.totalInteractions = totalInteractions;
@@ -248,6 +251,113 @@ export function validateAndFix(gameData: GameData): { gameData: GameData; report
   }
 
   return { gameData, report };
+}
+
+/**
+ * Detect orphan nodes (no incoming links) and reconnect them.
+ *
+ * Strategy: for each orphan, find the best predecessor by matching
+ * chapter number and location. Insert a "go" interaction from the
+ * predecessor to the orphan so the player can actually reach it.
+ */
+function reconnectOrphanNodes(gameData: GameData, report: ValidationReport): void {
+  const nodes = gameData.nodes;
+  const startNodeId = gameData.initialState.startNodeId;
+
+  // Build set of all nodes that have incoming links
+  const hasIncoming = new Set<string>();
+  for (const node of Object.values(nodes)) {
+    for (const interaction of node.interactions ?? []) {
+      if (interaction.targetNodeId && nodes[interaction.targetNodeId]) {
+        hasIncoming.add(interaction.targetNodeId);
+      }
+    }
+    for (const effect of node.onEnter ?? []) {
+      if (effect.type === 'go_to_node' && nodes[effect.key]) {
+        hasIncoming.add(effect.key);
+      }
+    }
+  }
+
+  // Find orphans (exclude start node)
+  const orphans: string[] = [];
+  for (const nodeId of Object.keys(nodes)) {
+    if (nodeId !== startNodeId && !hasIncoming.has(nodeId)) {
+      orphans.push(nodeId);
+    }
+  }
+
+  if (orphans.length === 0) return;
+
+  report.warnings.push(`Found ${orphans.length} orphan node(s) with no incoming links`);
+
+  // Build a list of all non-ending nodes as potential predecessors
+  const nodeEntries = Object.entries(nodes).filter(([, n]) => n.type !== 'ending');
+
+  for (const orphanId of orphans) {
+    const orphan = nodes[orphanId];
+    if (!orphan) continue;
+
+    // Find best predecessor: same chapter + same location > same chapter > same location > any
+    let bestPredecessor: string | null = null;
+    let bestScore = -1;
+
+    for (const [candidateId, candidate] of nodeEntries) {
+      if (candidateId === orphanId) continue;
+
+      // Don't add a link from a node that already links to orphan's targets
+      // (would create a bypass). Prefer nodes that don't already have too many go interactions.
+      const goCount = (candidate.interactions ?? []).filter((i) => i.type === 'go').length;
+      if (goCount >= 6) continue;
+
+      let score = 0;
+      if (candidate.chapterNumber === orphan.chapterNumber) score += 10;
+      if (candidate.locationId === orphan.locationId) score += 5;
+
+      // Prefer nodes that connect to nodes the orphan also connects to (siblings)
+      const candidateTargets = new Set(
+        (candidate.interactions ?? [])
+          .filter((i) => i.targetNodeId)
+          .map((i) => i.targetNodeId)
+      );
+      const orphanTargets = new Set(
+        (orphan.interactions ?? [])
+          .filter((i) => i.targetNodeId)
+          .map((i) => i.targetNodeId)
+      );
+      for (const t of orphanTargets) {
+        if (candidateTargets.has(t)) score += 3;
+      }
+
+      // Prefer nodes that are already reachable (have incoming links or are start)
+      if (candidateId === startNodeId || hasIncoming.has(candidateId)) score += 2;
+
+      if (score > bestScore) {
+        bestScore = score;
+        bestPredecessor = candidateId;
+      }
+    }
+
+    if (!bestPredecessor) continue;
+
+    const predecessor = nodes[bestPredecessor];
+    const orphanLocation = gameData.locations[orphan.locationId];
+    const orphanName = orphanLocation?.name ?? orphan.title;
+
+    if (!predecessor.interactions) predecessor.interactions = [];
+    predecessor.interactions.push({
+      id: `fix_orphan_go_${orphanId}`,
+      type: 'go',
+      buttonText: `Go to ${orphanName}`,
+      resultText: `You make your way to ${orphanName.toLowerCase()}.`,
+      conditions: [],
+      effects: [{ type: 'set_location', key: orphan.locationId }],
+      targetNodeId: orphanId,
+    } as any);
+
+    hasIncoming.add(orphanId);
+    report.fixes.push(`Orphan "${orphanId}": added link from "${bestPredecessor}"`);
+  }
 }
 
 /**
