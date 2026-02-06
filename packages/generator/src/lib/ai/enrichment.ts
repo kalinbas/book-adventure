@@ -175,7 +175,7 @@ function injectNavigationLoops(gameData: GameData, report: CoverageReport): void
     hubNodes.push(gameData.initialState.startNodeId);
   }
 
-  // For each hub, compute reachable set (BFS forward, max 5 hops) to limit backtrack scope
+  // For each hub, compute reachable set (BFS forward, max 3 hops) to limit backtrack scope
   const hubReachable: Record<string, Set<string>> = {};
   for (const hub of hubNodes) {
     const reachable = new Set<string>();
@@ -186,7 +186,7 @@ function injectNavigationLoops(gameData: GameData, report: CoverageReport): void
     while (queue.length > 0) {
       const current = queue.shift()!;
       const depth = depths.get(current) ?? 0;
-      if (depth >= 5) continue;
+      if (depth >= 3) continue;
 
       reachable.add(current);
       for (const next of forwardLinks[current] ?? []) {

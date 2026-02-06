@@ -6,7 +6,7 @@
     "bookAuthor": "THERE AND BACK AGAIN",
     "description": "An interactive text adventure based on \"THE HOBBIT\"",
     "version": "1.0.0",
-    "generatedAt": "2026-02-06T19:47:49.714Z",
+    "generatedAt": "2026-02-06T19:54:06.792Z",
     "engineVersion": "1.0.0"
   },
   "initialState": {
@@ -2803,20 +2803,6 @@
             }
           ],
           "targetNodeId": "ch_1_2_troll_choice"
-        },
-        {
-          "id": "go_back_ch_1_2_departure_from_ch_1_2_troll_approach",
-          "type": "go",
-          "buttonText": "Return to Hobbiton",
-          "resultText": "You make your way back to hobbiton.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "hobbiton"
-            }
-          ],
-          "targetNodeId": "ch_1_2_departure"
         }
       ],
       "onEnter": [
@@ -2891,24 +2877,19 @@
           "targetNodeId": "ch_1_2_avoid_trolls"
         },
         {
-          "id": "go_back_ch_1_2_departure_from_ch_1_2_troll_choice",
-          "type": "go",
-          "buttonText": "Return to Hobbiton",
-          "resultText": "You make your way back to hobbiton.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "hobbiton"
-            }
-          ],
-          "targetNodeId": "ch_1_2_departure"
-        },
-        {
           "id": "pad_examine_ch_1_2_troll_choice",
           "type": "examine",
           "buttonText": "Look around The Lone-lands",
           "resultText": "You take in your surroundings, noting every detail of the lone-lands.",
+          "conditions": [],
+          "effects": []
+        },
+        {
+          "id": "pad_talk_bilbo_baggins_ch_1_2_troll_choice",
+          "type": "talk",
+          "buttonText": "Speak with Bilbo Baggins",
+          "resultText": "Bilbo Baggins acknowledges you with a nod. \"What brings you here?\" they ask.",
+          "targetObject": "bilbo_baggins",
           "conditions": [],
           "effects": []
         }
@@ -9378,20 +9359,6 @@
               "key": "mountain_exit"
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_reunion_from_ch_1_6_flee_trees",
-          "type": "go",
-          "buttonText": "Return to Mountain Exit",
-          "resultText": "You make your way back to mountain exit.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "mountain_exit"
-            }
-          ],
-          "targetNodeId": "ch_1_6_reunion"
         }
       ],
       "onEnter": [
@@ -9543,20 +9510,6 @@
               "key": "mountain_exit"
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_reunion_from_ch_1_6_stand_fight",
-          "type": "go",
-          "buttonText": "Return to Mountain Exit",
-          "resultText": "You make your way back to mountain exit.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "mountain_exit"
-            }
-          ],
-          "targetNodeId": "ch_1_6_reunion"
         }
       ],
       "onEnter": [
@@ -9716,20 +9669,6 @@
               "key": "mountain_exit"
             }
           ]
-        },
-        {
-          "id": "go_back_ch_1_6_reunion_from_ch_1_6_goblin_arrival",
-          "type": "go",
-          "buttonText": "Return to Mountain Exit",
-          "resultText": "You make your way back to mountain exit.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "mountain_exit"
-            }
-          ],
-          "targetNodeId": "ch_1_6_reunion"
         }
       ],
       "onEnter": [
@@ -19333,20 +19272,6 @@
               "delta": 1
             }
           ]
-        },
-        {
-          "id": "go_back_ch_2_4_imprisoned_start_from_ch_2_4_plan_formation",
-          "type": "go",
-          "buttonText": "Return to Woodland Realm",
-          "resultText": "You make your way back to woodland realm.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "woodland_realm"
-            }
-          ],
-          "targetNodeId": "ch_2_4_imprisoned_start"
         }
       ],
       "onEnter": [
@@ -19551,20 +19476,6 @@
               "key": "woodland_realm"
             }
           ]
-        },
-        {
-          "id": "go_back_ch_2_4_imprisoned_start_from_ch_2_4_careful_approach",
-          "type": "go",
-          "buttonText": "Return to Woodland Realm",
-          "resultText": "You make your way back to woodland realm.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "woodland_realm"
-            }
-          ],
-          "targetNodeId": "ch_2_4_imprisoned_start"
         }
       ],
       "onEnter": [
@@ -19764,20 +19675,6 @@
               "key": "woodland_realm"
             }
           ]
-        },
-        {
-          "id": "go_back_ch_2_4_imprisoned_start_from_ch_2_4_risky_approach",
-          "type": "go",
-          "buttonText": "Return to Woodland Realm",
-          "resultText": "You make your way back to woodland realm.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "woodland_realm"
-            }
-          ],
-          "targetNodeId": "ch_2_4_imprisoned_start"
         }
       ],
       "onEnter": [
@@ -23690,20 +23587,6 @@
               "key": "erebor_halls"
             }
           ]
-        },
-        {
-          "id": "go_back_preparations_for_mountain_from_door_discovery",
-          "type": "go",
-          "buttonText": "Return to Lake-town",
-          "resultText": "You make your way back to lake-town.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "lake_town"
-            }
-          ],
-          "targetNodeId": "preparations_for_mountain"
         }
       ],
       "onEnter": [
@@ -26303,7 +26186,7 @@
           ]
         },
         {
-          "id": "go_back_smaug_chamber_from_smaug_death",
+          "id": "go_back_weakness_discovered_from_smaug_death",
           "type": "go",
           "buttonText": "Return to Smaug's Lair",
           "resultText": "You make your way back to smaug's lair.",
@@ -26314,7 +26197,7 @@
               "key": "smaugs_lair"
             }
           ],
-          "targetNodeId": "smaug_chamber"
+          "targetNodeId": "weakness_discovered"
         },
         {
           "id": "graph_link_to_battle_preparations",
@@ -26506,20 +26389,6 @@
             }
           ],
           "targetNodeId": "treasure_chamber_visit"
-        },
-        {
-          "id": "go_back_weakness_discovered_from_to_battle_preparations",
-          "type": "go",
-          "buttonText": "Return to Smaug's Lair",
-          "resultText": "You make your way back to smaug's lair.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "smaugs_lair"
-            }
-          ],
-          "targetNodeId": "weakness_discovered"
         }
       ],
       "onEnter": [
@@ -26679,20 +26548,6 @@
             }
           ],
           "targetNodeId": "thorin_confrontation"
-        },
-        {
-          "id": "go_back_smaug_chamber_from_to_treasure_chamber",
-          "type": "go",
-          "buttonText": "Return to Smaug's Lair",
-          "resultText": "You make your way back to smaug's lair.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "smaugs_lair"
-            }
-          ],
-          "targetNodeId": "smaug_chamber"
         }
       ],
       "onEnter": [
@@ -27554,20 +27409,6 @@
           ]
         },
         {
-          "id": "go_back_weakness_discovered_from_arkenstone_discovery",
-          "type": "go",
-          "buttonText": "Return to Smaug's Lair",
-          "resultText": "You make your way back to smaug's lair.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "smaugs_lair"
-            }
-          ],
-          "targetNodeId": "weakness_discovered"
-        },
-        {
           "id": "graph_link_arkenstone_choice",
           "type": "story",
           "buttonText": "The Heart of the Mountain",
@@ -27759,20 +27600,6 @@
               "delta": -5
             }
           ]
-        },
-        {
-          "id": "go_back_weakness_discovered_from_thorin_confrontation",
-          "type": "go",
-          "buttonText": "Return to Smaug's Lair",
-          "resultText": "You make your way back to smaug's lair.",
-          "conditions": [],
-          "effects": [
-            {
-              "type": "set_location",
-              "key": "smaugs_lair"
-            }
-          ],
-          "targetNodeId": "weakness_discovered"
         }
       ],
       "onEnter": [
