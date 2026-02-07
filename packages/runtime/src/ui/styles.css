@@ -408,6 +408,16 @@ body {
   transition: width 0.3s ease;
 }
 
+.book-adventure__github {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.book-adventure__github:hover {
+  color: var(--color-accent);
+}
+
 /* =============================================================================
    Modal (Save/Load)
    ============================================================================= */
